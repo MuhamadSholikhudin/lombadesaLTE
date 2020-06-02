@@ -24,7 +24,7 @@ class Jadwal_lomba extends CI_Controller
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
-        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun'")->result();
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun' AND jadwal_lomba.status_jadwal > 0")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
         // $data['penjadwalan'] = $this->model_penjadwalan->tampil_data();
@@ -47,24 +47,21 @@ class Jadwal_lomba extends CI_Controller
         $this->load->view('templates_admin/footer');
     }
 
-    public function edit_aksi()
+    public function acc($no_jadwal)
     {
-        $id = $this->input->post('no_jadwal');
-        $tgl_jadwal = $this->input->post('tgl_jadwal');
-
         $data = [
-            'tgl_jadwal' => $tgl_jadwal,
+            'status_jadwal' => 2
         ];
-
         $where = [
-            'no_jadwal' => $id
+            'no_jadwal' => $no_jadwal
         ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-        redirect('stafpmd/penjadwalan/');
+
+        redirect('admin_sekda/Jadwal_lomba/');
     }
 
-    public function ajukan($no_jadwal)
+    public function batalkan($no_jadwal)
     {
         $data = [
             'status_jadwal' => 1
@@ -76,10 +73,10 @@ class Jadwal_lomba extends CI_Controller
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
-        redirect('stafpmd/penjadwalan/');
+        redirect('admin_sekda/Jadwal_lomba/');
     }
 
-    public function batalkan($no_jadwal)
+    public function kembalikan($no_jadwal)
     {
         $data = [
             'status_jadwal' => 0
@@ -91,24 +88,6 @@ class Jadwal_lomba extends CI_Controller
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
-        redirect('stafpmd/penjadwalan/');
-    }
-
-    public function kembalikan($no_hasilajuan)
-    {
-        $data = [
-            'status_ajuan' => 1
-        ];
-        $where = [
-            'no_hasilajuan' => $no_hasilajuan
-        ];
-
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-        $this->model_penjadwalan->hapuspenjadwal($where, 'jadwal_lomba');
-
-        // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
-        // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
-
-        redirect('stafpmd/penjadwalan/');
+        redirect('admin_sekda/Jadwal_lomba/');
     }
 }

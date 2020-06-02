@@ -48,7 +48,7 @@
                                         </td>
                                             <td>
                                                 
-                                            <?= anchor('stafpmd/jadwal_lomba/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="batalkan">
+                                            <?= anchor('admin_sekda/jadwal_lomba/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="batalkan">
                                             <i class="fas fa-times"></i>
                                         </div>') ?>
                                         </td>
@@ -58,13 +58,13 @@
                                         <td> <?= $jadw->tgl_jadwal ?></td>
                                         <td><?= $jadw->tahun ?></td>
                                         <td class="text-center">
-                                            <?= anchor('stafpmd/jadwal_lomba/acc/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Setujui jadwal Lomba">
+                                            <?= anchor('admin_sekda/jadwal_lomba/acc/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Setujui jadwal Lomba">
                                             <i class="fas fa-check"></i>
                                         </div>') ?>
                                         </td>
                                         <td>
-                                            <?= anchor('stafpmd/jadwal_lomba/kembalikan/' . $jadw->no_jadwal, '<div class="btn btn-danger btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Kembalikan Jadwal Lomba">
-                        <i class="fas fa-times"></i> </div>') ?>
+                                            <?= anchor('admin_sekda/jadwal_lomba/kembalikan/' . $jadw->no_jadwal, '<div class="btn btn-danger btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Kembalikan Jadwal Lomba">
+                        <i class="fas fa-undo"></i> </div>') ?>
                                         </td>
                                     <?php
                                     }
