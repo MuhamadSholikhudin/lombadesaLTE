@@ -9,4 +9,9 @@ git add .
 git fetch
 
 
+git init
+git pull origin master
+git add .
+git commit -m 'your commit message'
 git push origin master --force
+
