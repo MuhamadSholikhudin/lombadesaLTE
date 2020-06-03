@@ -85,7 +85,7 @@
         <?php if ($this->session->userdata('hakakses') == 1) { ?>
 
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="<?= base_url('tenaga_ahli/dashboard'); ?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -94,26 +94,25 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="<?= base_url('tenaga_ahli/penjadwlan'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Penjadwalan
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="<?= base_url('tenaga_ahli/acc_juara'); ?>" class="nav-link">
+              <i class="nav-icon far fa-check-square"></i>
               <p>
-                Acc Juara
-                <span class="right badge badge-danger">New</span>
+                Juara Lomba
               </p>
             </a>
           </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-tasks"></i>
               <p>
                 Kelola data
                 <i class="right fas fa-angle-left"></i>
@@ -121,37 +120,37 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="<?= base_url('tenaga_ahli/pendaftaran'); ?>" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Daftar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/kriteria_penilaian'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Kriteria Penilaian</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/berita'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Berita</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/wilayah'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Wilayah</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/nilai'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Nilai</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/pengguna'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pengguna</p>
                 </a>
@@ -159,48 +158,6 @@
             </ul>
           </li>
 
-
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Kelola data
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav-item">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Daftar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kriteria Nilai</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Berita</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Wilayah</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pengguna</p>
-                </a>
-              </li>
-            </ul>
-          </li>
 
           <li class="nav-header">Laporan</li>
           <li class="nav-item has-treeview">
@@ -213,13 +170,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/pendaftar'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pendaftar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/mailbox/compose.html" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/juaralomba'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Juara Lomba</p>
                 </a>
@@ -345,7 +302,7 @@
 
         <?php } elseif ($this->session->userdata('hakakses') == 5) { ?>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="<?= base_url('tim_penilai/dashboard'); ?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Home
@@ -354,8 +311,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="<?= base_url('tim_penilai/penilaian'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-pencil-alt"></i>
               <p>
                 Penilaian
               </p>

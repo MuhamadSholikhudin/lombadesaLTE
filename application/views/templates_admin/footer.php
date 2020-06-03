@@ -28,6 +28,10 @@
   <script>
     $(document).ready(function() {
       $('#daftar').DataTable();
+      $('#kriteria').DataTable();
+      $('#pengguna').DataTable();
+      $('#wilayah').DataTable();
+      $('#berita').DataTable();
     });
 
     $.widget.bridge('uibutton', $.ui.button)
