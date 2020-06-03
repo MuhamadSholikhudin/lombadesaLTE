@@ -1,2 +1,12 @@
 alias graph="git log --all --decorate --oneline --graph"
 
+git commit -m "Sampai Acc tambah txt git"
+
+git status
+
+git add .
+
+git fetch
+
+
+git push origin master --force
