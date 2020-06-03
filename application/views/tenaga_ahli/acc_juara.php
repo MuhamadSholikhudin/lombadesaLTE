@@ -29,40 +29,68 @@
                                 <tbody>
                                     <?php $no = 1; ?>
                                     <?php foreach ($juara as $jur) : ?>
+                                        <?php if ($jur->no_jadwal = 2) { ?>
+                                            <tr>
+                                                <form action="<?= base_url('tenaga_ahli/acc_juara/acc') ?>" enctype="multipart/form-data" method="POST">
+                                                    <input type="hidden" name="no_jadwal" value="<?= $jur->no_jadwal ?>">
+                                                    <td>
+                                                        <?= $jur->kecamatan ?>
+                                                        <input type="hidden" name="kecamatan" value="<?= $jur->kecamatan ?>">
+                                                    </td>
+                                                    <td>
+                                                        <?= $jur->desa ?>
+                                                        <input type="hidden" name="desa" value="<?= $jur->desa ?>">
+                                                    </td>
+                                                    <td><span class="badge bg-success"><?= $no;  ?></span>
+                                                        <input type="hidden" name="juara_ke" value="<?= $no; ?>">
+                                                    </td>
+                                                    <td><span class="badge bg-grey"><?= $jur->total  ?>
+                                                        </span>
+                                                        <input type="hidden" name="total_nilai" value="<?= $jur->total; ?>"></td>
+                                                    <td>
+                                                        <button type="submit" class="btn badge bg-primary">
+                                                            ACC
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                            </tr>
 
-                                        <tr>
-                                            <form action="<?= base_url('tenaga_ahli/acc_juara/acc') ?>" enctype="multipart/form-data" method="POST">
-                                                <input type="hidden" name="no_jadwal" value="<?= $jur->no_jadwal ?>">
-                                                <td>
-                                                    <?= $jur->kecamatan ?>
-                                                    <input type="hidden" name="kecamatan" value="<?= $jur->kecamatan ?>">
-                                                </td>
-                                                <td>
-                                                    <?= $jur->desa ?>
-                                                    <input type="hidden" name="desa" value="<?= $jur->desa ?>">
-                                                </td>
-                                                <td><span class="badge bg-success"><?= $no;  ?></span>
-                                                    <input type="hidden" name="juara_ke" value="<?= $no; ?>">
-                                                </td>
-                                                <td><span class="badge bg-grey"><?= $jur->total  ?>
-                                                    </span>
-                                                    <input type="hidden" name="total_nilai" value="<?= $jur->total; ?>"></td>
-                                                <td>
-                                                    <button type="submit" class="btn badge bg-primary">
-                                                        ACC
-                                                    </button>
-                                                </td>
-                                            </form>
-                                            <form action="<?= base_url('tenaga_ahli/acc_juara/batalkan') ?>" enctype="multipart/form-data" method="POST">
-                                                <input type="hidden" name="tahun" value="<?= date('Y'); ?>">
+                                        <?php
+                                        } elseif ($jur->no_jadwal = 3) {
+                                        ?>
+                                            <tr>
+                                                <form action="<?= base_url('tenaga_ahli/acc_juara/batalkan') ?>" enctype="multipart/form-data" method="POST">
+                                                    <input type="hidden" name="no_jadwal" value="<?= $jur->no_jadwal ?>">
+                                                    <td>
+                                                        <?= $jur->kecamatan ?>
+                                                        <input type="hidden"  value="<?= $jur->kecamatan ?>">
+                                                    </td>
+                                                    <td>
+                                                        <?= $jur->desa ?>
+                                                        <input type="hidden"  value="<?= $jur->desa ?>">
+                                                    </td>
+                                                    <td><span class="badge bg-success"><?= $no;  ?></span>
+                                                        <input type="hidden"  value="<?= $no; ?>">
+                                                    </td>
+                                                    <td><span class="badge bg-grey"><?= $jur->total  ?>
+                                                        </span>
+                                                        <input type="hidden" value="<?= $jur->total; ?>"></td>
+                                                    <td>
+                                                        <button type="submit" class="btn badge bg-primary">
+                                                            Batalkan
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
 
-                                                <td>
-                                                    <button type="submit" class="btn badge bg-primary">
-                                                        batalkan
-                                                    </button>
-                                                </td>
-                                            </form>
-                                        </tr>
+
+
+
+
+
                                         <?php $no++; ?>
 
                                     <?php endforeach; ?>

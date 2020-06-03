@@ -77,30 +77,26 @@ class Acc_juara extends CI_Controller
     {
 
         $no_jadwal = $this->input->post('no_jadwal');
-        $kecamatan = $this->input->post('kecamatan');
-        $desa = $this->input->post('desa');
-        $tahun = date('Y');
-        $juara_ke = $this->input->post('juara_ke');
-        $total_nilai = $this->input->post('total_nilai');
+        // $kecamatan = $this->input->post('kecamatan');
+        // $desa = $this->input->post('desa');
+        $tahunini = date('Y');
+        // $juara_ke = $this->input->post('juara_ke');
+        // $total_nilai = $this->input->post('total_nilai');
 
         $data = [
-            'status_jadwal' => 3
+            'status_jadwal' => 2
         ];
+
         $where = [
             'no_jadwal' => $no_jadwal
         ];
 
-
-        $datat = array(
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'tahun' => $tahun,
-            'juara' => $juara_ke,
-            'total_nilai' => $total_nilai,
-        );
+        $tahun = [
+            'tahun' => $tahunini
+        ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-        $this->model_juara->tambah_juara($datat, 'juara_lomba');
+        $this->model_juara->hapusjuara($tahun, 'juara_lomba');
 
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
 

@@ -12,5 +12,11 @@ class Model_juara extends CI_Model
     {
         $this->db->insert($table, $data);
     }
+
+    public function hapusjuara($tahun, $table)
+    {
+        $this->db->where($tahun);
+        $this->db->delete($table);
+    }
     
 }
