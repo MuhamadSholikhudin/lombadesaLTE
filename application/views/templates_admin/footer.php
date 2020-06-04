@@ -32,6 +32,7 @@
       $('#pengguna').DataTable();
       $('#wilayah').DataTable();
       $('#berita').DataTable();
+      $('#nilai').DataTable();
     });
 
     $.widget.bridge('uibutton', $.ui.button)
