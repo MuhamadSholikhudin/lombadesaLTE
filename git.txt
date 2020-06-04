@@ -17,14 +17,14 @@ git push origin master --force
 
 
 
-DINAS Kesehatan
-DINAS Pendidikan Pemuda dan Olahraga
-DINAS Kominfo
-DINAS Perdagangan
-DINAS Kebudayaan dan Pariwisata
-DINAS Pertanian dan Pangan
-DINAS Tenaga Kerja
-DINAS Sosial P3AP2KB
-DINAS Pekerjaan Umum dan Penataan Ruang
-BNPB
+P1 DINAS Kesehatan
+P2 DINAS Pendidikan Pemuda dan Olahraga
+P3 DINAS Kominfo
+P4 DINAS Perdagangan
+P5 DINAS Kebudayaan dan Pariwisata
+P6 DINAS Pertanian dan Pangan
+P7 DINAS Tenaga Kerja
+P8 DINAS Sosial 
+P9 DINAS Pekerjaan Umum dan Penataan Ruang
+P10 BNPB
 

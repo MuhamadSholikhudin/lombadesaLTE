@@ -89,4 +89,20 @@ class Pengguna extends CI_Controller
         $this->model_pengguna->hapus_data($where, 'pengguna');
         redirect('tenaga_ahli/pengguna');
     }
+
+
+    function get_subkategori()
+    {
+        $this->load->model('M_kategori', 'dep_kategori', TRUE);
+        $id_kec = $this->input->post('id_kec');
+        $desas = $this->dep_kategori->get_sub_desa($id_kec);
+        if (count($desas) > 0) {
+            $des_select_box = '';
+            $des_select_box .= '<option value="" >Pilih Desa</option>';
+            foreach ($desas as $desa) {
+                $des_select_box .= '<option value="' . $desa->id_des . '" >' . $desa->nama . '</option>';
+            }
+            echo json_encode($des_select_box);
+        }
+    }
 }

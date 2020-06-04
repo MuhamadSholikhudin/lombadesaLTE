@@ -7,7 +7,6 @@
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA PENGGUNA</h1>
                 </div><!-- /.col -->
-
                 <div class="col-sm-12">
                     <br>
                     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_pengguna">
@@ -53,8 +52,6 @@
                 </div>
 
 
-
-
                 <!-- Modal -->
                 <div class="modal fade" id="tambah_pengguna" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -90,6 +87,7 @@
                                         <label for="hakakses" class="col-sm-2 col-form-label">Hak akses</label>
                                         <div class="col-sm-10">
                                             <select type="text" class="form-control" id="hakakses" name="hakakses" required>
+                                                <option value="" selected> Pilih </option>
                                                 <option value="1"> Tenaga Ahli </option>
                                                 <option value="2"> Staf PMD </option>
                                                 <option value="3"> Admin Kecamatan </option>
@@ -102,11 +100,7 @@
                                         <label for="penempatan" class="col-sm-2 col-form-label">Penempatan</label>
                                         <div class="col-sm-10">
                                             <select type="text" class="form-control" id="penempatan" name="penempatan" required>
-                                                <option value="1"> Tenaga Ahli </option>
-                                                <option value="2"> Staf PMD </option>
-                                                <option value="3"> Admin Kecamatan </option>
-                                                <option value="4"> Admin Sekda </option>
-                                                <option value="5"> Tim Penilai </option>
+
                                             </select>
                                         </div>
                                     </div>
