@@ -23,16 +23,21 @@ class Acc_juara extends CI_Controller
 
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['juara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan, SUM(nilai.jumlah) as total 
+        $data['juaraini'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan, SUM(nilai.jumlah) as total 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun' ORDER BY total DESC")->result();
+        WHERE hasil_ajuan.tahun = '$tahun'  ORDER BY total DESC LIMIT 3");
 
-        $data['juarakemarin'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan, SUM(nilai.jumlah) as total 
+        $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan, SUM(nilai.jumlah) as total 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun' ORDER BY total DESC")->result();
+        WHERE hasil_ajuan.tahun = '$tahun'  ORDER BY total DESC LIMIT 3")->result();
 
+        $data['juara'] = $this->db->query("SELECT * 
+        FROM juara_lomba WHERE tahun = '$tahun' ORDER BY total_nilai DESC LIMIT 3");
+
+        $data['juaralama'] = $this->db->query("SELECT * 
+        FROM juara_lomba WHERE tahun != '$tahun' ORDER BY total_nilai DESC LIMIT 3")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -42,35 +47,49 @@ class Acc_juara extends CI_Controller
 
     public function acc(){
 
-        $no_jadwal = $this->input->post('no_jadwal');
-        $kecamatan = $this->input->post('kecamatan');
-        $desa = $this->input->post('desa');
+        $desa1 = $this->input->post('desa1');
+        $kecamatan1 = $this->input->post('kecamatan1');
+        $juara1 = $this->input->post('juara1');
+        $total_nilai1 = $this->input->post('total_nilai1');
+
+        $desa2 = $this->input->post('desa2');
+        $kecamatan2 = $this->input->post('kecamatan2');
+        $juara2 = $this->input->post('juara');
+        $total_nilai2 = $this->input->post('total_nilai2');
+
+        $desa3 = $this->input->post('desa3');
+        $kecamatan3 = $this->input->post('kecamatan3');
+        $juara3 = $this->input->post('juara');
+        $total_nilai3 = $this->input->post('total_nilai3');
+
         $tahun = date('Y');
-        $juara_ke = $this->input->post('juara_ke');
-        $total_nilai = $this->input->post('total_nilai');
 
-        $data = [
-            'status_jadwal' => 3
-        ];
-        $where = [
-            'no_jadwal' => $no_jadwal
-        ];
-      
 
-        $datat = array(
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'tahun' => $tahun,
-            'juara' => $juara_ke,
-            'total_nilai' => $total_nilai,
+        $data = array(
+            array(
+                'tahun'	=>  $tahun,
+                'desa'	=>  $desa1 ,
+                'kecamatan'=>  $kecamatan1,
+                'total_nilai'=>  $total_nilai1,
+                'juara'	=>  $juara1
+            ),
+            array(
+                'tahun' =>  $tahun,
+                'desa'	=>  $desa2 ,
+                'kecamatan' =>  $kecamatan2,
+                'total_nilai' =>  $total_nilai2,
+                'juara'	=>  $juara2
+            ),
+            array(
+                'tahun'	=>  $tahun,
+                'desa'	=>  $desa3 ,
+                'kecamatan'=>  $kecamatan3,
+                'total_nilai'=>  $total_nilai3,
+                'juara'	=>  $juara3
+            )
         );
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-        $this->model_juara->tambah_juara($datat, 'juara_lomba');
-
-        // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
-
-        redirect('tenaga_ahli/acc_juara/');
+        $this->db->insert_batch('juara_lomba', $data); 
     }
 
     public function batalkan()

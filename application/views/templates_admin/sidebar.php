@@ -170,13 +170,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?= base_url('tenaga_ahli/pendaftar'); ?>" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/laporan/pendaftar'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pendaftar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= base_url('tenaga_ahli/juaralomba'); ?>" class="nav-link">
+                <a href="<?= base_url('tenaga_ahli/laporan/juaralomba'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Juara Lomba</p>
                 </a>
