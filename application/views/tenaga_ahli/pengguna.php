@@ -42,7 +42,7 @@
                                         <?= anchor('tenaga_ahli/pengguna/edit/' . $peng->id_pengguna, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-edit"></i> </div>') ?>
                                     </td>
-                                    <td><?= anchor('tenaga_ahli/pengguna/hapus/' . $peng->id_pengguna, '<div class="btn btn-success btn-btn-sm">
+                                    <td><?= anchor('tenaga_ahli/pengguna/hapus/' . $peng->id_pengguna, '<div class="btn btn-danger btn-btn-sm">
                         <i class="fa fa-trash"></i> </div>') ?>
                                     </td>
 

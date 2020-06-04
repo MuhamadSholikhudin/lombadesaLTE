@@ -94,7 +94,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('tenaga_ahli/penjadwlan'); ?>" class="nav-link">
+            <a href="<?= base_url('tenaga_ahli/penjadwalan'); ?>" class="nav-link">
               <i class="nav-icon fas fa-calendar-alt"></i>
               <p>
                 Penjadwalan
