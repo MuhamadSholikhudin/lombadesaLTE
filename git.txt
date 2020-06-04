@@ -15,3 +15,16 @@ git add .
 git commit -m 'your commit message'
 git push origin master --force
 
+
+
+DINAS Kesehatan
+DINAS Pendidikan Pemuda dan Olahraga
+DINAS Kominfo
+DINAS Perdagangan
+DINAS Kebudayaan dan Pariwisata
+DINAS Pertanian dan Pangan
+DINAS Tenaga Kerja
+DINAS Sosial P3AP2KB
+DINAS Pekerjaan Umum dan Penataan Ruang
+BNPB
+

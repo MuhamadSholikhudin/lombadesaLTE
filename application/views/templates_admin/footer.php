@@ -32,9 +32,12 @@
       $('#pengguna').DataTable();
       $('#wilayah').DataTable();
       $('#berita').DataTable();
-      $('#nilai').DataTable();
+      var table = $('#nilai').DataTable({
+        data: rows,
+        destroy: true,
+        columns: columns
+      });
     });
-
     $.widget.bridge('uibutton', $.ui.button)
   </script>
 

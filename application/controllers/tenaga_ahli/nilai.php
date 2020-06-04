@@ -33,8 +33,8 @@ class Nilai extends CI_Controller
 
     public function edit($id)
     {
-        $where = array('id_pengguna' => $id);
-        $data['pengguna'] = $this->model_pengguna->edit_pengguna($where, 'pengguna')->result();
+        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul,kriteria_penilaian.skor FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
+        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE nilai.id_nilai = '$id' ")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -44,26 +44,24 @@ class Nilai extends CI_Controller
 
     public function edit_aksi()
     {
-        $id = $this->input->post('id_pengguna');
-        $nama = $this->input->post('nama');
-        $username = $this->input->post('username');
-        $hakakses = $this->input->post('hakakses');
-        $penempatan = $this->input->post('penempatan');
+        $id_nilai = $this->input->post('id_nilai');
+        $skor = $this->input->post('skor');
+        $nilai = $this->input->post('nilai');
+        $jumlah = $skor * $nilai;
+ 
 
         $data = [
-            'nama' => $nama,
-            'username' => $username,
-            'hakakses' => $hakakses,
-            'penempatan' => $penempatan
+            'nilai' => $nilai,
+            'jumlah' => $jumlah
 
         ];
 
         $where = [
-            'id_pengguna' => $id
+            'id_nilai' => $id_nilai
         ];
 
-        $this->model_pengguna->update_data($where, $data, 'pengguna');
-        redirect('tenaga_ahli/pengguna');
+        $this->model_nilai->update_data($where, $data, 'nilai');
+        redirect('tenaga_ahli/nilai/');
     }
 
     public function hapus($id)

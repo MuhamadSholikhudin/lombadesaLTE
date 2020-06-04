@@ -4,34 +4,42 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1 class="m-0 text-dark">EDIT DATA NILAI PENILAIAN</h1>
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">EDIT DATA NILAI</h1>
                 </div><!-- /.col -->
+                <div class="col-sm-6">
 
+
+                </div><!-- /.col -->
                 <div class="col-sm-6">
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Form Edit NILAI</h3>
+                            <h3 class="card-title">Form Edit Nilai</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="<?= base_url('tenaga_ahli/kriteria_penilaian/edit_aksi'); ?>" method="post">
-                            <?php foreach ($nilai as $kriteria) : ?>
+                        <form role="form" action="<?= base_url('tenaga_ahli/nilai/edit_aksi'); ?>" method="post" enctype="multipart/form-data">
+                            <?php foreach ($nilai as $nilai) : ?>
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="judul">Judul</label>
-                                        <input type="hidden" class="form-control" name="id_kriteria" value="<?= $kriteria->id_kriteria; ?>">
-                                        <input type="text" class="form-control" id="judul" name="judul" value="<?= $kriteria->judul; ?>">
+                                        <label for="nama">Judul</label>
+                                        <input type="hidden" class="form-control" name="id_nilai" value="<?= $nilai->id_nilai; ?>">
+                                        <input type="text" class="form-control" value="<?= $nilai->judul; ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="Selesai">Skor</label>
-                                        <input type="number" class="form-control" id="Selesai" name="skor" value="<?= $kriteria->skor; ?>">
+                                        <label for="desa">Desa</label>
+                                        <input type="text" class="form-control" id="desa" value="<?= $nilai->desa; ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="tahun">Tahun</label>
+                                        <label for="skor">Skor</label>
 
-                                        <input type="text" class="form-control" id="tahun" name="tahun" value="<?= $kriteria->tahun; ?>" disabled>
+                                        <input type="text" class="form-control" id="skor" name="skor" value="<?= $nilai->skor; ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nilai">Nilai</label>
+
+                                        <input type="text" class="form-control" id="nilai" name="nilai" value="<?= $nilai->nilai; ?>" required>
                                     </div>
 
                                 </div>
