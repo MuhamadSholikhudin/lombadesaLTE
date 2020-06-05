@@ -93,16 +93,25 @@ class Pengguna extends CI_Controller
 
     function get_subkategori()
     {
-        $this->load->model('M_kategori', 'dep_kategori', TRUE);
-        $id_kec = $this->input->post('id_kec');
-        $desas = $this->dep_kategori->get_sub_desa($id_kec);
-        if (count($desas) > 0) {
+        $this->load->model('Model_wilayah', 'dep_kategori', TRUE);
+        // $hakakses = $this->input->post('hakakses');
+        
+        $keca = $this->dep_kategori->get_sub_kecamatan();
+        // $data['keca'] = $this->db->query("SELECT COUNT(kode_wilayah), kecamatan FROM wilayah GROUP BY kecamatan")->result();
+
+        // if($hakakses == 3){
+
+        // $keca = $this->dep_kategori->get_sub_desa($id_kec);
+        if (count($keca) > 0) {
+
             $des_select_box = '';
-            $des_select_box .= '<option value="" >Pilih Desa</option>';
-            foreach ($desas as $desa) {
-                $des_select_box .= '<option value="' . $desa->id_des . '" >' . $desa->nama . '</option>';
+            $des_select_box .= '<option value="" >Pilih Kecamatan</option>';
+            foreach ($keca as $kecamat) {
+                $des_select_box .= '<option value="' . $kecamat->kecamatan . '" >' . $kecamat->kecamatan . '</option>';
             }
             echo json_encode($des_select_box);
         }
+        // }
+
     }
 }

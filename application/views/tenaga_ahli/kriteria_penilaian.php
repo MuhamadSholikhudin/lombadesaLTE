@@ -21,24 +21,18 @@
                                 <th>Judul</th>
                                 <th>Skor</th>
                                 <th>Tahun</th>
-
                                 <th>Edit</th>
                                 <th>Hapus</th>
-
-
-
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
                             <?php foreach ($kriteria as $kriteria) : ?>
                                 <tr>
-
                                     <td><?= $no++ ?></td>
                                     <td><a href="<?= base_url('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria) ?>"><?= $kriteria->judul ?></a></td>
                                     <td><?= $kriteria->skor ?></td>
                                     <td><?= $kriteria->tahun ?></td>
-
                                     <td>
                                         <?= anchor('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-edit"></i> </div>') ?>
@@ -46,15 +40,11 @@
                                     <td><?= anchor('tenaga_ahli/kriteria_penilaian/hapus/' . $kriteria->id_kriteria, '<div class="btn btn-danger btn-btn-sm">
                         <i class="fa fa-trash"></i> </div>') ?>
                                     </td>
-
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>
-
-
-
 
                 <!-- Modal -->
                 <div class="modal fade" id="tambah_kriteria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,6 +68,23 @@
                                         <label for="skor" class="col-sm-2 col-form-label">Skor</label>
                                         <div class="col-sm-10">
                                             <input type="number" class="form-control" id="skor" name="skor" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
+                                        <div class="col-sm-10">
+                                            <select type="number" class="form-control" id="kategori" name="kategori" required>
+                                               <option value='P1'>DINAS Kesehatan</option>
+                                               <option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>
+                                               <option value='P3'>DINAS Kominfo</option>
+                                               <option value='P4'>DINAS Perdagangan</option>
+                                               <option value='P5'>DINAS Kebudayaan dan Pariwisata</option>
+                                               <option value='P6'>DINAS Pertanian dan Pangan</option>
+                                               <option value='P7'>DINAS Tenaga Kerja</option>a
+                                               <option value='P8'>DINAS Sosial P3AP2KB</option>
+                                               <option value='P9'>DINAS Pekerjaan Umum dan Penataan Ruang</option>
+                                               <option value='P10'>BNPB</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row">

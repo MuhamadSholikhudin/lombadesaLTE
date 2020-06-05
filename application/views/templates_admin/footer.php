@@ -28,26 +28,37 @@
 
   <!-- JQUERY AJAX -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
   <script>
     $(document).ready(function() {
+
+
+
 
 
       $("#hakakses").on('change', function() {
         var hakakses = $(this).val();
         // alert(id_kec);
         if (hakakses == '') {
+          $("#penempatan option").remove();
           $('#penempatan').prop('disabled', true);
+          $('#penempatan').append("<option value=''>Pilih</option>");
+
         } else if (hakakses == 1) {
           $("#penempatan option").remove();
+          $('#penempatan').prop('disabled', false);
           $('#penempatan').append("<option value='Tenaga Ahli'>TENAGA AHLI DINAS PMD</option>");
         } else if (hakakses == 2) {
           $("#penempatan option").remove();
+          $('#penempatan').prop('disabled', false);
           $('#penempatan').append("<option value='Staff Pmd'>STAFF DINAS PMD</option>");
         } else if (hakakses == 4) {
           $("#penempatan option").remove();
+          $('#penempatan').prop('disabled', false);
           $('#penempatan').append("<option value='Admin Sekda'>Sekda Kudus</option>");
         } else if (hakakses == 5) {
+          $("#penempatan option").remove();
+          $('#penempatan').prop('disabled', false);
           $('#penempatan').append("<option value='P1'>DINAS Kesehatan</option>");
           $('#penempatan').append("<option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>");
           $('#penempatan').append("<option value='P3'>DINAS Kominfo</option>");
@@ -60,24 +71,27 @@
           $('#penempatan').append("<option value='P10'>BNPB</option>");
         } else if (hakakses == 3) {
           // $('#penempatan').prop('disabled', false);
+
           $.ajax({
-            url: "<?= base_url('data/get_subkategori'); ?>",
+            url: "<?= base_url('tenaga_ahli/pengguna/get_subkategori'); ?>",
             type: "GET",
             // data: {
             //   'hakakses': hakakses
             // },
             dataType: 'json',
             success: function(data) {
+              $("#penempatan option").remove();
+              // $('#penempatan').prop('disabled', false);
               $('#penempatan').html(data);
+              // console.log(data);
             },
             error: function() {
-              alert('penempatan');
+              alert('ERROR !');
             }
           });
 
         }
       })
-
 
       $('#daftar').DataTable();
       $('#kriteria').DataTable();
@@ -89,53 +103,6 @@
         destroy: true,
         columns: columns
       });
-
-
-      // SELECT DESA
-
-
-
-      // $("#hakakses").on('change', function() {
-      //   var hakakses = $(this).val();
-      //   // alert(id_kec);
-      //   if (hakakses == '') {
-      //     $('#penempatan').prop('disabled', true);
-      //   } else if (hakakses == 1) {
-      //     $('#penempatan').append("<option value='P1'>DINAS Kesehatan</option>");
-      //   } else if (hakakses == 2) {
-      //     $('#penempatan').val('STAFF Dinas PMD');
-      //   } else if (hakakses == 4) {
-      //     $('#penempatan').val('ADMIN SEKDA KUDUS');
-      //   } else if (hakakses == 5) {
-      //     $('#penempatan').append("<option value='P1'>DINAS Kesehatan</option>");
-      //     $('#penempatan').append("<option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>");
-      //     $('#penempatan').append("<option value='P3'>DINAS Kominfo</option>");
-      //     $('#penempatan').append("<option value='P4'>DINAS Perdagangan</option>");
-      //     $('#penempatan').append("<option value='P5'>DINAS Kebudayaan dan Pariwisata</option>");
-      //     $('#penempatan').append("<option value='P6'>DINAS Pertanian dan Pangan</option>");
-      //     $('#penempatan').append("<option value='P7'>DINAS Tenaga Kerja</option>");
-      //     $('#penempatan').append("<option value='P8'>DINAS Sosial P3AP2KB</option>");
-      //     $('#penempatan').append("<option value='P9'>DINAS Pekerjaan Umum dan Penataan Ruang</option>");
-      //     $('#penempatan').append("<option value='P10'>BNPB</option>");
-      //   } else if (hakakses == 3) {
-      //     // $('#penempatan').prop('disabled', false);
-      //     $.ajax({
-      //       url: "<?= base_url('data/get_subkategori'); ?>",
-      //       type: "POST",
-      //       data: {
-      //         'hakakses': hakakses
-      //       },
-      //       dataType: 'json',
-      //       success: function(data) {
-      //         $('#penempatan').html(data);
-      //       },
-      //       error: function() {
-      //         alert('penempatan');
-      //       }
-      //     });
-
-      //   }
-      // });
 
 
     });

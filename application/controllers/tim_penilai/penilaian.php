@@ -18,6 +18,7 @@ class Penilaian extends CI_Controller
         }
 
         $namatim = $this->session->userdata('nama');
+        $penempatan = $this->session->userdata('penempatan');
     }
 
     public function index()
@@ -49,11 +50,12 @@ class Penilaian extends CI_Controller
     public function form($id)
     {
         $namatim = $this->session->userdata('nama');
+        $penempatan = $this->session->userdata('penempatan');
 
         $cari = $this->db->query("SELECT * FROM nilai WHERE nama = '$namatim'");
 
         $tahun = date('Y-m-d');
-        $kri = $this->db->query("SELECT * FROM kriteria_penilaian WHERE tahun = '$tahun'")->result();
+        $kri = $this->db->query("SELECT * FROM kriteria_penilaian WHERE tahun = '$tahun' AND kategori='$penempatan' ")->result();
 
         
         if($cari->num_rows() < 1 ){

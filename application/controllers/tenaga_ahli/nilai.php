@@ -49,11 +49,9 @@ class Nilai extends CI_Controller
         $nilai = $this->input->post('nilai');
         $jumlah = $skor * $nilai;
  
-
         $data = [
             'nilai' => $nilai,
             'jumlah' => $jumlah
-
         ];
 
         $where = [

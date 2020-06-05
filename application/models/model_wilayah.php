@@ -35,4 +35,10 @@ class Model_wilayah extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    function get_sub_kecamatan()
+    {
+        $query = $this->db->query("SELECT COUNT(kode_wilayah), kecamatan FROM wilayah GROUP BY kecamatan");
+        return $query->result();
+    }
 }
