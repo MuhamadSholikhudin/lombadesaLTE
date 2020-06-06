@@ -7,9 +7,12 @@
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA PENDAFTARAN</h1>
                 </div><!-- /.col -->
-
                 <div class="col-sm-12">
-<br>
+                    <?= $this->session->flashdata('message'); ?>
+
+                </div>
+                <div class="col-sm-12">
+                    <br>
                     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_pendaftaran">
                         + Tambah Pendaftaran
                     </button>
@@ -36,16 +39,16 @@
                                 <tr>
 
                                     <td><?= $no++ ?></td>
-                                    <td><a href="<?= base_url('stafpmd/pendaftaran/listpendaftar/' . $pendf->no_daftar) ?>"><?= $pendf->judul ?></a></td>
+                                    <td><?= $pendf->judul ?></td>
                                     <td><?= $pendf->tgl_buat ?></td>
                                     <td><?= $pendf->tgl_selesai ?></td>
                                     <td><?= 'Jumlah Desa' ?></td>
                                     <td><?= $pendf->tahun ?></td>
                                     <td>
-                                        <?= anchor('stafpmd/pendaftaran/edit/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
+                                        <?= anchor('tenaga_ahli/pendaftaran/edit/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-edit"></i> </div>') ?>
                                     </td>
-                                    <td><?= anchor('stafpmd/pendaftaran/hapus/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
+                                    <td><?= anchor('tenaga_ahli/pendaftaran/hapus/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-trash"></i> </div>') ?>
                                     </td>
 
@@ -69,7 +72,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url('stafpmd/pendaftaran/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url('tenaga_ahli/pendaftaran/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label for="judul" class="col-sm-2 col-form-label">Juduk</label>
                                         <div class="col-sm-10">
@@ -79,7 +82,7 @@
                                     <div class="form-group row">
                                         <label for="keterangan" class="col-sm-2 col-form-label">Tanggal Berakhir</label>
                                         <div class="col-sm-10">
-                                            <input type="date" class="form-control" id="keterangan" name="status_daftar" required>
+                                            <input type="date" class="form-control" id="keterangan" name="tgl_selesai" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">

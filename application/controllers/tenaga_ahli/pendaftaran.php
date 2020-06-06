@@ -31,13 +31,13 @@ class Pendaftaran extends CI_Controller{
     {
 
         $judul = $this->input->post('judul');
-        $status_daftar = $this->input->post('status_daftar');
+        $tgl_selesai = $this->input->post('tgl_selesai');
         $tahun = $this->input->post('tahun');
 
 
         $data = array(
             'judul' => $judul,
-            'status_daftar' => $status_daftar,
+            'tgl_selesai' => $tgl_selesai,
             'tahun' => $tahun
         );
 
@@ -79,8 +79,18 @@ class Pendaftaran extends CI_Controller{
 
     public function hapus($id)
     {
-        $where = ['no_daftar' => $id];
-        $this->model_barang->hapus_data($where, 'daftar');
+        $cari = $this->db->query("SELECT no_daftar FROM hasil_ajuan WHERE no_daftar = '$id' ");
+
+        if($cari->num_rows() > 0){
+            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">DATA PENDAFTARAN TIDAK BISA DI HAPUS</div>');
+
+        }elseif($cari->num_rows() < 1){
+            $where = ['no_daftar' => $id];
+            $this->model_pendaftaran->hapus_data($where, 'daftar');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">DATA PENDAFTARAN BERHASIL DI HAPUS</div>');
+        }
+
+        
         redirect('tenaga_ahli/pendaftaran/');
     }
 }
