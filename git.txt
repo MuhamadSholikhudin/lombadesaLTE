@@ -15,6 +15,7 @@ git add .
 git commit -m 'your commit message'
 git push origin master --force
 
+git pull
 
 
 P1 DINAS Kesehatan
