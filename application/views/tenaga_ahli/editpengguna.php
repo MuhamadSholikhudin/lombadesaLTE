@@ -101,46 +101,20 @@
                                                                 echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P4') {
                                                                 echo 'DINAS Perdagangan';
-                                                            } elseif ($kla == 'P5') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P6') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P7') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P8') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P9') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P10') {
-                                                                echo 'Tim Penilai';
-                                                            }
-                                                            ?>
-                                                        </option>
+                                                            } elseif ($kla == 'P5') { echo 'DINAS Kebudayaan dan Pariwisata'; } elseif ($kla == 'P6') { echo 'DINAS Pertanian dan Pangan'; } elseif ($kla == 'P7') { echo 'DINAS Tenaga Kerja'; } elseif ($kla == 'P8') { echo 'DINAS Sosial'; } elseif ($kla == 'P9') { echo 'DINAS Pekerjaan Umum dan Penataan Ruang'; } elseif ($kla == 'P10') { echo 'BNPB'; } ?> </option>
                                                     <?php else : ?>
-                                                        <option value="<?= $kla; ?>">
+                                                           <option value="<?= $kla ?>" selected>
                                                             <?php if ($kla == 'P1') {
-                                                                echo 'Tenaga Ahli';
+                                                            
+                                                                echo 'DINAS KESEHATAN';
+                                                            
                                                             } elseif ($kla == 'P2') {
-                                                                echo 'Staf PMD';
+                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P3') {
-                                                                echo 'Admin Kecamatan';
+                                                                echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P4') {
-                                                                echo 'Admin Sekda';
-                                                            } elseif ($kla == 'P5') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P6') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P7') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P8') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P9') {
-                                                                echo 'Tim Penilai';
-                                                            } elseif ($kla == 'P10') {
-                                                                echo 'Tim Penilai';
-                                                            }
-                                                            ?>
-                                                        </option>
+                                                                echo 'DINAS Perdagangan';
+                                                            } elseif ($kla == 'P5') { echo 'DINAS Kebudayaan dan Pariwisata'; } elseif ($kla == 'P6') { echo 'DINAS Pertanian dan Pangan'; } elseif ($kla == 'P7') { echo 'DINAS Tenaga Kerja'; } elseif ($kla == 'P8') { echo 'DINAS Sosial'; } elseif ($kla == 'P9') { echo 'DINAS Pekerjaan Umum dan Penataan Ruang'; } elseif ($kla == 'P10') { echo 'BNPB'; } ?> </option>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             <?php
