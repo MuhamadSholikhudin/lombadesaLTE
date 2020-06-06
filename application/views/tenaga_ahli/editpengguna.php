@@ -96,11 +96,11 @@
                                                                 echo 'DINAS KESEHATAN';
                                                             
                                                             } elseif ($kla == 'P2') {
-                                                                echo 'Staf PMD';
+                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P3') {
-                                                                echo 'Admin Kecamatan';
+                                                                echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P4') {
-                                                                echo 'Admin Sekda';
+                                                                echo 'DINAS Perdagangan';
                                                             } elseif ($kla == 'P5') {
                                                                 echo 'Tim Penilai';
                                                             } elseif ($kla == 'P6') {
