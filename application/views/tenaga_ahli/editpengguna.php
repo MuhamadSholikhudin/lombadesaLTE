@@ -91,37 +91,73 @@
                                                 <?php foreach ($klasitim as $kla) : ?>
                                                     <?php if ($kla == $pengguna->penempatan) : ?>
                                                         <option value="<?= $kla ?>" selected>
-                                                            <?php if ($kla == 'P1') {
-                                                            
+                                                            <?php if ($pengguna->penempatan == 'P1') {
                                                                 echo 'DINAS KESEHATAN';
-                                                            
                                                             } elseif ($kla == 'P2') {
                                                                 echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P3') {
                                                                 echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P4') {
                                                                 echo 'DINAS Perdagangan';
-                                                            } elseif ($kla == 'P5') { echo 'DINAS Kebudayaan dan Pariwisata'; } elseif ($kla == 'P6') { echo 'DINAS Pertanian dan Pangan'; } elseif ($kla == 'P7') { echo 'DINAS Tenaga Kerja'; } elseif ($kla == 'P8') { echo 'DINAS Sosial'; } elseif ($kla == 'P9') { echo 'DINAS Pekerjaan Umum dan Penataan Ruang'; } elseif ($kla == 'P10') { echo 'BNPB'; } ?> </option>
+                                                            } elseif ($kla == 'P5') {
+                                                                echo 'DINAS Kebudayaan dan Pariwisata';
+                                                            } elseif ($kla == 'P6') {
+                                                                echo 'DINAS Pertanian dan Pangan';
+                                                            } elseif ($kla == 'P7') {
+                                                                echo 'DINAS Tenaga Kerja';
+                                                            } elseif ($kla == 'P8') {
+                                                                echo 'DINAS Sosial ';
+                                                            } elseif ($kla == 'P9') {
+                                                                echo 'DINAS Pekerjaan Umum dan Penataan Ruang';
+                                                            } elseif ($kla == 'P10') {
+                                                                echo 'BNPB';
+                                                            }
+                                                            ?>
+                                                        </option>
                                                     <?php else : ?>
-                                                           <option value="<?= $kla ?>" selected>
+                                                        <option value="<?= $kla; ?>">
                                                             <?php if ($kla == 'P1') {
-                                                            
                                                                 echo 'DINAS KESEHATAN';
-                                                            
                                                             } elseif ($kla == 'P2') {
                                                                 echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P3') {
                                                                 echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P4') {
                                                                 echo 'DINAS Perdagangan';
-                                                            } elseif ($kla == 'P5') { echo 'DINAS Kebudayaan dan Pariwisata'; } elseif ($kla == 'P6') { echo 'DINAS Pertanian dan Pangan'; } elseif ($kla == 'P7') { echo 'DINAS Tenaga Kerja'; } elseif ($kla == 'P8') { echo 'DINAS Sosial'; } elseif ($kla == 'P9') { echo 'DINAS Pekerjaan Umum dan Penataan Ruang'; } elseif ($kla == 'P10') { echo 'BNPB'; } ?> </option>
+                                                            } elseif ($kla == 'P5') {
+                                                                echo 'DINAS Kebudayaan dan Pariwisata';
+                                                            } elseif ($kla == 'P6') {
+                                                                echo 'DINAS Pertanian dan Pangan';
+                                                            } elseif ($kla == 'P7') {
+                                                                echo 'DINAS Tenaga Kerja';
+                                                            } elseif ($kla == 'P8') {
+                                                                echo 'DINAS Sosial ';
+                                                            } elseif ($kla == 'P9') {
+                                                                echo 'DINAS Pekerjaan Umum dan Penataan Ruang';
+                                                            } elseif ($kla == 'P10') {
+                                                                echo 'BNPB';
+                                                            }
+                                                            ?>
+                                                        </option>
                                                     <?php endif ?>
                                                 <?php endforeach ?>
                                             <?php
 
                                             } elseif ($pengguna->hakakses == 3) {
-                                                echo $pengguna->penempatan;
+                                                // echo $pengguna->penempatan;
+                                            ?>
+                                                <?php foreach ($klasikeca as $kla) : ?>
+                                
+
+                                                    <?php if ($kla->kec == $pengguna->penempatan) : ?>
+                                                        <option value="<?= $kla->kec; ?>" selected><?= $kla->kec; ?></option>
+                                                    <?php else : ?>
+                                                        <option value="<?= $kla->kec; ?>"><?= $kla->kec; ?></option>
+                                                    <?php endif ?>
+                                                <?php endforeach ?>
+                                            <?php
                                             } ?>
+
 
                                         </select>
                                     </div>

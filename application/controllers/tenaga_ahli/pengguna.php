@@ -54,6 +54,7 @@ class Pengguna extends CI_Controller
         $data['pengguna'] = $this->model_pengguna->edit_pengguna($where, 'pengguna')->result();
         $data['klasi'] = [1,2, 3, 4, 5];
         $data['klasitim']= ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8','P9', 'P10'];
+        $data['klasikeca'] = $this->db->query("SELECT COUNT(kode_wilayah) as total, kecamatan as kec FROM wilayah GROUP BY kecamatan")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
