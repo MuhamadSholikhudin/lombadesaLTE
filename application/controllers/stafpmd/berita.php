@@ -131,7 +131,7 @@ class Berita extends CI_Controller{
 
     public function hapus($id)
     {
-        $where = ['kode_berita' => $id];
+        $where = ['id_berita' => $id];
         $this->model_berita->hapus_data($where, 'berita');
         redirect('stafpmd/berita/');
     }

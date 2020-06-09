@@ -8,7 +8,7 @@
                     <h1 class="m-0 text-dark text-center">Laporan data Pendaftar Lomba Desa Kabupaten Kudus</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-12">
-                    <a href="<?= base_url('tenaga_ahli/laporan/cetakpendaftar'); ?>" target="_blank" class="btn btn-warning"><i class="fas fa-print"></i> Cetak</a>
+                    <a href="<?= base_url('stafpmd/laporan/cetakpendaftar'); ?>" target="_blank" class="btn btn-warning"><i class="fas fa-print"></i> Cetak</a>
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">

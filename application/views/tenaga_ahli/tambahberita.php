@@ -15,25 +15,25 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form  action="<?= base_url('stafpmd/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('stafpmd/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="judul">Judul</label>
-                                    <input type="text" class="form-control" id="judul" name="judul">
+                                    <input type="text" class="form-control" id="judul" name="judul" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="paragraf1">Paragraf 1</label>
-                                    <textarea class="form-control" id="paragraf1" name="paragraf1"></textarea>
+                                    <textarea class="form-control" id="paragraf1" name="paragraf1" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="paragraf2">Paragraf 2</label>
-                                    <textarea class="form-control" id="paragraf2" name="paragraf2"></textarea>
+                                    <textarea class="form-control" id="paragraf2" name="paragraf2" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Gambar</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar">
+                                            <input type="file" class="custom-file-input" id="exampleInputFile" name="gambar" required>
                                             <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
                                         </div>
                                         <div class="input-group-append">

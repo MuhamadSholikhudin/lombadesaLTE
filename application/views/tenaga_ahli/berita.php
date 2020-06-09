@@ -37,7 +37,7 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $wil->judul ?></td>
                                     <td>
-                                        <img src="<?= base_url('uploads/') . $wil->gambar ?>" alt="Gambar tidak ditemukan" class="img-thumbnail"></td>
+                                        <img src="<?= base_url('uploads/') . $wil->gambar ?>" alt="Gambar tidak ditemukan" width="100" height="100"></td>
                                     <td><?= $wil->tgl_buat ?></td>
                                     <td>
                                         <?= anchor('stafpmd/berita/edit/' . $wil->id_berita, '<div class="btn btn-success btn-btn-sm">

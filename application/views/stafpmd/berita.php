@@ -13,7 +13,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
-                    <a href="<?= base_url('stafpmd/berita/tambah'); ?>">
+                    <a href="<?= base_url('tenaga_ahli/berita/tambah'); ?>">
                         <button class="btn btn-sm btn-primary mb-3" data-toggle="modal">
                             + Tambah Berita
                         </button>

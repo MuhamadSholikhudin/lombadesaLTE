@@ -6,13 +6,13 @@
       <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="<?= base_url('beranda'); ?>" class="nav-link">Beranda</a>
+      <a href="<?= base_url('index/beranda'); ?>" class="nav-link">Beranda</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="<?= base_url('profile'); ?>" class="nav-link">Profil</a>
+      <a href="<?= base_url('index/beranda/profile'); ?>" class="nav-link">Profil</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="<?= base_url('contact'); ?>" class="nav-link">Contact</a>
+      <a href="<?= base_url('index/beranda/contact'); ?>" class="nav-link">Contact</a>
     </li>
   </ul>
 
@@ -249,7 +249,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/mailbox/mailbox.html" class="nav-link">
+                <a href="<?= base_url('stafpmd/laporan/pendaftar/'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pendaftar</p>
                 </a>

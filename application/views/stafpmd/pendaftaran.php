@@ -7,9 +7,12 @@
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA PENDAFTARAN</h1>
                 </div><!-- /.col -->
-
                 <div class="col-sm-12">
-<br>
+                    <?= $this->session->flashdata('message'); ?>
+
+                </div>
+                <div class="col-sm-12">
+                    <br>
                     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_pendaftaran">
                         + Tambah Pendaftaran
                     </button>
@@ -25,8 +28,6 @@
                                 <th>Tahun</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
-
-
 
                             </tr>
                         </thead>

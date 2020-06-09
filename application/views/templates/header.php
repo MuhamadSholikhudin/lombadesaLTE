@@ -6,23 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Top Navigation</title>
+  <title>SILOMDES DINPMD</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
-<body class="layout-top-nav" style="height: auto;">
-  <div class="wrapper">
+<body class="layout-top-nav " style="height: auto;">
+  <div class="wrapper ">
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
       <div class="container">
-        <a href="../../index3.html" class="navbar-brand">
+        <a href="<?= base_url('index/beranda/'); ?>" class="navbar-brand">
           <img src="<?= base_url('assets/'); ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">SISTEM INFORMASI LOMBA DESA</span>
         </a>
@@ -35,13 +36,13 @@
           <!-- Left navbar links -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="<?= base_url('beranda/beranda/'); ?>" class="nav-link">Beranda</a>
+              <a href="<?= base_url('index/beranda/'); ?>" class="nav-link">Beranda</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('beranda/beranda/profile'); ?>" class="nav-link">Profile</a>
+              <a href="<?= base_url('index/beranda/profile'); ?>" class="nav-link">Profile</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('beranda/beranda/contact'); ?>" class="nav-link">Contact</a>
+              <a href="<?= base_url('index/beranda/contact'); ?>" class="nav-link">Kontak</a>
             </li>
 
           </ul>
@@ -55,7 +56,39 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right">
                 <?php if ($this->session->userdata('username')) { ?>
-                  <a href="<?= base_url('auth/logout'); ?>">
+                  <?php if ($this->session->userdata('hakakses') == 1) {
+                  ?>
+                    <a href="<?= base_url('tenaga_ahli/dashboard') ?>">
+                      <button class="dropdown-item "> <i class="fas fa-home"></i> &nbsp;Home</button>
+                    </a>
+                  <?php
+                  } elseif ($this->session->userdata('hakakses') == 2) {
+                  ?><a href="<?= base_url('stafpmd/dashboard_stafpmd') ?>">
+                      <button class="dropdown-item "> <i class="fas fa-home"></i> &nbsp;Home</button>
+                    </a> <?php
+                        } elseif ($this->session->userdata('hakakses') == 3) {
+                          ?>
+                    <a href="<?= base_url('admin_kecamatan/dashboard_kecamatan') ?>">
+                      <button class="dropdown-item "> <i class="fas fa-home"></i> &nbsp;Home</button>
+                    </a>
+                  <?php
+                        } elseif ($this->session->userdata('hakakses') == 4) {
+                  ?>
+                    <a href="<?= base_url('admin_sekda/dashboard_sekda') ?>">
+                      <button class="dropdown-item "> <i class="fas fa-sign-out-alt">
+                        </i> &nbsp;Home</button>
+                    </a>
+                  <?php
+                        } elseif ($this->session->userdata('hakakses') == 5) {
+                  ?>
+                    <a href="<?= base_url('tim_penilai/dashboard') ?>">
+                      <button class="dropdown-item "> <i class="fas fa-sign-out-alt">
+                        </i> &nbsp;Home</button>
+                    </a>
+                  <?php
+                        }
+                  ?>
+                  <a href="<?= base_url('auth/logout') ?>">
                     <button class="dropdown-item "> <i class="fas fa-sign-out-alt">
                       </i> &nbsp;Sign Out</button>
                   </a>

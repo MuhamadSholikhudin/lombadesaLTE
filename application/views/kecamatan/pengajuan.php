@@ -4,15 +4,12 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">PENGAJUAN DESA</h1>
+                <div class="col-sm-12 ">
+                    <h1 class="text-dark text-center">PENGAJUAN DESA KECAMATAN &nbsp; <?= $this->session->userdata('penempatan') ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
 
-
-                </div><!-- /.col -->
                 <div class="col-sm-12">
-
+                    <br>
                     <table class="table table-border">
                         <tr>
                             <th>NO</th>
@@ -26,23 +23,13 @@
 
 
                         <?php
-                        // $tahun = date("Y");
-                        // echo '<br>';
-                        // echo strtotime($tahun);
-                        // echo '<br>';
-                        echo strtotime('2019');
-                        echo '<br>';
-                        // $th_daftar = $pendaftaran->tahun;
-                        // $th_daftar1 = $pendaftarannum;
-                        // echo $th_daftar;
-                        echo '<br>';
-                        echo '<br>';
-                        // echo strtotime($th_daftar);
-                        echo '<br>';
+
+                        // echo strtotime('2019');
+
                         // Code SElisih
                         $tgl1    = "2018-01-23"; //menentukan tanggal awal
                         $tgl2    = date('Y-m-d', strtotime('+7 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 7 hari
-                        echo $tgl2; // cetak tanggal
+                        // echo $tgl2; // cetak tanggal
 
 
                         ?>
@@ -85,7 +72,7 @@
                                             <td><?= $pendaftaran->tahun ?></td>
                                             <td>
                                                 <?= anchor('admin_kecamatan/pengajuan/lihat/' . $pengajuan->no_hasilajuan, '<div class="btn btn-primary btn-btn-sm" title="Pengajuan Di Terima">
-                        <i class="fas fa-search-plus"></i> </div>') ?>
+                        <i class="fas fa-check-double"></i> </div>') ?>
                                             </td>
 
 
