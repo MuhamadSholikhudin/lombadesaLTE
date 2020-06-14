@@ -26,7 +26,6 @@ class Pengajuan extends CI_Controller{
         $data['pengajuan'] = $this->db->query('SELECT * FROM (hasil_ajuan) WHERE status_ajuan > 0')->result();
 
 
-
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('stafpmd/pengajuan', $data);

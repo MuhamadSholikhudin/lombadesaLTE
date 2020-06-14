@@ -46,7 +46,9 @@ class Pengajuan extends CI_Controller{
 
         $data['pendaftaran'] = $this->model_pendaftaran->tampil_pendaftaran()->row();
 
-        $data['wilayah'] = $this->model_wilayah->tampil_wilayah($kecamatan)->result();
+        // $data['wilayah'] = $this->model_wilayah->tampil_wilayah($kecamatan)->result();
+        $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
+
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');

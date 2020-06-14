@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_wilayah extends CI_Model
 {
-    public function tampil_data()
+    public function tampil_wilayah()
     {
         return $this->db->get('wilayah');
     }

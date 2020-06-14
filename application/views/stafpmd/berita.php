@@ -4,13 +4,10 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <h1 class="m-0 text-dark">DATA BERITA</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
 
-
-                </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
                     <a href="<?= base_url('tenaga_ahli/berita/tambah'); ?>">

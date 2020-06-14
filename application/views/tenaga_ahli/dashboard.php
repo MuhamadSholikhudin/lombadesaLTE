@@ -4,17 +4,14 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard</h1>
+                <div class="col-sm-12">
+                    <h1 class="m-0 text-dark">HALAMAN TENAGA AHLI &nbsp; <?= $this->session->userdata('penempatan') ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-
-
-                </div><!-- /.col -->
-                <div class="col-sm-6">
+                <div class="col-sm-12">
 
 
                 </div><!-- /.col -->
+
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

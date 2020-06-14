@@ -47,15 +47,15 @@
         } else if (hakakses == 1) {
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);
-          $('#penempatan').append("<option value='Tenaga Ahli'>TENAGA AHLI DINAS PMD</option>");
+          $('#penempatan').append("<option value='DINAS PEMBERDAYAAN MASYARAKAT DAN DESA'>DINAS PEMBERDAYAAN MASYARAKAT DAN DESA</option>");
         } else if (hakakses == 2) {
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);
-          $('#penempatan').append("<option value='Staff Pmd'>STAFF DINAS PMD</option>");
+          $('#penempatan').append("<option value='DINAS PEMBERDAYAAN MASYARAKAT DAN DESA'>DINAS PEMBERDAYAAN MASYARAKAT DAN DESA</option>");
         } else if (hakakses == 4) {
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);
-          $('#penempatan').append("<option value='Admin Sekda'>Sekda Kudus</option>");
+          $('#penempatan').append("<option value='SEKDA KUDUS'>SEKDA KUDUS</option>");
         } else if (hakakses == 5) {
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);

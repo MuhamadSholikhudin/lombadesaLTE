@@ -4,20 +4,16 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-12">
                     <h1 class="m-0 text-dark">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
+                </div> -->
+                <!-- /.col -->
+                <div class="col-sm-12">
 
 
                 </div><!-- /.col -->
                 <div class="col-sm-12">
-
-
-
                     <h3> <i class="fas fa-edit"></i> Pengajuan Desa</h3>
-
-
                     <form action="<?= base_url('admin_kecamatan/pengajuan/tambah_aksi'); ?>" method="post">
                         <div class="for-group mb-3">
                             <label for="judul">Judul</label>

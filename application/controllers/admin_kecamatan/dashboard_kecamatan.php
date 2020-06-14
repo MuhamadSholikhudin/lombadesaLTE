@@ -22,7 +22,7 @@ $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dis
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
-        $this->load->view('admin/dashboard');
+        $this->load->view('kecamatan/dashboard');
         $this->load->view('templates_admin/footer');
     }
 

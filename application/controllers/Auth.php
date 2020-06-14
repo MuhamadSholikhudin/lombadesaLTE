@@ -11,7 +11,6 @@ class Auth extends CI_Controller{
                 $this->load->view('templates/footer');    
         }else {
             $auth = $this->model_auth->cek_login();
-
             if($auth == FALSE){
                 $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Username Atau Password Anda Salah

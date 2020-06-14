@@ -44,29 +44,29 @@
                                                 <?php if ($kla == $pengguna->hakakses) : ?>
                                                     <option value="<?= $kla; ?>" selected>
                                                         <?php if ($kla == 1) {
-                                                            echo 'Tenaga Ahli';
+                                                            echo 'TENAGA AHLI';
                                                         } elseif ($kla == 2) {
-                                                            echo 'Staf PMD';
+                                                            echo 'STAFF';
                                                         } elseif ($kla == 3) {
-                                                            echo 'Admin Kecamatan';
+                                                            echo 'ADMIN KECAMATAN';
                                                         } elseif ($kla == 4) {
-                                                            echo 'Admin Sekda';
+                                                            echo 'ADMIN SEKDA';
                                                         } elseif ($kla == 5) {
-                                                            echo 'Tim Penilai';
+                                                            echo 'TIM PENILAI';
                                                         } ?>
                                                     </option>
                                                 <?php else : ?>
                                                     <option value="<?= $kla; ?>">
                                                         <?php if ($kla == 1) {
-                                                            echo 'Tenaga Ahli';
+                                                            echo 'TENAGA AHLI';
                                                         } elseif ($kla == 2) {
-                                                            echo 'Staf PMD';
+                                                            echo 'STAFF';
                                                         } elseif ($kla == 3) {
-                                                            echo 'Admin Kecamatan';
+                                                            echo 'ADMIN KECAMATAN';
                                                         } elseif ($kla == 4) {
-                                                            echo 'Admin Sekda';
+                                                            echo 'ADMIN SEKDA';
                                                         } elseif ($kla == 5) {
-                                                            echo 'Tim Penilai';
+                                                            echo 'TIM PENILAI';
                                                         } ?>
                                                     </option>
                                                 <?php endif ?>
@@ -146,9 +146,7 @@
                                             } elseif ($pengguna->hakakses == 3) {
                                                 // echo $pengguna->penempatan;
                                             ?>
-                                                <?php foreach ($klasikeca as $kla) : ?>
-                                
-
+                                                <?php foreach ($klasikeca as $kla) : ?>                             
                                                     <?php if ($kla->kec == $pengguna->penempatan) : ?>
                                                         <option value="<?= $kla->kec; ?>" selected><?= $kla->kec; ?></option>
                                                     <?php else : ?>
