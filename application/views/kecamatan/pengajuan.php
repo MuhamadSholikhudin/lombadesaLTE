@@ -12,11 +12,10 @@
                     <br>
                     <table class="table table-border">
                         <tr>
-                            <th>NO</th>
                             <th>Judul</th>
                             <th>Tanggal dibuat</th>
                             <th>Tanggal Selesai Pendaftaran</th>
-                            <th>Nama desa</th>
+                            <th>Desa</th>
                             <th>Tahun</th>
                             <th colspan="3" class="text-center">Aksi</th>
                         </tr>
@@ -31,7 +30,6 @@
                         $tgl2    = date('Y-m-d', strtotime('+7 days', strtotime($tgl1))); // penjumlahan tanggal sebanyak 7 hari
                         // echo $tgl2; // cetak tanggal
 
-
                         ?>
 
                         <?php
@@ -45,7 +43,6 @@
                                 if ($pengajuannum < 1) { ?>
                                     <tr>
 
-                                        <td><?= $pendaftaran->no_daftar ?></td>
                                         <td><a href="<?= base_url('admin_kecamatan/pengajuan/tambah') ?>"><?= $pendaftaran->judul ?></a></td>
                                         <td><?= $pendaftaran->status_daftar ?></td>
                                         <td><?= $pendaftaran->tgl_selesai ?></td>
@@ -63,7 +60,6 @@
                                     <?php } elseif ($pengajuannum > 0) {
                                     if ($pengajuan->status_ajuan == 2) { ?>
                                         <tr>
-                                            <td><?= $pendaftaran->no_daftar ?></td>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= $pengajuan->tgl_ajuan ?></td>
                                             <td><?= $pendaftaran->tgl_selesai ?></td>
@@ -79,7 +75,6 @@
                                         </tr>
                                     <?php } elseif ($pengajuan->status_ajuan == 1) { ?>
                                         <tr>
-                                            <td><?= $pendaftaran->no_daftar ?></td>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= $pengajuan->tgl_ajuan ?></td>
                                             <td><?= $pendaftaran->tgl_selesai ?></td>
@@ -93,7 +88,6 @@
                                         </tr>
                                     <?php } elseif ($pengajuan->status_ajuan == 0) { ?>
                                         <tr>
-                                            <td><?= $pendaftaran->no_daftar ?></td>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= $pengajuan->tgl_ajuan ?></td>
                                             <td><?= $pendaftaran->tgl_selesai ?></td>
@@ -118,7 +112,6 @@
                                 ?>
                             <?php } elseif ($tgl_sls > $tgl_now) { ?>
                                 <tr>
-                                    <td><?= $pendaftaran->no_daftar ?></td>
                                     <td><?= $pendaftaran->judul ?></td>
                                     <td><?= $pendaftaran->status_daftar ?></td>
                                     <td><?= $pendaftaran->tgl_selesai ?></td>

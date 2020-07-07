@@ -92,50 +92,54 @@
                                                     <?php if ($kla == $pengguna->penempatan) : ?>
                                                         <option value="<?= $kla ?>" selected>
                                                             <?php if ($pengguna->penempatan == 'P1') {
-                                                                echo 'DINAS KESEHATAN';
+                                                                echo 'Badan Perencanaan Pembangunan Daerah';
                                                             } elseif ($kla == 'P2') {
-                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
+                                                                echo 'BPBD';
                                                             } elseif ($kla == 'P3') {
-                                                                echo 'DINAS Kominfo';
+                                                                echo 'Satuan Pamong Praja';
                                                             } elseif ($kla == 'P4') {
-                                                                echo 'DINAS Perdagangan';
+                                                                echo 'Pemerintahan Desa';
                                                             } elseif ($kla == 'P5') {
-                                                                echo 'DINAS Kebudayaan dan Pariwisata';
+                                                                echo 'Pemerintahan Masyarakat';
                                                             } elseif ($kla == 'P6') {
-                                                                echo 'DINAS Pertanian dan Pangan';
+                                                                echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P7') {
-                                                                echo 'DINAS Tenaga Kerja';
+                                                                echo 'DINAS Kebudayaan dan Pariwisata';
                                                             } elseif ($kla == 'P8') {
-                                                                echo 'DINAS Sosial ';
+                                                                echo 'DINAS Tenaga Kerja';
                                                             } elseif ($kla == 'P9') {
-                                                                echo 'DINAS Pekerjaan Umum dan Penataan Ruang';
+                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P10') {
-                                                                echo 'BNPB';
+                                                                echo 'DINAS Kesehatan';
+                                                            } elseif ($kla == 'P11') {
+                                                                echo 'DINAS Sosial P3AP2KB';
                                                             }
                                                             ?>
                                                         </option>
                                                     <?php else : ?>
                                                         <option value="<?= $kla; ?>">
                                                             <?php if ($kla == 'P1') {
-                                                                echo 'DINAS KESEHATAN';
+                                                                echo 'Badan Perencanaan Pembangunan Daerah';
                                                             } elseif ($kla == 'P2') {
-                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
+                                                                echo 'BPBD';
                                                             } elseif ($kla == 'P3') {
-                                                                echo 'DINAS Kominfo';
+                                                                echo 'Satuan Pamong Praja';
                                                             } elseif ($kla == 'P4') {
-                                                                echo 'DINAS Perdagangan';
+                                                                echo 'Pemerintahan Desa';
                                                             } elseif ($kla == 'P5') {
-                                                                echo 'DINAS Kebudayaan dan Pariwisata';
+                                                                echo 'Pemerintahan Masyarakat';
                                                             } elseif ($kla == 'P6') {
-                                                                echo 'DINAS Pertanian dan Pangan';
+                                                                echo 'DINAS Kominfo';
                                                             } elseif ($kla == 'P7') {
-                                                                echo 'DINAS Tenaga Kerja';
+                                                                echo 'DINAS Kebudayaan dan Pariwisata';
                                                             } elseif ($kla == 'P8') {
-                                                                echo 'DINAS Sosial ';
+                                                                echo 'DINAS Tenaga Kerja';
                                                             } elseif ($kla == 'P9') {
-                                                                echo 'DINAS Pekerjaan Umum dan Penataan Ruang';
+                                                                echo 'DINAS Pendidikan Pemuda dan Olahraga';
                                                             } elseif ($kla == 'P10') {
-                                                                echo 'BNPB';
+                                                                echo 'DINAS Kesehatan';
+                                                            } elseif ($kla == 'P11') {
+                                                                echo 'DINAS Sosial P3AP2KB';
                                                             }
                                                             ?>
                                                         </option>

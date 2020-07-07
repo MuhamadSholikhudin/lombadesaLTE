@@ -18,7 +18,7 @@
           <div class="content">
               <div class="container">
                   <div class="row">
-                      <div class="col-lg-8 bg-light mb-3">
+                      <div class="col-lg-8 bg-white mb-3">
                           <strong>
 <h3>
 

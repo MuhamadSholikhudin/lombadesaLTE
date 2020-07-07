@@ -18,21 +18,21 @@
                         <!-- form start -->
                         <div class="card-body p-0">
                             <form action="<?= base_url('tim_penilai/penilaian/edit_aksi/') ?>" enctype="multipart/form-data" method="POST">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">NO</th>
-                                        <th>Judul</th>
-                                        <th>Skor</th>
-                                        <th>Nilai</th>
-                                        <th>Jumlah</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($njadwal as $njd) : ?>
-                                    
-                                    <input class="form-control" type="hidden" name="no_jadwal" value="<?= $njd->no_jadwal; ?>">
-                                    <?php endforeach; ?>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">NO</th>
+                                            <th>Judul</th>
+                                            <th>Skor</th>
+                                            <th>Nilai</th>
+                                            <th>Jumlah</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($njadwal as $njd) : ?>
+
+                                            <input class="form-control" type="hidden" name="no_jadwal" value="<?= $njd->no_jadwal; ?>">
+                                        <?php endforeach; ?>
 
                                         <?php $no = 1; ?>
                                         <?php foreach ($nilai as $nil) : ?>
@@ -44,24 +44,24 @@
                                                 <th style="width: 100px">
                                                     <input class="form-control" type="hidden" name="id_nilai[]" value="<?= $nil->id_nilai; ?>">
                                                     <input class="form-control" type="hidden" name="skor[]" value="<?= $nil->skor; ?>">
-                                                    <input class="form-control" type="number" name="nilai[]" value="<?= $nil->nilai; ?>">
+                                                    <input class="form-control" type="number" name="nilai[]" min="1" max="<?= $nil->skor; ?>" value="<?= $nil->nilai; ?>">
                                                 </th>
 
                                                 <th><?= $nil->jumlah; ?></th>
                                             </tr>
                                             <?php $no++; ?>
                                         <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary float-right">Submit</button>
-                            </div>
-                        </form>
+                                    </tbody>
+                                </table>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                                                
+
                     </div><!-- /.col -->
-                    
+
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>

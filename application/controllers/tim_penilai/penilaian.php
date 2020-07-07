@@ -6,7 +6,6 @@ class Penilaian extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
         if ($this->session->userdata('hakakses') != 5) {
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Anda Belum Login
@@ -23,7 +22,6 @@ class Penilaian extends CI_Controller
 
     public function index()
     {
-
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['daftarjadwal'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
@@ -56,7 +54,6 @@ class Penilaian extends CI_Controller
 
         $tahun = date('Y-m-d');
         $kri = $this->db->query("SELECT * FROM kriteria_penilaian WHERE tahun = '$tahun' AND kategori='$penempatan' ")->result();
-
         
         if($cari->num_rows() < 1 ){
             foreach ($kri as $tag) {
@@ -90,8 +87,6 @@ class Penilaian extends CI_Controller
             $this->load->view('tim_penilai/penilaian', $data);
             $this->load->view('templates_admin/footer');
         }
-
-
     }
 
 
@@ -114,9 +109,7 @@ class Penilaian extends CI_Controller
             );
         }
         $this->db->update_batch('nilai', $result, 'id_nilai');
-
         redirect('tim_penilai/penilaian/form/'. $id);
-        
     }
 
     public function hapus($id)

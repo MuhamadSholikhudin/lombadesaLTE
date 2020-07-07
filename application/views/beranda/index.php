@@ -87,7 +87,7 @@
                                   <div class="card border">
                                       <img src="<?= base_url('uploads/') . $ber->gambar; ?>" class="card-img-top" alt="...">
                                       <div class="card-body">
-                                          <a href="<?= base_url('index/beranda/berita/') . $ber->gambar; ?>" class="card-title"><?= $ber->judul; ?></a>
+                                          <a href="<?= base_url('index/beranda/berita/') . $ber->id_berita; ?>" class="card-title"><?= $ber->judul; ?></a>
                                           <p class="card-text"><small class="text-muted">Last updated &nbsp; <?= $ber->tgl_buat; ?></p>
                                       </div>
                                   </div>

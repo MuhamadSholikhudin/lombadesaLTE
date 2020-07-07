@@ -74,16 +74,17 @@
                                         <label for="kategori" class="col-sm-2 col-form-label">Kategori</label>
                                         <div class="col-sm-10">
                                             <select type="number" class="form-control" id="kategori" name="kategori" required>
-                                               <option value='P1'>DINAS Kesehatan</option>
-                                               <option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>
-                                               <option value='P3'>DINAS Kominfo</option>
-                                               <option value='P4'>DINAS Perdagangan</option>
-                                               <option value='P5'>DINAS Kebudayaan dan Pariwisata</option>
-                                               <option value='P6'>DINAS Pertanian dan Pangan</option>
-                                               <option value='P7'>DINAS Tenaga Kerja</option>a
-                                               <option value='P8'>DINAS Sosial P3AP2KB</option>
-                                               <option value='P9'>DINAS Pekerjaan Umum dan Penataan Ruang</option>
-                                               <option value='P10'>BNPB</option>
+                                                <option value='P1'>Badan Perencanaan Pembangunan Daerah</option>
+                                                <option value='P2'>BPBD</option>
+                                                <option value='P3'>Satuan Pamong Praja</option>
+                                                <option value='P4'>Pemerintahan Desa</option>
+                                                <option value='P5'>Pemerintahan Masyarakat</option>
+                                                <option value='P6'>DINAS Kominfo</option>
+                                                <option value='P7'>DINAS Kebudayaan dan Pariwisata</option>a
+                                                <option value='P8'>DINAS Tenaga Kerja</option>
+                                                <option value='P9'>DINAS Pendidikan Pemuda dan Olahraga</option>
+                                                <option value='P10'>DINAS Kesehatan</option>
+                                                <option value='P11'>DINAS Sosial P3AP2KB</option>
                                             </select>
                                         </div>
                                     </div>

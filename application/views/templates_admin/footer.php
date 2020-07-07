@@ -59,16 +59,17 @@
         } else if (hakakses == 5) {
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);
-          $('#penempatan').append("<option value='P1'>DINAS Kesehatan</option>");
-          $('#penempatan').append("<option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>");
-          $('#penempatan').append("<option value='P3'>DINAS Kominfo</option>");
-          $('#penempatan').append("<option value='P4'>DINAS Perdagangan</option>");
-          $('#penempatan').append("<option value='P5'>DINAS Kebudayaan dan Pariwisata</option>");
-          $('#penempatan').append("<option value='P6'>DINAS Pertanian dan Pangan</option>");
-          $('#penempatan').append("<option value='P7'>DINAS Tenaga Kerja</option>");
-          $('#penempatan').append("<option value='P8'>DINAS Sosial P3AP2KB</option>");
-          $('#penempatan').append("<option value='P9'>DINAS Pekerjaan Umum dan Penataan Ruang</option>");
-          $('#penempatan').append("<option value='P10'>BNPB</option>");
+          $('#penempatan').append("<option value='P1'>Badan Perencanaan Pembangunan Daerah</option>");
+          $('#penempatan').append("<option value='P2'>BPBD</option>");
+          $('#penempatan').append("<option value='P3'>Satuan Pamong Praja</option>");
+          $('#penempatan').append("<option value='P4'>Pemerintahan Desa</option>");
+          $('#penempatan').append("<option value='P5'>Pemerintahan Masyarakat</option>");
+          $('#penempatan').append("<option value='P6'>DINAS Kominfo</option>");
+          $('#penempatan').append("<option value='P7'>DINAS Kebudayaan dan Pariwisata</option>");
+          $('#penempatan').append("<option value='P8'>DINAS Tenaga Kerja</option>");
+          $('#penempatan').append("<option value='P9'>DINAS Pendidikan Pemuda dan Olahraga</option>");
+          $('#penempatan').append("<option value='P10'>DINAS Kesehatan</option>");
+          $('#penempatan').append("<option value='P11'>DINAS Sosial P3AP2KB</option>");
         } else if (hakakses == 3) {
           // $('#penempatan').prop('disabled', false);
 

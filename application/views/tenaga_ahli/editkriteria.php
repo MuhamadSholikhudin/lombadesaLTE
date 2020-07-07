@@ -40,38 +40,40 @@
                                                 <?php $kategori = $kriteria->kategori; ?>
                                                 <?php
                                                 if ($kategori == 'P1') {
-                                                    echo "DINAS Kesehatan";
+                                                    echo "Badan Perencanaan Pembangunan Daerah";
                                                 } elseif ($kategori == 'P2') {
-                                                    echo "DINAS Pendidikan Pemuda dan Olahraga";
+                                                    echo "BPBD";
                                                 } elseif ($kategori == 'P3') {
-                                                    echo "DINAS Kominfo";
+                                                    echo "Satuan Pamong Praja";
                                                 } elseif ($kategori == 'P4') {
-                                                    echo "DINAS Perdagangan";
+                                                    echo "Pemerintahan Desa";
                                                 } elseif ($kategori == 'P5') {
-                                                    echo "DINAS Kebudayaan dan Pariwisata";
+                                                    echo "Pemerintahan Masyarakat";
                                                 } elseif ($kategori == 'P6') {
-                                                    echo "DINAS Pertanian dan Pangan";
+                                                    echo "DINAS Kominfo";
                                                 } elseif ($kriteria == 'P7') {
-                                                    echo "DINAS Tenaga Kerja";
+                                                    echo "DINAS Kebudayaan dan Pariwisata";
                                                 } elseif ($kategori == 'P8') {
-                                                    echo "DINAS Sosial P3AP2KB";
+                                                    echo "DINAS Tenaga Kerja";
                                                 } elseif ($kategori == 'P9') {
-                                                    echo "DINAS Pekerjaan Umum dan Penataan Ruang";
+                                                    echo "DINAS Pendidikan Pemuda dan Olahraga";
                                                 } elseif ($kategori == 'P10') {
-                                                    echo "BNPB";
+                                                    echo "DINAS Kesehatan";
+                                                } elseif ($kategori == 'P11') {
+                                                    echo "DINAS Sosial P3AP2KB";
                                                 }
                                                 ?>
-                                            </option>
-                                            <option value='P1'>DINAS Kesehatan</option>
-                                            <option value='P2'>DINAS Pendidikan Pemuda dan Olahraga</option>
-                                            <option value='P3'>DINAS Kominfo</option>
-                                            <option value='P4'>DINAS Perdagangan</option>
-                                            <option value='P5'>DINAS Kebudayaan dan Pariwisata</option>
-                                            <option value='P6'>DINAS Pertanian dan Pangan</option>
-                                            <option value='P7'>DINAS Tenaga Kerja</option>
-                                            <option value='P8'>DINAS Sosial P3AP2KB</option>
-                                            <option value='P9'>DINAS Pekerjaan Umum dan Penataan Ruang</option>
-                                            <option value='P10'>BNPB</option>
+                                            <option value='P1'>Badan Perencanaan Pembangunan Daerah</option>
+                                            <option value='P2'>BPBD</option>
+                                            <option value='P3'>Satuan Pamong Praja</option>
+                                            <option value='P4'>Pemerintahan Desa</option>
+                                            <option value='P5'>Pemerintahan Masyarakat</option>
+                                            <option value='P6'>DINAS Kominfo</option>
+                                            <option value='P7'>DINAS Kebudayaan dan Pariwisata</option>a
+                                            <option value='P8'>DINAS Tenaga Kerja</option>
+                                            <option value='P9'>DINAS Pendidikan Pemuda dan Olahraga</option>
+                                            <option value='P10'>DINAS Kesehatan</option>
+                                            <option value='P11'>DINAS Sosial P3AP2KB</option>
                                         </select> </div>
 
                                 </div>
