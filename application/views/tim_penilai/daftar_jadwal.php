@@ -35,7 +35,6 @@
                                             <td><?= $jadw->tgl_jadwal ?></td>
                                             <?php
                                             if ($jadw->tgl_jadwal == date('Y-m-d')) {
-
                                             ?>
                                                 <td>
                                                     <?= anchor('tim_penilai/penilaian/form/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Form Penilaian">

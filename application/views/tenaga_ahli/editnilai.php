@@ -33,13 +33,23 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="skor">Skor</label>
-
-                                        <input type="text" class="form-control" id="skor" name="skor" value="<?= $nilai->skor; ?>" disabled>
+                                        <input type="text" class="form-control" id="skor" name="nilai_maks" value="<?= $nilai->nilai_maks; ?>" disabled>
                                     </div>
                                     <div class="form-group">
-                                        <label for="nilai">Nilai</label>
-
-                                        <input type="text" class="form-control" id="nilai" name="nilai" value="<?= $nilai->nilai; ?>" required>
+                                        <label for="nilai">Th <?= date('Y') - 2; ?></label>
+                                        <input type="text" class="form-control" id="nilai1" name="nilai1" value="<?= $nilai->nilai1; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nilai">Th <?= date('Y') - 1; ?></label>
+                                        <input type="text" class="form-control" id="nilai2" name="nilai2" value="<?= $nilai->nilai2; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nilai">Dadu <?= date('Y') - 2; ?></label>
+                                        <input type="text" class="form-control" id="nilai1" name="dadu1" value="<?= $nilai->dadu1; ?>" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nilai">Dadu <?= date('Y') - 1; ?></label>
+                                        <input type="text" class="form-control" id="nilai1" name="dadu1" value="<?= $nilai->dadu1; ?>" required>
                                     </div>
 
                                 </div>

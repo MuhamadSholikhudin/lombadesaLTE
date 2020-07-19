@@ -15,11 +15,11 @@
                     <br>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Laporan Pendaftar Juara Desa Kabupaten Kudus </h3>
+                            <h4 class="text-center">Laporan Pendaftar Juara Desa Kabupaten Kudus </h4>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
-                            <table class="table table-sm">
+                            <table class="table table-sm" >
                                 <thead>
                                     <tr>
                                         <th style="width: 40px">NO</th>
@@ -46,7 +46,6 @@
                                                 <?= $jur->juara ?>
                                             </td>
                                             <td><?= $jur->tahun  ?>
-
                                         </tr>
                                         <?php $no++; ?>
                                     <?php endforeach; ?>

@@ -33,14 +33,14 @@ class Kriteria_penilaian extends CI_Controller
     {
 
         $judul = $this->input->post('judul');
-        $skor = $this->input->post('skor');
+        $nilai_maks = $this->input->post('nilai_maks');
         $kategori = $this->input->post('kategori');
         $tahun = date('Y');
 
 
         $data = array(
             'judul' => $judul,
-            'skor' => $skor,
+            'nilai_maks' => $nilai_maks,
             'kategori' => $kategori,
             'tahun' => $tahun
         );
@@ -64,7 +64,7 @@ class Kriteria_penilaian extends CI_Controller
     {
         $id = $this->input->post('id_kriteria');
         $judul = $this->input->post('judul');
-        $skor = $this->input->post('skor');
+        $nilai_maks = $this->input->post('nilai_maks');
         $kategori = $this->input->post('kategori');
 
 
@@ -72,7 +72,7 @@ class Kriteria_penilaian extends CI_Controller
         $data = [
             'judul' => $judul,
             'kategori' => $kategori,
-            'skor' => $skor
+            'nilai_maks' => $nilai_maks
 
         ];
 

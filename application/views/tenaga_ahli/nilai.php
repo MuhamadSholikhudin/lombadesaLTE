@@ -17,7 +17,10 @@
                                 <th>NO</th>
                                 <th>Kecamatan</th>
                                 <th>DESA</th>
-                                <th>NILAI</th>
+                                <th>Th <?= date('Y') - 2; ?></th>
+                                <th>Th <?= date('Y') - 1; ?></th>
+                                <th>Dadu <?= date('Y') - 2; ?></th>
+                                <th>Dadu <?= date('Y') - 1; ?></th>
                                 <th>TAHUN</th>
                                 <th>PENILAI</th>
                                 <th>Edit</th>
@@ -31,7 +34,10 @@
                                     <td><?= $no++ ?></td>
                                     <td><?= $peng->judul ?></td>
                                     <td><?= $peng->desa ?></td>
-                                    <td><?= $peng->nilai ?></td>
+                                    <td><?= $peng->nilai1 ?></td>
+                                    <td><?= $peng->nilai2 ?></td>
+                                    <td><?= $peng->dadu1 ?></td>
+                                    <td><?= $peng->dadu2 ?></td>
                                     <td><?= $peng->tahun ?></td>
                                     <td><?= $peng->nama ?></td>
                                     <td>

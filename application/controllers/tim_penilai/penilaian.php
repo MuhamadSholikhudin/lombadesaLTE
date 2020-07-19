@@ -36,7 +36,7 @@ class Penilaian extends CI_Controller
     public function coba($id)
     {
         // $where = array('no_jadwal' => $id);
-        $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.skor, nilai.nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
+        $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.nilai_maks, nilai.nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -47,10 +47,18 @@ class Penilaian extends CI_Controller
 
     public function form($id)
     {
+
+    //  $data['halamanini'] = $this->db->query("SELECT jadwal_lomba.tgl_jadwal FROM jadwal_lomba WHERE no_jadwal = $id ")->result();
+
+    //  if($halamanini == date('Y-m-d')){
+            // } else {
+    //     redirect('tim_penilai/penilaian/');
+    // }
+    
         $namatim = $this->session->userdata('nama');
         $penempatan = $this->session->userdata('penempatan');
 
-        $cari = $this->db->query("SELECT * FROM nilai WHERE nama = '$namatim'");
+        $cari = $this->db->query("SELECT * FROM nilai WHERE nama = '$namatim' AND no_jadwal = '$id' ");
 
         $tahun = date('Y-m-d');
         $kri = $this->db->query("SELECT * FROM kriteria_penilaian WHERE tahun = '$tahun' AND kategori='$penempatan' ")->result();
@@ -67,7 +75,7 @@ class Penilaian extends CI_Controller
                 $this->db->insert('nilai', $data);
             }
 
-            $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.skor, nilai.nilai, nilai.jumlah, nilai.id_nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
+            $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.nilai_maks, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
 
             $data['njadwal'] = $this->db->query("SELECT * FROM jadwal_lomba WHERE no_jadwal = '$id' ")->result();
 
@@ -78,7 +86,7 @@ class Penilaian extends CI_Controller
         
         }else{
             // $where = array('no_jadwal' => $id);
-            $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.skor, nilai.nilai, nilai.jumlah, nilai.id_nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
+            $data['nilai'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,  kriteria_penilaian.id_kriteria, kriteria_penilaian.judul, kriteria_penilaian.nilai_maks, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai FROM jadwal_lomba JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE jadwal_lomba.no_jadwal = '$id'")->result();
 
             $data['njadwal'] = $this->db->query("SELECT * FROM jadwal_lomba WHERE no_jadwal = '$id' ")->result();
 
@@ -87,6 +95,7 @@ class Penilaian extends CI_Controller
             $this->load->view('tim_penilai/penilaian', $data);
             $this->load->view('templates_admin/footer');
         }
+
     }
 
 
@@ -104,8 +113,12 @@ class Penilaian extends CI_Controller
         foreach ($id_nilai as $key => $val) {
             $result[] = array(
                 "id_nilai" => $id_nilai[$key],
-                "nilai" => $_POST['nilai'][$key],
-                "jumlah"  => $_POST['skor'][$key] * $_POST['nilai'][$key]
+                "nilai1" => $_POST['nilai1'][$key],
+                "nilai2" => $_POST['nilai2'][$key],
+                "dadu1" => $_POST['dadu1'][$key],
+                "dadu2" => $_POST['dadu2'][$key]
+                // "jumlah"  =>$_POST['nilai'][$key]
+                // "jumlah"  => $_POST['skor'][$key] * $_POST['nilai'][$key]
             );
         }
         $this->db->update_batch('nilai', $result, 'id_nilai');

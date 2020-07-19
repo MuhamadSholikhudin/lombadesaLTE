@@ -19,7 +19,7 @@
                             <tr>
                                 <th>NO</th>
                                 <th>Judul</th>
-                                <th>Skor</th>
+                                <th>Nilai Maks</th>
                                 <th>Tahun</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
@@ -31,7 +31,7 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><a href="<?= base_url('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria) ?>"><?= $kriteria->judul ?></a></td>
-                                    <td><?= $kriteria->skor ?></td>
+                                    <td><?= $kriteria->nilai_maks ?></td>
                                     <td><?= $kriteria->tahun ?></td>
                                     <td>
                                         <?= anchor('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria, '<div class="btn btn-success btn-btn-sm">
@@ -65,9 +65,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="skor" class="col-sm-2 col-form-label">Skor</label>
+                                        <label for="nilai_maks" class="col-sm-2 col-form-label">Nilai Masksimal</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" id="skor" name="skor" required>
+                                            <input type="number" class="form-control" id="nilai_maks" name="nilai_maks" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">

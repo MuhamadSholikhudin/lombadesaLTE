@@ -15,7 +15,7 @@
                     <br>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Laporan Pendaftar Lomba Desa Kabupaten Kudus </h3>
+                            <h4 class="text-center">Laporan Pendaftar Lomba Desa Kabupaten Kudus </h4>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -53,7 +53,17 @@
 
                                 </tbody>
                             </table>
+                            <br>
+                            <br>
+
+                            <!-- <div class="text-right mr-4">
+
+                                <?php echo date('d-m-Y'); ?>
+
+                            </div> -->
                         </div>
+
+
                         <!-- /.card-body -->
                     </div>
 

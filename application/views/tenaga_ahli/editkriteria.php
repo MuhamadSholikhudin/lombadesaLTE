@@ -25,8 +25,8 @@
                                         <input type="text" class="form-control" id="judul" name="judul" value="<?= $kriteria->judul; ?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="Selesai">Skor</label>
-                                        <input type="number" class="form-control" id="Selesai" name="skor" value="<?= $kriteria->skor; ?>">
+                                        <label for="Selesai">Nilai Maksimal</label>
+                                        <input type="number" class="form-control" id="Selesai" name="nilai_maks" value="<?= $kriteria->nilai_maks; ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="tahun">Tahun</label>

@@ -32,10 +32,6 @@
   <script>
     $(document).ready(function() {
 
-
-
-
-
       $("#hakakses").on('change', function() {
         var hakakses = $(this).val();
         // alert(id_kec);
@@ -104,10 +100,13 @@
         destroy: true,
         columns: columns
       });
-
-
     });
     $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <script>
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   </script>
 
 

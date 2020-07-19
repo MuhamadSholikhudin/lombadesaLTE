@@ -21,7 +21,7 @@ class Nilai extends CI_Controller
     public function index()
     {
 
-        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai,nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
+        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria ")->result();
 
         $this->load->view('templates_admin/header');
@@ -33,7 +33,7 @@ class Nilai extends CI_Controller
 
     public function edit($id)
     {
-        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul,kriteria_penilaian.skor FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
+        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul,kriteria_penilaian.nilai_maks FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE nilai.id_nilai = '$id' ")->result();
 
         $this->load->view('templates_admin/header');
@@ -45,9 +45,10 @@ class Nilai extends CI_Controller
     public function edit_aksi()
     {
         $id_nilai = $this->input->post('id_nilai');
-        $skor = $this->input->post('skor');
+        // $skor = $this->input->post('skor');
         $nilai = $this->input->post('nilai');
-        $jumlah = $skor * $nilai;
+        $jumlah = $nilai;
+        // $jumlah = $skor * $nilai;
  
         $data = [
             'nilai' => $nilai,
