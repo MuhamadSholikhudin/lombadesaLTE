@@ -23,13 +23,12 @@ class Berita extends CI_Controller{
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
-        $this->load->view('stafpmd/berita', $data);
+        $this->load->view('tenaga_ahli/berita', $data);
         $this->load->view('templates_admin/footer.php');
     }
 
     public function tambah()
     {
-
         // $data['beritaan'] = $this->db->get('berita')->result();
 
         $this->load->view('templates_admin/header');
@@ -67,6 +66,7 @@ class Berita extends CI_Controller{
         );
 
         $this->model_berita->tambah_berita($data, 'berita');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         redirect('tenaga_ahli/berita');
     }
 
@@ -125,6 +125,8 @@ class Berita extends CI_Controller{
         $this->db->where('id_berita', $where);
         $this->db->update('berita');
 
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+
         redirect('tenaga_ahli/berita');
     
     }
@@ -133,6 +135,8 @@ class Berita extends CI_Controller{
     {
         $where = ['kode_berita' => $id];
         $this->model_berita->hapus_data($where, 'berita');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
+        
         redirect('tenaga_ahli/berita/');
     }
 }

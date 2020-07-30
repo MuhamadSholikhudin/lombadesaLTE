@@ -45,6 +45,7 @@ class Pengajuan extends CI_Controller{
         $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
+            $this->session->set_flashdata("message", "<script>Swal.fire('KEMBALIKAN', 'Data Pengajuan Berhasil Dikembalikan', 'success')</script>");
 
         redirect('stafpmd/pengajuan/');
     }
@@ -71,6 +72,7 @@ class Pengajuan extends CI_Controller{
         $this->model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
 
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Pengajuan Diterima', 'success')</script>");
 
         redirect('stafpmd/pengajuan/');
     }
@@ -90,6 +92,7 @@ class Pengajuan extends CI_Controller{
 
         // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Pengajuan di batalkan ', 'success')</script>");
 
         redirect('stafpmd/pengajuan/');
     }

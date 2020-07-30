@@ -6,6 +6,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA JADWAL LOMBA DESA</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">
@@ -46,8 +48,8 @@
                                                 <i class="fas fa-check-double">&nbsp;Disetujui</i>
                                             </div>
                                         </td>
-                                            <td>
-                                                
+                                        <td>
+
                                             <?= anchor('admin_sekda/jadwal_lomba/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="batalkan">
                                             <i class="fas fa-times"></i>
                                         </div>') ?>

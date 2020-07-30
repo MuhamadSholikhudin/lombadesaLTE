@@ -15,17 +15,24 @@
   <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+
 </head>
 
-<body class="layout-top-nav " style="height: auto;">
+<body class="layout-top-nav " style="height: auto; background: #e9ecef;">
   <div class="wrapper ">
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-      <div class="container">
+    <nav class="main-header navbar navbar-expand-md navbar-light bg-gradient-secondary">
+      <div class="container ">
         <a href="<?= base_url('index/beranda/'); ?>" class="navbar-brand">
           <img src="<?= base_url('assets/'); ?>dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-          <span class="brand-text font-weight-light">SISTEM INFORMASI LOMBA DESA</span>
+          <span class="brand-text font-weight-light text-light">SISTEM INFORMASI LOMBA DESA</span>
         </a>
 
         <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,13 +43,13 @@
           <!-- Left navbar links -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a href="<?= base_url('index/beranda/'); ?>" class="nav-link">Beranda</a>
+              <a href="<?= base_url('index/beranda/'); ?>" class="nav-link text-light">Beranda</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('index/beranda/profile'); ?>" class="nav-link">Profile</a>
+              <a href="<?= base_url('index/beranda/profile'); ?>" class="nav-link text-light">Profile</a>
             </li>
             <li class="nav-item">
-              <a href="<?= base_url('index/beranda/contact'); ?>" class="nav-link">Kontak</a>
+              <a href="<?= base_url('index/beranda/contact'); ?>" class="nav-link text-light">Kontak</a>
             </li>
 
           </ul>
@@ -51,7 +58,7 @@
 
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
-              <a class="nav-link" data-toggle="dropdown" href="#">
+              <a class="nav-link text-light" data-toggle="dropdown" href="#">
                 <i class="far fa-user"> &nbsp;USER</i>
               </a>
               <div class="dropdown-menu dropdown-menu-right">

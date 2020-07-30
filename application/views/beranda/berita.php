@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container">
-            <div class="row mb-2">
+            <div class="row">
                 <!-- <div class="col-sm-6">
                     <h1 class="m-0 text-dark"> Top Navigation <small>Example 3.0</small></h1>
                 </div> -->
@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-8">
+                <div class="col-lg-9">
                     <?php foreach ($berita as $ber) :  ?>
                         <div class="card mb-3">
                             <img src="<?= base_url('uploads/') . $ber->gambar; ?>" class="card-img-top" alt="<?= $ber->gambar; ?>">
@@ -40,7 +40,7 @@
                     <?php endforeach ?>
                 </div>
                 <!-- /.col-md-6 -->
-                <div class="col-lg-4">
+                <div class="col-lg-3">
 
                     <div class="card card-primary card-outline">
                         <div class="card-header">

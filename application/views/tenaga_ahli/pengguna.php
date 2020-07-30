@@ -6,12 +6,15 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA PENGGUNA</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
                     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_pengguna">
                         + Tambah Pengguna
                     </button>
+
                     <br>
                     <table id="pengguna" class="table table-bordered display">
                         <thead>

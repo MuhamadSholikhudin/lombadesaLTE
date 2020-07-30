@@ -21,8 +21,8 @@
   <script src="<?= base_url('assets/'); ?>plugins/jquery-ui/jquery-ui.min.js"></script>
 
   <!-- DataTables -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="<?= base_url('assets/'); ?>js/jquery-3.5.1.js"></script>
+  <script src="<?= base_url('assets/'); ?>js/jquery.dataTables.min.js"></script>
 
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
@@ -95,11 +95,12 @@
       $('#pengguna').DataTable();
       $('#wilayah').DataTable();
       $('#berita').DataTable();
-      var table = $('#nilai').DataTable({
-        data: rows,
-        destroy: true,
-        columns: columns
-      });
+      $('#nilai').DataTable();
+      // var table = $('#nilai').DataTable({
+      //   data: rows,
+      //   destroy: true,
+      //   columns: columns
+      // });
     });
     $.widget.bridge('uibutton', $.ui.button)
   </script>
@@ -138,6 +139,9 @@
   <script src="<?= base_url('assets/'); ?>dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/'); ?>dist/js/demo.js"></script>
+
+
+
   </body>
 
   </html>

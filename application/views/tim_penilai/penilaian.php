@@ -6,6 +6,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark">PENILAIAN</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                     <br>
                     <div class="callout callout-success alert-danger ">
                         <h5>Perhatian !</h5>

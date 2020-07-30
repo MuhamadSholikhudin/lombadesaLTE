@@ -57,6 +57,7 @@ class Jadwal_lomba extends CI_Controller
         ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Jadwal Lomba berhasil di Acc', 'success')</script>");
 
         redirect('admin_sekda/Jadwal_lomba/');
     }
@@ -71,7 +72,7 @@ class Jadwal_lomba extends CI_Controller
         ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Jadwal Lomba berhasil di Batalkan', 'success')</script>");
 
         redirect('admin_sekda/Jadwal_lomba/');
     }
@@ -86,7 +87,7 @@ class Jadwal_lomba extends CI_Controller
         ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Jadwal Lomba berhasil di Kembalikan', 'success')</script>");
 
         redirect('admin_sekda/Jadwal_lomba/');
     }

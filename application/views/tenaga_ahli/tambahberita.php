@@ -15,7 +15,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="<?= base_url('stafpmd/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
+                        <form action="<?= base_url('tenaga_ahli/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="judul">Judul</label>

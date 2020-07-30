@@ -79,6 +79,7 @@ class Pengajuan extends CI_Controller{
         );
 
         $this->model_pengajuan->tambah_pengajuan($data, 'hasil_ajuan');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di tambahkan', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/');
     }
 
@@ -92,6 +93,7 @@ class Pengajuan extends CI_Controller{
         ];
 
         $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di hapus', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index');
     }
 
@@ -106,6 +108,7 @@ class Pengajuan extends CI_Controller{
         ];
 
         $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ajukan', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index/');
     }
 
@@ -138,6 +141,7 @@ $desa = $this->input->post('desa');
         ];
 
         $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ubah', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index');
     }
 
@@ -145,6 +149,8 @@ $desa = $this->input->post('desa');
     {
         $where = ['no_hasilajuan' => $no_hasilajuan];
         $this->model_pengajuan->hapuspengajuan($where, 'hasil_ajuan');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di hapus', 'success')</script>");
+        
         redirect('admin_kecamatan/pengajuan/index');
     }
 

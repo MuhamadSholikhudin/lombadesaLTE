@@ -21,7 +21,6 @@ $data['listberita'] = $this->db->query("SELECT * FROM berita ORDER BY id_berita 
         $data['berita'] = $this->db->query("SELECT * FROM berita WHERE id_berita = '$id_berita' ")->result();
         // $data['berita'] = $this->model_berita->edit_berita($where, 'berita')->result();
 
-
         $this->load->view('templates/header');
         $this->load->view('beranda/berita', $data);
         $this->load->view('templates/footer');

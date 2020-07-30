@@ -9,11 +9,12 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
 
+                    <?= $this->session->flashdata('message'); ?>
 
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
-                    <a href="<?= base_url('stafpmd/berita/tambah'); ?>">
+                    <a href="<?= base_url('tenaga_ahli/berita/tambah'); ?>">
                         <button class="btn btn-sm btn-primary mb-3" data-toggle="modal">
                             + Tambah Berita
                         </button>
@@ -40,10 +41,10 @@
                                         <img src="<?= base_url('uploads/') . $wil->gambar ?>" alt="Gambar tidak ditemukan" width="100" height="100"></td>
                                     <td><?= $wil->tgl_buat ?></td>
                                     <td>
-                                        <?= anchor('stafpmd/berita/edit/' . $wil->id_berita, '<div class="btn btn-success btn-btn-sm">
+                                        <?= anchor('tenaga_ahli/berita/edit/' . $wil->id_berita, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-edit"></i> </div>') ?>
                                     </td>
-                                    <td><?= anchor('stafpmd/berita/hapus/' . $wil->id_berita, '<div class="btn btn-danger btn-btn-sm">
+                                    <td><?= anchor('tenaga_ahli/berita/hapus/' . $wil->id_berita, '<div class="btn btn-danger btn-btn-sm">
                         <i class="fa fa-trash"></i> </div>') ?>
                                     </td>
 
@@ -67,7 +68,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url('stafpmd/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url('tenaga_ahli/berita/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                                         <div class="col-sm-10">

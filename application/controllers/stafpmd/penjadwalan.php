@@ -60,6 +60,8 @@ class Penjadwalan extends CI_Controller{
         ];
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan berhasil di Ubah', 'success')</script>");
+        
         redirect('stafpmd/penjadwalan/');
     }
 
@@ -74,6 +76,7 @@ class Penjadwalan extends CI_Controller{
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan berhasil di Ajukan', 'success')</script>");
 
         redirect('stafpmd/penjadwalan/');
     }
@@ -89,6 +92,7 @@ class Penjadwalan extends CI_Controller{
 
         $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan dibatalkan pengajuannya', 'success')</script>");
 
         redirect('stafpmd/penjadwalan/');
     }
@@ -107,6 +111,7 @@ class Penjadwalan extends CI_Controller{
 
         // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan berhasil di Kembalikan', 'success')</script>");
 
         redirect('stafpmd/penjadwalan/');
     }

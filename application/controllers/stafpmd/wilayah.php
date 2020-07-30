@@ -40,6 +40,7 @@ class wilayah extends CI_Controller{
         );
 
         $this->model_wilayah->tambah_wilayah($data, 'wilayah');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Wilayah berhasil di tambahkan', 'success')</script>");
         redirect('stafpmd/wilayah/');
     }
 
@@ -70,6 +71,7 @@ class wilayah extends CI_Controller{
         ];
 
         $this->model_wilayah->update_data($where, $data, 'wilayah');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Wilayah berhasil di Ubah', 'success')</script>");
         redirect('stafpmd/wilayah/');
     }
 
@@ -77,6 +79,7 @@ class wilayah extends CI_Controller{
     {
         $where = ['kode_wilayah' => $id];
         $this->model_wilayah->hapus_data($where, 'wilayah');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Wilayah berhasil di Hapus', 'success')</script>");
         redirect('stafpmd/wilayah/');
     }
 }

@@ -7,7 +7,9 @@
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA KRITERIA PENILAIAN</h1>
                 </div><!-- /.col -->
-
+                <div class="col-sm-12">
+                    <?= $this->session->flashdata('message'); ?>
+                </div>
                 <div class="col-sm-12">
                     <br>
                     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_kriteria">
@@ -61,7 +63,7 @@
                                     <div class="form-group row">
                                         <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="judul" name="judul" required>
+                                            <textarea class="form-control" id="judul" name="judul" required cols="30"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">

@@ -6,6 +6,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12 text-center">
                     <h1 class="m-0 text-dark Text-center">Tambah Berita</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>

@@ -46,6 +46,8 @@ class Kriteria_penilaian extends CI_Controller
         );
 
         $this->model_kriteriapenilaian->tambah_kriteria_penilaian($data, 'kriteria_penilaian');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+        
         redirect('tenaga_ahli/kriteria_penilaian');
     }
 
@@ -81,13 +83,30 @@ class Kriteria_penilaian extends CI_Controller
         ];
 
         $this->model_kriteriapenilaian->update_data($where, $data, 'kriteria_penilaian');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+        
         redirect('tenaga_ahli/kriteria_penilaian');
     }
 
+    // public function hapu($id)
+    // {
+    //     $where = ['id_kriteria' => $id];
+    //     $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
+    //     redirect('tenaga_ahli/kriteria_penilaian');
+    // }
+
+
     public function hapus($id)
     {
-        $where = ['id_kriteria' => $id];
-        $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
-        redirect('tenaga_ahli/kriteria_penilaian');
+        $cari = $this->db->query("SELECT id_kriteria FROM nilai WHERE id_kriteria = '$id' ");
+
+        if ($cari->num_rows() > 0) {
+            $this->session->set_flashdata("message", "<script>Swal.fire('GAGAL', 'DATA KRITERIA PENILAIAN GAGAL DIHAPUS KARENA MASIH DI PAKAI', 'error')</script>");
+        } elseif ($cari->num_rows() < 1) {
+            $where = ['id_kriteria' => $id];
+            $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
+            $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA KRITERIA PENILAIAN BERHASIL DI HAPUS', 'success')</script>");
+        }
+        redirect('tenaga_ahli/kriteria_penilaian/');
     }
 }

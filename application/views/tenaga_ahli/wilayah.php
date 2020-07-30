@@ -6,6 +6,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA WILAYAH</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">
@@ -34,10 +36,10 @@
                                     <td><?= $wil->kecamatan ?></td>
                                     <td><?= $wil->desa ?></td>
                                     <td>
-                                        <?= anchor('stafpmd/wilayah/edit/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
+                                        <?= anchor('tenaga_ahli/wilayah/edit/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-edit"></i> </div>') ?>
                                     </td>
-                                    <td><?= anchor('stafpmd/wilayah/hapus/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
+                                    <td><?= anchor('tenaga_ahli/wilayah/hapus/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
                         <i class="fa fa-trash"></i> </div>') ?>
                                     </td>
 
@@ -61,7 +63,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="<?= base_url('stafpmd/wilayah/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
+                                <form action="<?= base_url('tenaga_ahli/wilayah/tambah_aksi'); ?>" method="POST" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <label for="judul" class="col-sm-2 col-form-label">Kecamatan</label>
                                         <div class="col-sm-10">

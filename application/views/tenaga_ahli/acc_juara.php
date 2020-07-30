@@ -6,6 +6,8 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">DATA JUARA LOMBA</h1>
+                    <?= $this->session->flashdata('message'); ?>
+
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
@@ -27,33 +29,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if ($juara->num_rows() == 1) {
+                                    <?php if ($numjuara->num_rows() == 1) {
                                     ?>
                                         <?php $no = 1; ?>
                                         <?php foreach ($juara as $jur) : ?>
                                             <tr>
                                                 <form action="<?= base_url('tenaga_ahli/acc_juara/batalkan') ?>" enctype="multipart/form-data" method="POST">
-                                                    <input type="hidden" name="id_jadwal<?= $no; ?>" value="<?= $jur->no_jadwal ?>">
-                                                    <td>
+                                                    <td class="text-center">
                                                         <?= $no;  ?>
+                                                        <input type="hidden" name="id_juara" value="<?= $jur->id_juara ?>">
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <?= $jur->kecamatan ?>
-                                                        <input type="hidden" name="kecamatan<?= $no; ?>" value="<?= $jur->kecamatan ?>">
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center">
                                                         <?= $jur->desa ?>
-                                                        <input type="hidden" name="desa<?= $no; ?>" value="<?= $jur->desa ?>">
                                                     </td>
-                                                    <td><?= $jur->juara;  ?>
-                                                        <input type="hidden" name="juara<?= $no; ?>" value="<?= $juara; ?>">
+                                                    <td class="text-center">
+                                                        <?= $jur->juara;  ?>
                                                     </td>
-                                                    <td><?= $jur->total_nilai  ?>
-                                                        <input type="hidden" name="total_nilai<?= $no; ?>" value="<?= $jur->total_nilai; ?>"></td>
+                                                    <td class="text-center">
+                                                        <?= $jur->total_nilai  ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?= $jur->total_dadu  ?>
+                                                    </td>
                                             </tr>
                                             <?php $no++; ?>
                                         <?php endforeach; ?>
                                         <tr>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -65,7 +71,7 @@
                                         </tr>
                                         </form>
                                         <?php
-                                    } elseif ($juara->num_rows() < 1) {
+                                    } elseif ($numjuara->num_rows() < 1) {
                                         if ($juaraini->num_rows() < 1) {
                                         ?>
                                             <tr>
@@ -74,7 +80,7 @@
                                                 </td>
                                             </tr>
                                         <?php
-                                        } elseif ($juaraini->num_rows() >= 1 AND $juaraini->num_rows() <= 4) {
+                                        } elseif ($juaraini->num_rows() >= 1 and $juaraini->num_rows() <= 4) {
                                         ?>
                                             <?php $no = 1; ?>
                                             <?php foreach ($juarabaru as $jur) : ?>
@@ -119,38 +125,61 @@
                                                     <td>
                                                         <?= $no;  ?>9
                                                     </td>
-                                                    <input type="hidden" name="no_jadwal<?= $no; ?>" value="<?= $jur->no_jadwal ?>">
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>
-                                                        <input type="hidden" name="kecamatan<?= $no; ?>" value="<?= $jur->kecamatan ?>">
+                                                        <input type="hidden" name="kecamatan" value="<?= $jur->kecamatan ?>">
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->desa ?>
-                                                        <input type="hidden" name="desa<?= $no; ?>" value="<?= $jur->desa ?>">
+                                                        <input type="hidden" name="desa" value="<?= $jur->desa ?>">
                                                     </td>
-                                                    <td class="text-center"><span class="badge bg-success"><?= $jur->jur_rank;  ?></span>
-                                                        <input type="hidden" name="juara<?= $no; ?>" value="<?= $no; ?>">
+                                                    <td class="text-center"><span class="badge bg-primary"><?= $no;  ?></span>
+                                                        <input type="hidden" name="juara" value="<?= $no; ?>">
                                                     </td>
                                                     <td class="text-center"><?= $jur->total  ?>
-                                                        <input type="hidden" name="total_nilai<?= $no; ?>" value="<?= $jur->total; ?>">
+                                                        <input type="hidden" name="total_nilai" value="<?= $jur->total; ?>">
                                                     </td>
                                                     <td class="text-center"><?= $jur->total_dadu  ?>
-                                                        <input type="hidden" name="total_nilai<?= $no; ?>" value="<?= $jur->total; ?>">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>
-                                                        <button type="submit" class="btn badge bg-primary">
-                                                            <i class="fas fa-check"></i> &nbsp;ACC
-                                                        </button>
+                                                        <input type="hidden" name="total_dadu" value="<?= $jur->total_dadu; ?>">
                                                     </td>
                                                 </tr>
                                                 <?php $no++; ?>
                                             <?php endforeach; ?>
+
+                                            <?php $no = 2; ?>
+                                            <?php foreach ($tidakjuara as $jur) : ?>
+                                                <tr class="text-center">
+                                                    <td>
+                                                        <?= $no;  ?>9
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?= $jur->kecamatan ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <?= $jur->desa ?>
+                                                    </td>
+                                                    <td class="text-center"><span class="badge bg-success"><?= $no;  ?></span>
+                                                    </td>
+                                                    <td class="text-center"><?= $jur->total  ?>
+                                                    </td>
+                                                    <td class="text-center"><?= $jur->total_dadu  ?>
+                                                    </td>
+                                                </tr>
+                                                <?php $no++; ?>
+                                            <?php endforeach; ?>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <button type="submit" class="btn badge bg-primary">
+                                                        <i class="fas fa-check"></i> &nbsp;ACC
+                                                    </button>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+
                                             </form>
                                         <?php
                                         }
@@ -164,6 +193,8 @@
                         <!-- /.card-body -->
                     </div>
                 </div><!-- /.col -->
+
+
 
                 <div class="col-sm-12">
                     <br>

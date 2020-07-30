@@ -46,13 +46,19 @@ class Nilai extends CI_Controller
     {
         $id_nilai = $this->input->post('id_nilai');
         // $skor = $this->input->post('skor');
-        $nilai = $this->input->post('nilai');
-        $jumlah = $nilai;
+        $nilai1 = $this->input->post('nilai1');
+        $nilai2 = $this->input->post('nilai2');
+        $dadu1 = $this->input->post('dadu1');
+        $dadu2 = $this->input->post('dadu2');
+        // $jumlah = $nilai;
         // $jumlah = $skor * $nilai;
  
         $data = [
-            'nilai' => $nilai,
-            'jumlah' => $jumlah
+            'nilai1' => $nilai1,
+            'nilai2' => $nilai2,
+            'dadu1' => $dadu1,
+            'dadu2' => $dadu2,
+            // 'jumlah' => $jumlah
         ];
 
         $where = [
@@ -60,6 +66,8 @@ class Nilai extends CI_Controller
         ];
 
         $this->model_nilai->update_data($where, $data, 'nilai');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+        
         redirect('tenaga_ahli/nilai/');
     }
 
@@ -67,6 +75,8 @@ class Nilai extends CI_Controller
     {
         $where = ['id_pengguna' => $id];
         $this->model_pengguna->hapus_data($where, 'pengguna');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
+        
         redirect('tenaga_ahli/pengguna');
     }
 }

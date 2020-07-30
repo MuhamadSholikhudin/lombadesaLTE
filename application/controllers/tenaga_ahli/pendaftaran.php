@@ -42,6 +42,8 @@ class Pendaftaran extends CI_Controller{
         );
 
         $this->model_pendaftaran->tambah_daftar($data, 'daftar');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+
         redirect('tenaga_ahli/pendaftaran/');
     }
 
@@ -74,6 +76,8 @@ class Pendaftaran extends CI_Controller{
         ];
 
         $this->model_pendaftaran->update_data($where, $data, 'daftar');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+
         redirect('tenaga_ahli/pendaftaran/');
     }
 
@@ -82,15 +86,14 @@ class Pendaftaran extends CI_Controller{
         $cari = $this->db->query("SELECT no_daftar FROM hasil_ajuan WHERE no_daftar = '$id' ");
 
         if($cari->num_rows() > 0){
-            $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">DATA PENDAFTARAN TIDAK BISA DI HAPUS</div>');
+            $this->session->set_flashdata("message", "<script>Swal.fire('GAGAL', 'Data yang Dihapus masih digunkan Oleh nilai sehingga tidak dapat di hapus', 'error')</script>");
 
         }elseif($cari->num_rows() < 1){
             $where = ['no_daftar' => $id];
             $this->model_pendaftaran->hapus_data($where, 'daftar');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">DATA PENDAFTARAN BERHASIL DI HAPUS</div>');
+            $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         }
 
-        
         redirect('tenaga_ahli/pendaftaran/');
     }
 }

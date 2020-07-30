@@ -19,7 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="<?= base_url('stafpmd/wilayah/edit_aksi'); ?>" method="post">
+                        <form role="form" action="<?= base_url('tenaga_ahli/wilayah/edit_aksi'); ?>" method="post">
                             <?php foreach ($wilayah as $wil) : ?>
                                 <div class="card-body">
                                     <div class="form-group">

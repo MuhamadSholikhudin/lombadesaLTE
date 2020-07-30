@@ -72,6 +72,8 @@ class Penilaian extends CI_Controller
                     'nama'   =>  $namatim,
                     'no_jadwal'      =>  $id
                 );
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penilaian Lomba berhasil di muat', 'success')</script>");
+
                 $this->db->insert('nilai', $data);
             }
 
@@ -122,6 +124,8 @@ class Penilaian extends CI_Controller
             );
         }
         $this->db->update_batch('nilai', $result, 'id_nilai');
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penilaian Lomba berhasil di Simpan', 'success')</script>");
+        
         redirect('tim_penilai/penilaian/form/'. $id);
     }
 

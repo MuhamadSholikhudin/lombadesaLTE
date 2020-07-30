@@ -67,6 +67,7 @@ class Berita extends CI_Controller{
         );
 
         $this->model_berita->tambah_berita($data, 'berita');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         redirect('stafpmd/berita');
     }
 
@@ -125,6 +126,7 @@ class Berita extends CI_Controller{
         $this->db->where('id_berita', $where);
         $this->db->update('berita');
 
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         redirect('stafpmd/berita');
     
     }
@@ -133,6 +135,7 @@ class Berita extends CI_Controller{
     {
         $where = ['id_berita' => $id];
         $this->model_berita->hapus_data($where, 'berita');
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         redirect('stafpmd/berita/');
     }
 }

@@ -60,7 +60,7 @@
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="3" class="text-center">
 
-                                                <?= anchor('tenaga_ahli/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Ajukan">
+                                                <?= anchor('tenaga_ahli/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Jadwal Telah di ACC">
                                             <i class="fas fa-check-double"></i>
                                         </div>') ?>
                                             </td>
@@ -70,12 +70,12 @@
                                             <td> <?= $jadw->tgl_jadwal ?></td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="2" class="text-center">
-                                                <?= anchor('tenaga_ahli/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Sufah Mengajukan tunggu acc">
+                                                <?= anchor('tenaga_ahli/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Sudah Mengajukan tunggu acc">
                                             <i><span> </span> Diajukan</i>
                                         </div>') ?>
                                             </td>
                                             <td>
-                                                <?= anchor('tenaga_ahli/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm data-toggle=" tooltip" data-placement="top" title="batalkan">
+                                                <?= anchor('tenaga_ahli/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm data-toggle=" tooltip" data-placement="top" title="batalkan ajuan jadwal">
                         <i class="fas fa-times"></i> </div>') ?>
                                             </td>
                                         <?php

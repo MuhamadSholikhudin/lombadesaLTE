@@ -7,6 +7,7 @@
                 <div class="col-sm-12 ">
                     <h1 class="text-dark text-center">PENGAJUAN DESA KECAMATAN &nbsp; <?= $this->session->userdata('penempatan') ?></h1>
                 </div><!-- /.col -->
+                <?= $this->session->flashdata('message'); ?>
 
                 <div class="col-sm-12">
                     <br>

@@ -8,7 +8,7 @@
                     <h1 class="m-0 text-dark">EDIT DATA KRITERIA PENILAIAN</h1>
                 </div><!-- /.col -->
 
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
@@ -22,7 +22,7 @@
                                     <div class="form-group">
                                         <label for="judul">Judul</label>
                                         <input type="hidden" class="form-control" name="id_kriteria" value="<?= $kriteria->id_kriteria; ?>">
-                                        <input type="text" class="form-control" id="judul" name="judul" value="<?= $kriteria->judul; ?>">
+                                        <textarea class="form-control" id="judul" name="judul" value="<?= $kriteria->judul; ?>" cols="30" ><?= $kriteria->judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="Selesai">Nilai Maksimal</label>

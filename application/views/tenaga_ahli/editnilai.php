@@ -11,7 +11,7 @@
 
 
                 </div><!-- /.col -->
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <br>
                     <div class="card card-primary">
                         <div class="card-header">
@@ -25,33 +25,32 @@
                                     <div class="form-group">
                                         <label for="nama">Judul</label>
                                         <input type="hidden" class="form-control" name="id_nilai" value="<?= $nilai->id_nilai; ?>">
-                                        <input type="text" class="form-control" value="<?= $nilai->judul; ?>" disabled>
+                                        <textarea class="form-control" disabled><?= $nilai->judul; ?></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="desa">Desa</label>
-                                        <input type="text" class="form-control" id="desa" value="<?= $nilai->desa; ?>" disabled>
+                                        <div class="form-control" disabled><?= $nilai->desa; ?></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="skor">Skor</label>
-                                        <input type="text" class="form-control" id="skor" name="nilai_maks" value="<?= $nilai->nilai_maks; ?>" disabled>
+                                        <label for="skor">Nilai maks</label>
+                                        <div class="form-control" disabled><?= $nilai->nilai_maks; ?></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Th <?= date('Y') - 2; ?></label>
-                                        <input type="text" class="form-control" id="nilai1" name="nilai1" value="<?= $nilai->nilai1; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="nilai1" min="0" max="<?= $nilai->nilai_maks; ?>" value="<?= $nilai->nilai1; ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Th <?= date('Y') - 1; ?></label>
-                                        <input type="text" class="form-control" id="nilai2" name="nilai2" value="<?= $nilai->nilai2; ?>" required>
+                                        <input type="number" class="form-control" id="nilai2" name="nilai2" min="0" max="<?= $nilai->nilai_maks; ?>" value="<?= $nilai->nilai2; ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Dadu <?= date('Y') - 2; ?></label>
-                                        <input type="text" class="form-control" id="nilai1" name="dadu1" value="<?= $nilai->dadu1; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="dadu1" min="0" max="5" value="<?= $nilai->dadu1; ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Dadu <?= date('Y') - 1; ?></label>
-                                        <input type="text" class="form-control" id="nilai1" name="dadu1" value="<?= $nilai->dadu1; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="dadu2" min="0" max="5" value="<?= $nilai->dadu2; ?>" required>
                                     </div>
-
                                 </div>
                                 <!-- /.card-body -->
 

@@ -16,7 +16,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="<?= base_url('stafpmd/berita/edit_aksi'); ?>" method="post" enctype="multipart/form-data">
+                        <form role="form" action="<?= base_url('tenaga_ahli/berita/edit_aksi'); ?>" method="post" enctype="multipart/form-data">
                             <?php foreach ($berita as $berita) : ?>
                                 <div class="card-body">
                                     <div class="form-group">
