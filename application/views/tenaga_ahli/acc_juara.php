@@ -13,7 +13,7 @@
                     <br>
                     <div class="card">
                         <div class="card-header text-center">
-                            <h3 class="card-title ">Juara Lomba Desa Kabupaten Kudus Tahun <?= date('Y'); ?></h3>
+                            <h3 class="card-title ">Juara Lomba Desa Kabupaten Kudus Tahun <?= date('Y') ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -86,7 +86,7 @@
                                             <?php foreach ($juarabaru as $jur) : ?>
                                                 <tr class="text-center ">
                                                     <td>
-                                                        <?= $no;  ?>8
+                                                        <?= $no;  ?>
                                                     </td>
                                                     <input type="hidden" name="no_jadwal<?= $no; ?>" value="<?= $jur->no_jadwal ?>">
                                                     <td>
@@ -123,7 +123,7 @@
                                                     <?php foreach ($juarabaru as $jur) : ?>
                                                 <tr class="text-center">
                                                     <td>
-                                                        <?= $no;  ?>9
+                                                        <?= $no;  ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>
@@ -150,7 +150,7 @@
                                             <?php foreach ($tidakjuara as $jur) : ?>
                                                 <tr class="text-center">
                                                     <td>
-                                                        <?= $no;  ?>9
+                                                        <?= $no;  ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>

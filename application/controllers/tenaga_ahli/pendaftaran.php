@@ -33,16 +33,17 @@ class Pendaftaran extends CI_Controller{
         $judul = $this->input->post('judul');
         $tgl_selesai = $this->input->post('tgl_selesai');
         $tahun = $this->input->post('tahun');
-
+$tgl_buat = date('d-m-Y');
 
         $data = array(
             'judul' => $judul,
             'tgl_selesai' => $tgl_selesai,
+            'tgl_buat' => $tgl_buat,
             'tahun' => $tahun
         );
 
         $this->model_pendaftaran->tambah_daftar($data, 'daftar');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
 
         redirect('tenaga_ahli/pendaftaran/');
     }
@@ -63,11 +64,13 @@ class Pendaftaran extends CI_Controller{
         $id = $this->input->post('no_daftar');
         $judul = $this->input->post('judul');
         $tgl_selesai = $this->input->post('tgl_selesai');
+        $tgl_buat = date('Y-m-d');
         // $status_daftar = $this->input->post('status_daftar');
 
         $data = [
             'judul' => $judul,
             'tgl_selesai' => $tgl_selesai,
+            'tgl_buat' => $tgl_buat
             // 'status_daftar' => $status_daftar,
         ];
 
@@ -76,7 +79,7 @@ class Pendaftaran extends CI_Controller{
         ];
 
         $this->model_pendaftaran->update_data($where, $data, 'daftar');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
 
         redirect('tenaga_ahli/pendaftaran/');
     }

@@ -19,7 +19,7 @@
                     <table id="kriteria" class="table table-bordered display">
                         <thead>
                             <tr>
-                                <th>NO</th>
+                                <th>Bidang</th>
                                 <th>Judul</th>
                                 <th>Nilai Maks</th>
                                 <th>Tahun</th>
@@ -28,10 +28,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 1; ?>
                             <?php foreach ($kriteria as $kriteria) : ?>
                                 <tr>
-                                    <td><?= $no++ ?></td>
+                                    <td>
+                                    <?php if($kriteria->kategori == 'P1'){
+                                        echo 'BPPD';
+                                    } elseif ($kriteria->kategori == 'P2') {
+                                        echo 'BPBD';
+                                    } elseif ($kriteria->kategori == 'P3') {
+                                        echo 'SATPO PP';
+                                    } elseif ($kriteria->kategori == 'P4') {
+                                        echo 'PERDES';
+                                    } elseif ($kriteria->kategori == 'P5') {
+                                        echo 'PERMAS';
+                                    }elseif ($kriteria->kategori == 'P6') {
+                                        echo 'DINKOMNFO';
+                                    } elseif ($kriteria->kategori == 'P7') {
+                                        echo 'DISBUDPAR';
+                                    } elseif ($kriteria->kategori == 'P8') {
+                                        echo 'DISNAKER';
+                                    } elseif ($kriteria->kategori == 'P9') {
+                                        echo 'DISPENDPEMLAH';
+                                    } elseif ($kriteria->kategori == 'P10') {
+                                        echo 'DINKES';
+                                    } elseif ($kriteria->kategori == 'P11') {
+                                        echo 'DINSOS';
+                                    }
+                                    
+                                    ?>
+                                    </td>
                                     <td><a href="<?= base_url('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria) ?>"><?= $kriteria->judul ?></a></td>
                                     <td><?= $kriteria->nilai_maks ?></td>
                                     <td><?= $kriteria->tahun ?></td>

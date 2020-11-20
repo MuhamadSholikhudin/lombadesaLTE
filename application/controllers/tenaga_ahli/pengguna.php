@@ -45,7 +45,7 @@ class Pengguna extends CI_Controller
         );
 
         $this->model_pengguna->tambah_pengguna($data, 'pengguna');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
     }
@@ -69,12 +69,14 @@ class Pengguna extends CI_Controller
         $id = $this->input->post('id_pengguna');
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
+        $password = $this->input->post('password');
         $hakakses = $this->input->post('hakakses');
         $penempatan = $this->input->post('penempatan');
 
         $data = [
             'nama' => $nama,
             'username' => $username,
+            'password' => $password,
             'hakakses' => $hakakses,
             'penempatan' => $penempatan
 
@@ -85,7 +87,7 @@ class Pengguna extends CI_Controller
         ];
 
         $this->model_pengguna->update_data($where, $data, 'pengguna');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
     }
@@ -94,7 +96,7 @@ class Pengguna extends CI_Controller
     {
         $where = ['id_pengguna' => $id];
         $this->model_pengguna->hapus_data($where, 'pengguna');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
+        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
     }

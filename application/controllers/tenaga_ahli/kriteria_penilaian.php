@@ -69,8 +69,6 @@ class Kriteria_penilaian extends CI_Controller
         $nilai_maks = $this->input->post('nilai_maks');
         $kategori = $this->input->post('kategori');
 
-
-
         $data = [
             'judul' => $judul,
             'kategori' => $kategori,

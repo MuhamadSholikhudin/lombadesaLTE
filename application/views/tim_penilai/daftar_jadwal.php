@@ -34,7 +34,7 @@
                                             <td><?= $jadw->desa ?></td>
                                             <td><?= $jadw->tgl_jadwal ?></td>
                                             <?php
-                                            if ($jadw->tgl_jadwal == date('Y-m-d')) {
+                                            if ($jadw->tgl_jadwal = date('Y-m-d')) {
                                             ?>
                                                 <td>
                                                     <?= anchor('tim_penilai/penilaian/form/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Form Penilaian">
@@ -42,11 +42,11 @@
                                         </div>') ?>
                                                 </td>
                                             <?php
-                                            } else{
+                                            } else {
                                             ?>
                                                 <td>
                                                     <div class="btn btn-danger btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Form Penilaian Belum bisa di akses">Akses tidak bisa
-                        </div>
+                                                    </div>
                                                 </td>
                                             <?php
                                             }

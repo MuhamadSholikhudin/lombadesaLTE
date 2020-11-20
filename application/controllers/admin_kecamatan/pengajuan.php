@@ -126,12 +126,12 @@ class Pengajuan extends CI_Controller{
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('kecamatan/edit_pengajuan', $data);
-        $this->load->view('templates_admin/footer');;
+        $this->load->view('templates_admin/footer');
     }
 
     public function edit_aksi()
     {
-$desa = $this->input->post('desa');
+        $desa = $this->input->post('desa');
         $no_hasilajuan = $this->input->post('no_hasilajuan');
         $data = [
             'desa' => $desa
@@ -152,6 +152,27 @@ $desa = $this->input->post('desa');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di hapus', 'success')</script>");
         
         redirect('admin_kecamatan/pengajuan/index');
+    }
+
+    public function lihat($no_hasilajuan){
+
+        $tahun = date('Y');
+
+        $data['pengajuan'] = $this->db->query(" SELECT * FROM hasil_ajuan WHERE no_hasilajuan = '$no_hasilajuan' ")->result();
+
+        $data['jadwal'] = $this->db->query(" SELECT * FROM jadwal_lomba WHERE no_hasilajuan = '$no_hasilajuan' AND status_jadwal = 2")->result();
+
+        $data['numjadwal'] = $this->db->query(" SELECT * FROM jadwal_lomba WHERE no_hasilajuan = '$no_hasilajuan' AND status_jadwal = 2")->num_rows();
+
+        $data['urujuara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
+        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  ")->result();
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('kecamatan/lihat_jadwal', $data);
+        $this->load->view('templates_admin/footer');
     }
 
 }

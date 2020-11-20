@@ -19,7 +19,7 @@
                 <div class="col-sm-12">
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Form Penilaian Desa</h3>
+                            <h3 class="card-title">Form Penilaian Desa&nbsp;<?php foreach($namadesa as $de) : echo $de->desa;  endforeach;?></h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
@@ -32,8 +32,8 @@
                                             <th>Judul</th>
                                             <th>Nilai maks</th>
                                             <th>Th <?= date('Y') - 2; ?></th>
-                                            <th>Th <?= date('Y') - 1; ?></th>
                                             <th>Dadu <?= date('Y') - 2; ?></th>
+                                            <th>Th <?= date('Y') - 1; ?></th>
                                             <th>Dadu <?= date('Y') - 1; ?></th>
                                         </tr>
                                     </thead>
@@ -54,10 +54,10 @@
                                                     <input class="form-control" type="number" name="nilai1[]" min="0" max="<?= $nil->nilai_maks; ?>" value="<?= $nil->nilai1; ?>">
                                                 </td>
                                                 <td style="width: 70px">
-                                                    <input class="form-control" type="number" name="nilai2[]" min="0" max="<?= $nil->nilai_maks; ?>" value="<?= $nil->nilai2; ?>">
+                                                    <input class="form-control" type="number" name="dadu1[]" min="0" max="5" value="<?= $nil->dadu1; ?>" data-toggle="tooltip" data-html="true" title="Isi dengan angka, bilamana data dukung</br>1 : Sangat tidak menyakinkan</br>2 : Tidak Menyakinkan</br>3 : Ragu-ragu</br>4 : Menyakinkan</br>5 : Sangat Menyakinkan">
                                                 </td>
                                                 <td style="width: 70px">
-                                                    <input class="form-control" type="number" name="dadu1[]" min="0" max="5" value="<?= $nil->dadu1; ?>" data-toggle="tooltip" data-html="true" title="Isi dengan angka, bilamana data dukung</br>1 : Sangat tidak menyakinkan</br>2 : Tidak Menyakinkan</br>3 : Ragu-ragu</br>4 : Menyakinkan</br>5 : Sangat Menyakinkan">
+                                                    <input class="form-control" type="number" name="nilai2[]" min="0" max="<?= $nil->nilai_maks; ?>" value="<?= $nil->nilai2; ?>">
                                                 </td>
                                                 <td style="width: 80px">
                                                     <input class="form-control" type="number" name="dadu2[]" min="0" max="5" value="<?= $nil->dadu2; ?>" data-toggle="tooltip" data-html="true" title="Isi dengan angka, bilamana data dukung</br>1 : Sangat tidak menyakinkan</br>2 : Tidak Menyakinkan</br>3 : Ragu-ragu</br>4 : Menyakinkan</br>5 : Sangat Menyakinkan">

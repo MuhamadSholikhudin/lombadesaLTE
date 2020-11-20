@@ -1,9 +1,10 @@
-<div class="container">
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper bcgd" style="min-height: 251px;">
     <!-- Outer Row -->
     <div class="row justify-content-center">
-        <div class="login-box ">
+        <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="<?= base_url('auth/login'); ?>"><b>Sign</b>In</a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
@@ -46,5 +47,6 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>
+<!-- /.content-wrapper -->

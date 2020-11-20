@@ -28,16 +28,12 @@
                                 <th>Tahun</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
-
-
-
                             </tr>
                         </thead>
                         <tbody>
                             <?php $no = 1; ?>
                             <?php foreach ($pendaftaran as $pendf) : ?>
                                 <tr>
-
                                     <td><?= $no++ ?></td>
                                     <td><?= $pendf->judul ?></td>
                                     <td><?= $pendf->tgl_buat ?></td>

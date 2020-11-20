@@ -23,7 +23,7 @@ class Pengajuan extends CI_Controller{
 
         // $data['pendaftaran'] = $this->db->get_where('daftar', ['id_pendf' => $id_pendf])->row();
         // $data['pengajuan'] = $this->db->where('hasil_ajuan', ['status_ajuan >' => 0])->result_array();
-        $data['pengajuan'] = $this->db->query('SELECT * FROM (hasil_ajuan) WHERE status_ajuan > 0')->result();
+        $data['pengajuan'] = $this->db->query('SELECT * FROM hasil_ajuan WHERE status_ajuan > 0')->result();
 
 
         $this->load->view('templates_admin/header');

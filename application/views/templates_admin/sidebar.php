@@ -154,12 +154,12 @@
           </li>
 
 
-          <li class="nav-header">Laporan</li>
+          <li class="nav-header">Rekap</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Laporan Data
+                Rekap Data
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -238,12 +238,12 @@
           </li>
 
 
-          <li class="nav-header">Laporan</li>
+          <li class="nav-header">Rekap</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Laporan Data
+                Rekap Data
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>

@@ -43,11 +43,9 @@
                                         <td><?= $jadw->tahun ?></td>
 
                                         <td>
-                                            <?= anchor('tenaga_ahli/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                                            <?= anchor('tenaga_ahli/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm"><i class="fa fa-edit"></i> </div>') ?>
                                         </td>
-                                        <td><?= anchor('tenaga_ahli/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm">
-                        <i class="fa fa-undo"></i> </div>') ?>
+                                        <td><?= anchor('tenaga_ahli/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm"><i class="fa fa-undo"></i> </div>') ?>
                                         </td>
 
                                         <?php
@@ -60,7 +58,7 @@
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="3" class="text-center">
 
-                                                <?= anchor('tenaga_ahli/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Jadwal Telah di ACC">
+                                                <?= anchor('tenaga_ahli/penjadwalan/', '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Jadwal Telah di ACC">
                                             <i class="fas fa-check-double"></i>
                                         </div>') ?>
                                             </td>
