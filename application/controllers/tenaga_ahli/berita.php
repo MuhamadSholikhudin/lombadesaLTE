@@ -65,7 +65,7 @@ class Berita extends CI_Controller{
             'gambar' => $gambar
         );
 
-        $this->model_berita->tambah_berita($data, 'berita');
+        $this->Model_berita->tambah_berita($data, 'berita');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         redirect('tenaga_ahli/berita');
     }
@@ -73,7 +73,7 @@ class Berita extends CI_Controller{
     public function edit($id)
     {
         $where = array('id_berita' => $id);
-        $data['berita'] = $this->model_berita->edit_berita($where, 'berita')->result();
+        $data['berita'] = $this->Model_berita->edit_berita($where, 'berita')->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -91,7 +91,7 @@ class Berita extends CI_Controller{
         // $gambarlama = $this->input->post('gambarlama');
         $tgl_buat = date('Y-m-d');
 
-        $data['berita'] = $this->model_berita->edit_berita($where, 'berita')->result();
+        $data['berita'] = $this->Model_berita->edit_berita($where, 'berita')->result();
 
         // cek jika ada gambar yang akan diupload
         $upload_gambar = $_FILES['gambar']['name'];
@@ -134,7 +134,7 @@ class Berita extends CI_Controller{
     public function hapus($id)
     {
         $where = ['kode_berita' => $id];
-        $this->model_berita->hapus_data($where, 'berita');
+        $this->Model_berita->hapus_data($where, 'berita');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         
         redirect('tenaga_ahli/berita/');

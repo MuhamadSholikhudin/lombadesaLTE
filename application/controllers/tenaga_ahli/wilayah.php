@@ -39,14 +39,14 @@ class wilayah extends CI_Controller{
             'desa' => $desa,
         );
 
-        $this->model_wilayah->tambah_wilayah($data, 'wilayah');
+        $this->Model_wilayah->tambah_wilayah($data, 'wilayah');
         redirect('tenaga_ahli/wilayah/');
     }
 
     public function edit($id)
     {
         $where = array('kode_wilayah' => $id);
-        $data['wilayah'] = $this->model_wilayah->edit_wilayah($where, 'wilayah')->result();
+        $data['wilayah'] = $this->Model_wilayah->edit_wilayah($where, 'wilayah')->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -69,14 +69,14 @@ class wilayah extends CI_Controller{
             'kode_wilayah' => $id
         ];
 
-        $this->model_wilayah->update_data($where, $data, 'wilayah');
+        $this->Model_wilayah->update_data($where, $data, 'wilayah');
         redirect('tenaga_ahli/wilayah/');
     }
 
     public function hapus($id)
     {
         $where = ['kode_wilayah' => $id];
-        $this->model_wilayah->hapus_data($where, 'wilayah');
+        $this->Model_wilayah->hapus_data($where, 'wilayah');
         redirect('tenaga_ahli/wilayah/');
     }
 }

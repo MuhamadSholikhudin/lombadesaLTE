@@ -44,7 +44,7 @@ class Pengguna extends CI_Controller
             'penempatan' => $penempatan
         );
 
-        $this->model_pengguna->tambah_pengguna($data, 'pengguna');
+        $this->Model_pengguna->tambah_pengguna($data, 'pengguna');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
@@ -53,7 +53,7 @@ class Pengguna extends CI_Controller
     public function edit($id)
     {
         $where = array('id_pengguna' => $id);
-        $data['pengguna'] = $this->model_pengguna->edit_pengguna($where, 'pengguna')->result();
+        $data['pengguna'] = $this->Model_pengguna->edit_pengguna($where, 'pengguna')->result();
         $data['klasi'] = [1,2, 3, 4, 5];
         $data['klasitim']= ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8','P9', 'P10'];
         $data['klasikeca'] = $this->db->query("SELECT COUNT(kode_wilayah) as total, kecamatan as kec FROM wilayah GROUP BY kecamatan")->result();
@@ -86,7 +86,7 @@ class Pengguna extends CI_Controller
             'id_pengguna' => $id
         ];
 
-        $this->model_pengguna->update_data($where, $data, 'pengguna');
+        $this->Model_pengguna->update_data($where, $data, 'pengguna');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
@@ -95,7 +95,7 @@ class Pengguna extends CI_Controller
     public function hapus($id)
     {
         $where = ['id_pengguna' => $id];
-        $this->model_pengguna->hapus_data($where, 'pengguna');
+        $this->Model_pengguna->hapus_data($where, 'pengguna');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');
@@ -104,7 +104,7 @@ class Pengguna extends CI_Controller
 
     function get_subkategori()
     {
-        $this->load->model('Model_wilayah', 'dep_kategori', TRUE);
+        $this->load->Model('Model_wilayah', 'dep_kategori', TRUE);
         // $hakakses = $this->input->post('hakakses');
         
         $keca = $this->dep_kategori->get_sub_kecamatan();

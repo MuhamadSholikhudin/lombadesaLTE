@@ -65,5 +65,19 @@ class Laporan extends CI_Controller
     }
 
 
+    public function nilai(){
+
+        $data['pengajuan'] = $this->db->query("SELECT * FROM  hasil_ajuan WHERE tahun = '2020' ORDER BY desa ASC")->result();
+        $data['penilai'] = $this->db->query("SELECT * FROM  pengguna WHERE hakakses = 5 ")->result();
+        $data['nilai'] = $this->db->query("SELECT * FROM  nilai WHERE tahun = '2020' ORDER BY no_jadwal ASC")->result();
+        $data['jadwal'] = $this->db->query("SELECT jadwal_lomba.no_jadwal, hasil_ajuan.no_hasilajuan, hasil_ajuan.desa FROM  jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE YEAR(jadwal_lomba.tgl_jadwal) = '2020' ORDER BY jadwal_lomba.no_jadwal ASC")->result();
+        
+
+$this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('tenaga_ahli/laporan_nilai', $data);
+        $this->load->view('templates_admin/footer');
+    }
+
 
 }

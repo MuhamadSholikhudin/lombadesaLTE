@@ -11,7 +11,7 @@
                     <br>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Jadwal Penilaian Desa Kabupaten Kudus Tahun &nbsp; <?= date('Y'); ?></h3>
+                            <h3 class="card-title">Jadwal Penilaian Desa Kabupaten Kudus Tahun <?= date('Y'); ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
@@ -34,18 +34,18 @@
                                             <td><?= $jadw->desa ?></td>
                                             <td><?= $jadw->tgl_jadwal ?></td>
                                             <?php
-                                            if ($jadw->tgl_jadwal = date('Y-m-d')) {
+                                            if ($jadw->tgl_jadwal == date('Y-m-d')) {
                                             ?>
                                                 <td>
-                                                    <?= anchor('tim_penilai/penilaian/form/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Form Penilaian">
-                                            <i class="fas fa-pencil-alt"></i>
+                                                    <?= anchor('tim_penilai/penilaian/form/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Form Penilaian">
+                                            <i class="fas fa-pen-alt"></i>&nbsp; Form Penilaian
                                         </div>') ?>
                                                 </td>
                                             <?php
-                                            } else {
+                                            } elseif($jadw->tgl_jadwal != date('Y-m-d')) {
                                             ?>
                                                 <td>
-                                                    <div class="btn btn-danger btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Form Penilaian Belum bisa di akses">Akses tidak bisa
+                                                    <div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Form Penilaian Belum bisa di akses">&nbsp;Akses tidak bisa
                                                     </div>
                                                 </td>
                                             <?php

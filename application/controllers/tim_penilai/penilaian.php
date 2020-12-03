@@ -70,6 +70,10 @@ class Penilaian extends CI_Controller
                     'id_kriteria'  =>  $tag->id_kriteria,
                     'tahun'   =>  $tag->tahun,
                     'nama'   =>  $namatim,
+                    'nilai1' => 0,
+                    'nilai2' => 0,
+                    'dadu1' => 0,
+                    'dadu2' => 0,
                     'no_jadwal'      =>  $id
                 );
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penilaian Lomba berhasil di muat', 'success')</script>");
@@ -136,7 +140,7 @@ class Penilaian extends CI_Controller
     public function hapus($id)
     {
         $where = ['id_kriteria' => $id];
-        $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
+        $this->Model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
         redirect('tenaga_ahli/kriteria_penilaian');
     }
 }

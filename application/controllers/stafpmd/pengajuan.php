@@ -42,8 +42,8 @@ class Pengajuan extends CI_Controller{
         ];
 
         $id = $no_hasilajuan;
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-        // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        // $idpendf = $this->Model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
             $this->session->set_flashdata("message", "<script>Swal.fire('KEMBALIKAN', 'Data Pengajuan Berhasil Dikembalikan', 'success')</script>");
 
@@ -65,11 +65,13 @@ class Pengajuan extends CI_Controller{
         // $tahun = $this->input->post('tahun');
 
         $datat = array(
-            'no_hasilajuan' => $no_hasilajuan
+            'no_hasilajuan' => $no_hasilajuan,
+            'tgl_jadwal' =>  '0000-00-00',
+            'status_jadwal' => 0
         );
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-        $this->model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
 
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Pengajuan Diterima', 'success')</script>");
@@ -87,10 +89,10 @@ class Pengajuan extends CI_Controller{
             'no_hasilajuan' => $no_hasilajuan
         ];
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-        $this->model_penjadwalan->hapuspenjadwal($where, 'jadwal_lomba');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_penjadwalan->hapuspenjadwal($where, 'jadwal_lomba');
 
-        // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
+        // $idpendf = $this->Model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Pengajuan di batalkan ', 'success')</script>");
 

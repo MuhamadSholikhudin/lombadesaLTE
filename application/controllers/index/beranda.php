@@ -19,7 +19,7 @@ $data['listberita'] = $this->db->query("SELECT * FROM berita ORDER BY id_berita 
         $where = $id_berita;
         $data['listberita'] = $this->db->query("SELECT * FROM berita WHERE id_berita < '$id_berita' ORDER BY id_berita DESC LIMIT 6")->result();
         $data['berita'] = $this->db->query("SELECT * FROM berita WHERE id_berita = '$id_berita' ")->result();
-        // $data['berita'] = $this->model_berita->edit_berita($where, 'berita')->result();
+        // $data['berita'] = $this->Model_berita->edit_berita($where, 'berita')->result();
 
         $this->load->view('templates/header');
         $this->load->view('beranda/berita', $data);

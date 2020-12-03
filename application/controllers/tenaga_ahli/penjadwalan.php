@@ -25,7 +25,7 @@ class Penjadwalan extends CI_Controller{
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun'")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
-        // $data['penjadwalan'] = $this->model_penjadwalan->tampil_data();
+        // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
 
 
         $this->load->view('templates_admin/header');
@@ -59,7 +59,7 @@ class Penjadwalan extends CI_Controller{
             'no_jadwal' => $id
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
         redirect('tenaga_ahli/penjadwalan/');
     }
 
@@ -72,7 +72,7 @@ class Penjadwalan extends CI_Controller{
             'no_jadwal' => $no_jadwal
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
         redirect('tenaga_ahli/penjadwalan/');
@@ -87,7 +87,7 @@ class Penjadwalan extends CI_Controller{
             'no_jadwal' => $no_jadwal
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
         redirect('tenaga_ahli/penjadwalan/');
@@ -102,10 +102,10 @@ class Penjadwalan extends CI_Controller{
             'no_hasilajuan' => $no_hasilajuan
         ];
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-        $this->model_penjadwalan->hapuspenjadwal($where, 'jadwal_lomba');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_penjadwalan->hapuspenjadwal($where, 'jadwal_lomba');
 
-        // $idpendf = $this->model_pengajuan->cariidp($id)->result_row();
+        // $idpendf = $this->Model_pengajuan->cariidp($id)->result_row();
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
 
         redirect('tenaga_ahli/penjadwalan/');

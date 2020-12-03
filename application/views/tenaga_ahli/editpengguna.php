@@ -94,7 +94,7 @@
                                                             <?php if ($pengguna->penempatan == 'P1') {
                                                                 echo 'Badan Perencanaan Pembangunan Daerah';
                                                             } elseif ($kla == 'P2') {
-                                                                echo 'BPBD';
+                                                                echo 'Badan Penanggulangan Bencana Daerah';
                                                             } elseif ($kla == 'P3') {
                                                                 echo 'Satuan Pamong Praja';
                                                             } elseif ($kla == 'P4') {

@@ -4,28 +4,30 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">HALAMAN PENILAI &nbsp; 
+                <div class="col-sm-12">
+                    <h1 class="m-0 text-dark">HALAMAN PENILAI 
                         <?php if($this->session->userdata('penempatan') == 'P1') {
-                            echo 'DINAS Kesehatan';
+                            echo 'Badan Perencanaan Pembangunan Daerah';
                             } elseif ($this->session->userdata('penempatan') == 'P2') {
-                            echo 'DINAS Pendidikan Pemuda dan Olahraga';
+                            echo 'Badan Penanggulangan Bencana Daerah';
                             } elseif ($this->session->userdata('penempatan') == 'P3') {
-                            echo 'DINAS Kominfo';
+                            echo 'Satuan Pamong Praja';
                             } elseif ($this->session->userdata('penempatan') == 'P4') {
-                            echo 'DINAS Perdagangan';
+                            echo 'Pemerintahan Desa';
                             } elseif ($this->session->userdata('penempatan') == 'P5') {
-                            echo 'DINAS Kebudayaan dan Pariwisata';
+                            echo 'Pemerintahan Masyarakat';
                             } elseif ($this->session->userdata('penempatan') == 'P6') {
-                            echo 'DINAS Pertanian dan Pangan';
+                            echo 'DINAS Komunikasi dan Informasi';
                             } elseif ($this->session->userdata('penempatan') == 'P7') {
-                            echo 'DINAS Tenaga Kerja';                      
+                            echo 'DINAS Kebudayaan dan Pariwisata<';                      
                             } elseif ($this->session->userdata('penempatan') == 'P8') {
-                            echo 'DINAS Sosial P3AP2KB';                       
+                            echo 'DINAS Tenaga Kerja';                       
                             } elseif ($this->session->userdata('penempatan') == 'P9') {
-                            echo 'DINAS Pekerjaan Umum dan Penataan Ruang';
+                            echo 'DINAS Pendidikan Pemuda dan Olahraga';
                             } elseif ($this->session->userdata('penempatan') == 'P10') {
-                            echo 'BNPB';
+                            echo 'DINAS Kesehatan';
+                        } elseif ($this->session->userdata('penempatan') == 'P11') {
+                            echo 'DINAS Sosial P3AP2KB';
                         }
                         ?>
                     </h1>

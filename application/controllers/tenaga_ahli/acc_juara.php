@@ -76,7 +76,7 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
                 'juara'	=>  $juara
         );
 
-        $this->model_juara->tambah_juara($data, 'juara_lomba');
+        $this->Model_juara->tambah_juara($data, 'juara_lomba');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA JUARA BERHASIL DI ACC', 'success')</script>");
 
         redirect('tenaga_ahli/acc_juara/');
@@ -105,8 +105,8 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         //     'tahun' => $tahunini
         // ];
 
-        // $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-        $this->model_juara->hapusjuara($where, 'juara_lomba');
+        // $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_juara->hapusjuara($where, 'juara_lomba');
 
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA JUARA BERHASIL DI BATALKAN', 'success')</script>");

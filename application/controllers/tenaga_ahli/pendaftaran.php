@@ -33,16 +33,17 @@ class Pendaftaran extends CI_Controller{
         $judul = $this->input->post('judul');
         $tgl_selesai = $this->input->post('tgl_selesai');
         $tahun = $this->input->post('tahun');
-$tgl_buat = date('d-m-Y');
+$tgl_buat = date('Y-m-d');
 
         $data = array(
             'judul' => $judul,
             'tgl_selesai' => $tgl_selesai,
             'tgl_buat' => $tgl_buat,
-            'tahun' => $tahun
+            'tahun' => $tahun,
+            'status_daftar' => 0
         );
 
-        $this->model_pendaftaran->tambah_daftar($data, 'daftar');
+        $this->Model_pendaftaran->tambah_daftar($data, 'daftar');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
 
         redirect('tenaga_ahli/pendaftaran/');
@@ -51,7 +52,7 @@ $tgl_buat = date('d-m-Y');
     public function edit($id)
     {
         $where = array('no_daftar' => $id);
-        $data['daftar'] = $this->model_pendaftaran->edit_daftar($where, 'daftar')->result();
+        $data['daftar'] = $this->Model_pendaftaran->edit_daftar($where, 'daftar')->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -78,7 +79,7 @@ $tgl_buat = date('d-m-Y');
             'no_daftar' => $id
         ];
 
-        $this->model_pendaftaran->update_data($where, $data, 'daftar');
+        $this->Model_pendaftaran->update_data($where, $data, 'daftar');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
 
         redirect('tenaga_ahli/pendaftaran/');
@@ -93,7 +94,7 @@ $tgl_buat = date('d-m-Y');
 
         }elseif($cari->num_rows() < 1){
             $where = ['no_daftar' => $id];
-            $this->model_pendaftaran->hapus_data($where, 'daftar');
+            $this->Model_pendaftaran->hapus_data($where, 'daftar');
             $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         }
 

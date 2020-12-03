@@ -56,11 +56,11 @@
           $("#penempatan option").remove();
           $('#penempatan').prop('disabled', false);
           $('#penempatan').append("<option value='P1'>Badan Perencanaan Pembangunan Daerah</option>");
-          $('#penempatan').append("<option value='P2'>BPBD</option>");
+          $('#penempatan').append("<option value='P2'>Badan Penanggulangan Bencana Daerah</option>");
           $('#penempatan').append("<option value='P3'>Satuan Pamong Praja</option>");
           $('#penempatan').append("<option value='P4'>Pemerintahan Desa</option>");
           $('#penempatan').append("<option value='P5'>Pemerintahan Masyarakat</option>");
-          $('#penempatan').append("<option value='P6'>DINAS Kominfo</option>");
+          $('#penempatan').append("<option value='P6'>DINAS Komunikasi dan Informasi</option>");
           $('#penempatan').append("<option value='P7'>DINAS Kebudayaan dan Pariwisata</option>");
           $('#penempatan').append("<option value='P8'>DINAS Tenaga Kerja</option>");
           $('#penempatan').append("<option value='P9'>DINAS Pendidikan Pemuda dan Olahraga</option>");

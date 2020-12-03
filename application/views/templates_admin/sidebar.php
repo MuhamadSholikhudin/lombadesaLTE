@@ -64,7 +64,7 @@
       <div class="info">
         <?php if ($this->session->userdata('username')) { ?>
 
-          <a href="#" class="d-block"><?= $this->session->userdata('username'); ?></a>
+          <a href="#" class="d-block"><?= $this->session->userdata('nama'); ?></a>
 
         <?php } ?>
 
@@ -154,12 +154,12 @@
           </li>
 
 
-          <li class="nav-header">Rekap</li>
+          <li class="nav-header">Laporan</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Rekap Data
+                Laporan Data
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -174,6 +174,12 @@
                 <a href="<?= base_url('tenaga_ahli/laporan/juaralomba'); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Juara Lomba</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?= base_url('tenaga_ahli/laporan/nilai'); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Nilai</p>
                 </a>
               </li>
             </ul>
@@ -238,12 +244,12 @@
           </li>
 
 
-          <li class="nav-header">Rekap</li>
+          <li class="nav-header">Laporan</li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-file-alt"></i>
               <p>
-                Rekap Data
+                Laporan Data
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -307,7 +313,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('tim_penilai/penilaian'); ?>" class="nav-link">
-              <i class="nav-icon fas fa-pencil-alt"></i>
+              <i class="nav-icon fas fa-pen-alt"></i>
               <p>
                 Penilaian
               </p>

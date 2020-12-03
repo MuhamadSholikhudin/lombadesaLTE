@@ -31,7 +31,6 @@
                                     <option value="<?= $wil->desa ?>"> <?= $wil->desa ?></option>
                                 <?php endforeach; ?>
                                 <?= form_error('desa', '<div class="text-danger small ml-2">', '</div>'); ?>
-
                             </select>
                         </div>
 

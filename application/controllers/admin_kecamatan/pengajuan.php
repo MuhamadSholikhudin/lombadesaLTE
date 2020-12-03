@@ -23,13 +23,13 @@ class Pengajuan extends CI_Controller{
         $tahun = date("Y");
         $kecamatan = $this->session->userdata('penempatan');
 
-        $data['pendaftaran'] = $this->model_pendaftaran->tampil_pendaftaran($tahun)->row();
-        $data['pendaftarannum'] = $this->model_pendaftaran->tampil_pendaftaran($tahun)->num_rows();
+        $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->row();
+        $data['pendaftarannum'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->num_rows();
 
 
 
-        $data['pengajuan'] = $this->model_pengajuan->tampil_pengajuan($kecamatan)->row();
-        $data['pengajuannum'] = $this->model_pengajuan->tampil_pengajuan( $kecamatan)->num_rows();
+        $data['pengajuan'] = $this->Model_pengajuan->tampil_pengajuan($kecamatan)->row();
+        $data['pengajuannum'] = $this->Model_pengajuan->tampil_pengajuan( $kecamatan)->num_rows();
 
 
         $this->load->view('templates_admin/header');
@@ -44,9 +44,9 @@ class Pengajuan extends CI_Controller{
         // $data['user'] = $this->db->get_where('pengguna', ['penempatan' => $this->session->userdata('penempatan')])->row();
         $kecamatan = $this->session->userdata('penempatan');
 
-        $data['pendaftaran'] = $this->model_pendaftaran->tampil_pendaftaran()->row();
+        $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
 
-        // $data['wilayah'] = $this->model_wilayah->tampil_wilayah($kecamatan)->result();
+        // $data['wilayah'] = $this->Model_wilayah->tampil_wilayah($kecamatan)->result();
         $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
 
 
@@ -75,10 +75,11 @@ class Pengajuan extends CI_Controller{
                 'kecamatan' => $kecamatan,
                 'desa' => $desa,
                 'tgl_ajuan' => $tgl_ajuan,
-                'tahun' => $tahun
+                'tahun' => $tahun,
+                'status_ajuan' => 0
         );
 
-        $this->model_pengajuan->tambah_pengajuan($data, 'hasil_ajuan');
+        $this->Model_pengajuan->tambah_pengajuan($data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di tambahkan', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/');
     }
@@ -92,7 +93,7 @@ class Pengajuan extends CI_Controller{
             'no_hasilajuan' => $no_hasilajuan
         ];
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di hapus', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index');
     }
@@ -107,7 +108,7 @@ class Pengajuan extends CI_Controller{
             'no_hasilajuan' => $no_hasilajuan
         ];
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ajukan', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index/');
     }
@@ -118,10 +119,13 @@ class Pengajuan extends CI_Controller{
         // $data['user'] = $this->db->get_where('pengguna', ['penempatan' => $this->session->userdata('penempatan')])->row();
         $kecamatan = $this->session->userdata('penempatan');
 
-        $data['pendaftaran'] = $this->model_pendaftaran->tampil_pendaftaran()->row();
-        $data['pengajuan'] = $this->model_pengajuan->idpengajuan($no_hasilajuan)->row();
+        $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
+        $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
 
-        $data['wilayah'] = $this->model_wilayah->tampil_wilayah($kecamatan)->result();
+
+        $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
+
+        // $data['wilayah'] = $this->Model_wilayah->tampil_wilayah($kecamatan)->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -140,7 +144,7 @@ class Pengajuan extends CI_Controller{
             'no_hasilajuan' => $no_hasilajuan
         ];
 
-        $this->model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ubah', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index');
     }
@@ -148,7 +152,7 @@ class Pengajuan extends CI_Controller{
     public function hapus($no_hasilajuan)
     {
         $where = ['no_hasilajuan' => $no_hasilajuan];
-        $this->model_pengajuan->hapuspengajuan($where, 'hasil_ajuan');
+        $this->Model_pengajuan->hapuspengajuan($where, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di hapus', 'success')</script>");
         
         redirect('admin_kecamatan/pengajuan/index');

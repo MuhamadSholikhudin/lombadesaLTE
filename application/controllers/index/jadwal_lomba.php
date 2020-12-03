@@ -27,7 +27,7 @@ class Jadwal_lomba extends CI_Controller
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun' AND jadwal_lomba.status_jadwal > 0")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
-        // $data['penjadwalan'] = $this->model_penjadwalan->tampil_data();
+        // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -56,7 +56,7 @@ class Jadwal_lomba extends CI_Controller
             'no_jadwal' => $no_jadwal
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
         redirect('admin_sekda/Jadwal_lomba/');
     }
@@ -70,7 +70,7 @@ class Jadwal_lomba extends CI_Controller
             'no_jadwal' => $no_jadwal
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
         redirect('admin_sekda/Jadwal_lomba/');
@@ -85,7 +85,7 @@ class Jadwal_lomba extends CI_Controller
             'no_jadwal' => $no_jadwal
         ];
 
-        $this->model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
 
         redirect('admin_sekda/Jadwal_lomba/');

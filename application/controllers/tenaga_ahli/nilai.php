@@ -65,7 +65,7 @@ class Nilai extends CI_Controller
             'id_nilai' => $id_nilai
         ];
 
-        $this->model_nilai->update_data($where, $data, 'nilai');
+        $this->Model_nilai->update_data($where, $data, 'nilai');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         
         redirect('tenaga_ahli/nilai/');
@@ -74,7 +74,7 @@ class Nilai extends CI_Controller
     public function hapus($id)
     {
         $where = ['id_pengguna' => $id];
-        $this->model_pengguna->hapus_data($where, 'pengguna');
+        $this->Model_pengguna->hapus_data($where, 'pengguna');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         
         redirect('tenaga_ahli/pengguna');

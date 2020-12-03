@@ -31,31 +31,31 @@
                             <?php foreach ($kriteria as $kriteria) : ?>
                                 <tr>
                                     <td>
-                                    <?php if($kriteria->kategori == 'P1'){
-                                        echo 'BPPD';
-                                    } elseif ($kriteria->kategori == 'P2') {
-                                        echo 'BPBD';
-                                    } elseif ($kriteria->kategori == 'P3') {
-                                        echo 'SATPO PP';
-                                    } elseif ($kriteria->kategori == 'P4') {
-                                        echo 'PERDES';
-                                    } elseif ($kriteria->kategori == 'P5') {
-                                        echo 'PERMAS';
-                                    }elseif ($kriteria->kategori == 'P6') {
-                                        echo 'DINKOMNFO';
-                                    } elseif ($kriteria->kategori == 'P7') {
-                                        echo 'DISBUDPAR';
-                                    } elseif ($kriteria->kategori == 'P8') {
-                                        echo 'DISNAKER';
-                                    } elseif ($kriteria->kategori == 'P9') {
-                                        echo 'DISPENDPEMLAH';
-                                    } elseif ($kriteria->kategori == 'P10') {
-                                        echo 'DINKES';
-                                    } elseif ($kriteria->kategori == 'P11') {
-                                        echo 'DINSOS';
-                                    }
-                                    
-                                    ?>
+                                        <?php if ($kriteria->kategori == 'P1') {
+                                            echo 'BPPD';
+                                        } elseif ($kriteria->kategori == 'P2') {
+                                            echo 'BPBD';
+                                        } elseif ($kriteria->kategori == 'P3') {
+                                            echo 'SATPO PP';
+                                        } elseif ($kriteria->kategori == 'P4') {
+                                            echo 'PERDES';
+                                        } elseif ($kriteria->kategori == 'P5') {
+                                            echo 'PERMAS';
+                                        } elseif ($kriteria->kategori == 'P6') {
+                                            echo 'DINKOMNFO';
+                                        } elseif ($kriteria->kategori == 'P7') {
+                                            echo 'DISBUDPAR';
+                                        } elseif ($kriteria->kategori == 'P8') {
+                                            echo 'DISNAKER';
+                                        } elseif ($kriteria->kategori == 'P9') {
+                                            echo 'DISPENDPEMLAH';
+                                        } elseif ($kriteria->kategori == 'P10') {
+                                            echo 'DINKES';
+                                        } elseif ($kriteria->kategori == 'P11') {
+                                            echo 'DINSOS';
+                                        }
+
+                                        ?>
                                     </td>
                                     <td><a href="<?= base_url('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria) ?>"><?= $kriteria->judul ?></a></td>
                                     <td><?= $kriteria->nilai_maks ?></td>
@@ -75,7 +75,7 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="tambah_kriteria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Form Buat Kriteria Penilaian</h5>

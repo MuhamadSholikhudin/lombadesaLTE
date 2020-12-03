@@ -38,10 +38,11 @@ class Pendaftaran extends CI_Controller{
         $data = array(
             'judul' => $judul,
             'status_daftar' => $status_daftar,
-            'tahun' => $tahun
+            'tahun' => $tahun,
+            'status_daftar' => 0
         );
 
-        $this->model_pendaftaran->tambah_daftar($data, 'daftar');
+        $this->Model_pendaftaran->tambah_daftar($data, 'daftar');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         redirect('stafpmd/pendaftaran/');
     }
@@ -49,7 +50,7 @@ class Pendaftaran extends CI_Controller{
     public function edit($id)
     {
         $where = array('no_daftar' => $id);
-        $data['daftar'] = $this->model_pendaftaran->edit_daftar($where, 'daftar')->result();
+        $data['daftar'] = $this->Model_pendaftaran->edit_daftar($where, 'daftar')->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -74,7 +75,7 @@ class Pendaftaran extends CI_Controller{
             'no_daftar' => $id
         ];
 
-        $this->model_pendaftaran->update_data($where, $data, 'daftar');
+        $this->Model_pendaftaran->update_data($where, $data, 'daftar');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         redirect('stafpmd/pendaftaran/');
     }
@@ -87,7 +88,7 @@ class Pendaftaran extends CI_Controller{
             $this->session->set_flashdata("message", "<script>Swal.fire('GAGAL)', 'Data yang Dihapus masih digunkan Oleh nilai sehingga tidak dapat di hapus', 'error')</script>");
         } elseif ($cari->num_rows() < 1) {
             $where = ['no_daftar' => $id];
-            $this->model_pendaftaran->hapus_data($where, 'daftar');
+            $this->Model_pendaftaran->hapus_data($where, 'daftar');
             $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         }
 

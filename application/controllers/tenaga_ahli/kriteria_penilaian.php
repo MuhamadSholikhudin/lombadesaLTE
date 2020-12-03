@@ -45,7 +45,7 @@ class Kriteria_penilaian extends CI_Controller
             'tahun' => $tahun
         );
 
-        $this->model_kriteriapenilaian->tambah_kriteria_penilaian($data, 'kriteria_penilaian');
+        $this->Model_kriteriapenilaian->tambah_kriteria_penilaian($data, 'kriteria_penilaian');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
         
         redirect('tenaga_ahli/kriteria_penilaian');
@@ -54,7 +54,7 @@ class Kriteria_penilaian extends CI_Controller
     public function edit($id)
     {
         $where = array('id_kriteria' => $id);
-        $data['kriteria'] = $this->model_kriteriapenilaian->edit_kriteria_penilaian($where, 'kriteria_penilaian')->result();
+        $data['kriteria'] = $this->Model_kriteriapenilaian->edit_kriteria_penilaian($where, 'kriteria_penilaian')->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -80,7 +80,7 @@ class Kriteria_penilaian extends CI_Controller
             'id_kriteria' => $id
         ];
 
-        $this->model_kriteriapenilaian->update_data($where, $data, 'kriteria_penilaian');
+        $this->Model_kriteriapenilaian->update_data($where, $data, 'kriteria_penilaian');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
         
         redirect('tenaga_ahli/kriteria_penilaian');
@@ -89,7 +89,7 @@ class Kriteria_penilaian extends CI_Controller
     // public function hapu($id)
     // {
     //     $where = ['id_kriteria' => $id];
-    //     $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
+    //     $this->Model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
     //     redirect('tenaga_ahli/kriteria_penilaian');
     // }
 
@@ -102,7 +102,7 @@ class Kriteria_penilaian extends CI_Controller
             $this->session->set_flashdata("message", "<script>Swal.fire('GAGAL', 'DATA KRITERIA PENILAIAN GAGAL DIHAPUS KARENA MASIH DI PAKAI', 'error')</script>");
         } elseif ($cari->num_rows() < 1) {
             $where = ['id_kriteria' => $id];
-            $this->model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
+            $this->Model_kriteriapenilaian->hapus_data($where, 'kriteria_penilaian');
             $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA KRITERIA PENILAIAN BERHASIL DI HAPUS', 'success')</script>");
         }
         redirect('tenaga_ahli/kriteria_penilaian/');

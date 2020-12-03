@@ -45,12 +45,14 @@
                                         <td><?= $jadw->tahun ?></td>
 
                                         <td>
-                                            <?= anchor('stafpmd/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm">
+                                            <?= anchor('stafpmd/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Edit Jadwal">
                         <i class="fa fa-edit"></i> </div>') ?>
                                         </td>
-                                        <td><?= anchor('stafpmd/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm">
+                                        <td><?= anchor('stafpmd/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">
                         <i class="fa fa-undo"></i> </div>') ?>
+
                                         </td>
+                                        <td></td>
 
                                         <?php
                                     } else {
@@ -62,8 +64,8 @@
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="3" class="text-center">
 
-                                                <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Ajukan">
-                                            <i class="fas fa-check-double"></i>
+                                                <?= anchor('stafpmd/penjadwalan/', '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Sudah di Setujui oleh Sekda Kudus">
+                                            <i class="fas fa-check-double"></i>Di Setujui
                                         </div>') ?>
                                             </td>
                                         <?php
@@ -72,33 +74,36 @@
                                             <td> <?= $jadw->tgl_jadwal ?></td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="2" class="text-center">
-                                                <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Sufah Mengajukan tunggu acc">
+                                                <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Sudah Mengajukan tunggu acc">
                                             <i><span> </span> Diajukan</i>
                                         </div>') ?>
                                             </td>
                                             <td>
-                                                <?= anchor('stafpmd/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm data-toggle=" tooltip" data-placement="top" title="batalkan">
+                                                <?= anchor('stafpmd/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="batalkan">
                         <i class="fas fa-times"></i> </div>') ?>
                                             </td>
+                                            
                                         <?php
                                         } elseif ($jadw->status_jadwal == 0) {
                                         ?>
                                             <td>
-                                                <a href="<?= base_url('stafpmd/penjadwalan/edit/') . $jadw->no_jadwal; ?>"><?= $jadw->tgl_jadwal ?>
+                                                <a href="<?= base_url('stafpmd/penjadwalan/edit/') . $jadw->no_jadwal; ?>" data-toggle="tooltip" data-placement="top" title="Edit Tanggal Jadwal"><?= $jadw->tgl_jadwal ?>
                                             </td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td>
 
-                                                <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm  data-toggle=" tooltip" data-placement="top" title="Ajukan">
+                                                <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Ajukan ke Sekda Kudus">
                                             <i class="fas fa-external-link-alt"></i>
                                         </div>') ?>
                                             </td>
                                             <td>
-                                                <?= anchor('stafpmd/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Edit">
+                                                <?= anchor('stafpmd/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Jadwal">
                         <i class="fa fa-edit"></i> </div>') ?>
                                             </td>
-                                            <td><?= anchor('stafpmd/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm data-toggle=" tooltip" data-placement="top" title="Kembalikan">
+                                            <td><?= anchor('stafpmd/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Kembalikan">
                         <i class="fa fa-undo-alt"></i> </div>') ?>
+
+
                                             </td>
                                     <?php
                                         }
@@ -117,7 +122,7 @@
 
 
     <!-- Main content -->
-    <section class="content">
+    <section class=" content">
         <div class="container-fluid">
 
 
