@@ -13,7 +13,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="fas fa-text-width"></i>
-                                Perlombaan Desa Pada Kecamatan&nbsp; <?= $this->session->userdata('penempatan') ?>
+                                Perlombaan Desa Pada Kecamatan <?= $this->session->userdata('penempatan') ?>
                             </h3>
                         </div>
                         <!-- /.card-header -->
@@ -33,7 +33,7 @@
                                     if ($jadwal->tgl_jadwal == 00 - 00 - 0000) {
                                 ?><dd class="col-sm-8"><?= $jadwal->tgl_jadwal; ?> &nbsp;Belum disetujui Sekda</dd><?php
                                     } else if ($jadwal->tgl_jadwal != 00 - 00 - 0000) {
-                                    ?><dd class="col-sm-8"><?= $jadwal->tgl_jadwal; ?></dd><?php
+                                    ?><dd class="col-sm-8"><?= longdate_indo($jadwal->tgl_jadwal); ?></dd><?php
                                     }
                                 endforeach;
                                 } else if ($numjadwal < 1) { ?>

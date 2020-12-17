@@ -28,17 +28,17 @@
                     <td><?= $penja->tgl_jadwal ?></td>
                     <td class="text-center">
                         <?= anchor('stafpmd/pendaftaran/edit/' . $penja->no_hasilajuan, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">
-                        <i class="fas fa-window-close"></i> </div>') ?>
+                        <i class="fas fa-window-close"></i>Kembalikan </div>') ?>
                     </td>
 
                 <?php   } elseif ($penja->tgl_jadwal == 0000 - 00 - 00) {
                 ?>
                     <td class="text-center">
-                        <a href="<?= base_url('stafpmd/penjadwalan/updatejadwal/' . $penja->no_jadwal)?>">Updat Tanggal</a>
+                        <a href="<?= base_url('stafpmd/penjadwalan/updatejadwal/' . $penja->no_jadwal)?>">Update Tanggal</a>
                     </td>
                     <td class="text-center">
-                        <?= anchor('stafpmd/penjadwalan/hapusjadwal/' . $penja->no_hasilajuan, '<button type="submit" class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="hapus ajuan">
-                        <i class="fas fa-trash"></i> </button>') ?>
+                        <?= anchor('stafpmd/penjadwalan/hapusjadwal/' . $penja->no_hasilajuan, '<button  class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="hapus ajuan">
+                        <i class="fas fa-trash"></i>Hapus </button>') ?>
                     </td>
                 <?php   }
 

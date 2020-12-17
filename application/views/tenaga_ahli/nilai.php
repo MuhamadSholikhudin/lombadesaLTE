@@ -44,7 +44,7 @@
                                     <td><?= $peng->nama ?></td>
                                     <td>
                                         <?= anchor('tenaga_ahli/nilai/edit/' . $peng->id_nilai, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i> Edit </div>') ?>
                                     </td>
 
                                 </tr>

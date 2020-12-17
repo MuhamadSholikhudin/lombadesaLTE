@@ -176,12 +176,7 @@
                   <p>Juara Lomba</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?= base_url('tenaga_ahli/laporan/nilai'); ?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Nilai</p>
-                </a>
-              </li>
+              
             </ul>
           </li>
 

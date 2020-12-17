@@ -25,8 +25,8 @@
                                         <th style="width: 40px">NO</th>
                                         <th>Kecamatan</th>
                                         <th>Desa</th>
-                                        <th style="width: 100px">Tanggal Mengajukan</th>
-                                        <th style="width: 100px">Tahun</th>
+                                        <th >Tanggal Mengajukan</th>
+                                        <th style="width: 150px">Tahun</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +43,7 @@
                                                 <?= $jur->desa ?>
                                             </td>
                                             <td>
-                                                <?= $jur->tgl_ajuan ?>
+                                                <?= longdate_indo($jur->tgl_ajuan)  ?>
                                             </td>
                                             <td><?= $jur->tahun  ?>
 

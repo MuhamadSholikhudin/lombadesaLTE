@@ -62,10 +62,10 @@
                                     <td><?= $kriteria->tahun ?></td>
                                     <td>
                                         <?= anchor('tenaga_ahli/kriteria_penilaian/edit/' . $kriteria->id_kriteria, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i> Edit </div>') ?>
                                     </td>
                                     <td><?= anchor('tenaga_ahli/kriteria_penilaian/hapus/' . $kriteria->id_kriteria, '<div class="btn btn-danger btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                        <i class="fa fa-trash"></i> Hapus </div>') ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

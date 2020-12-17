@@ -49,7 +49,7 @@
                                         <td><?= $penga->tahun ?></td>
                                         <td class="text-center">
                                             <?= anchor('stafpmd/pengajuan/editajuanjadwal/' . $penga->no_hasilajuan, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Batalkan">
-                        <i class="fas fa-window-close"></i> </div>') ?>
+                        <i class="fas fa-window-close"></i> Batalkan</div>') ?>
                                         </td>
                                     <?php   } elseif ($penga->status_ajuan > 0 && $penga->status_ajuan == 1) {
                                     ?>
@@ -60,10 +60,10 @@
                                         <td><?= $penga->tahun ?></td>
 
                                         <td class="text-center">
-                                            <?= anchor('stafpmd/pengajuan/diterima/' . $penga->no_hasilajuan, '<button type="submit"  class="btn btn-primary btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Diterima">                        <i class="fas fa-clipboard-check"></i> </button>') ?>
+                                            <?= anchor('stafpmd/pengajuan/diterima/' . $penga->no_hasilajuan, '<button type="submit"  class="btn btn-primary btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Diterima">                        <i class="fas fa-clipboard-check"></i> Terima </button>') ?>
                                         </td>
                                         <td class="text-center">
-                                            <?= anchor('stafpmd/pengajuan/dikembalikan/' . $penga->no_hasilajuan, '<div class="btn btn-success btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">                        <i class="fas fa-undo"></i> </div>') ?>
+                                            <?= anchor('stafpmd/pengajuan/dikembalikan/' . $penga->no_hasilajuan, '<div class="btn btn-success btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">                        <i class="fas fa-undo"></i> Kembalikan </div>') ?>
                                         </td>
                                     <?php   }
                                     ?>

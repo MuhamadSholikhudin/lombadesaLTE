@@ -24,7 +24,6 @@
                                 <th>Judul</th>
                                 <th>Tanggal Buat</th>
                                 <th>Tanggal selesai daftar</th>
-                                <th>Jumlah Desa</th>
                                 <th>Tahun</th>
                                 <th>Edit</th>
                                 <th>Hapus</th>
@@ -36,16 +35,15 @@
                                 <tr>
                                     <td><?= $no++ ?></td>
                                     <td><?= $pendf->judul ?></td>
-                                    <td><?= $pendf->tgl_buat ?></td>
-                                    <td><?= $pendf->tgl_selesai ?></td>
-                                    <td><?= 'Jumlah Desa' ?></td>
+                                    <td><?= longdate_indo($pendf->tgl_buat)  ?></td>
+                                    <td><?= longdate_indo($pendf->tgl_selesai)  ?></td>
                                     <td><?= $pendf->tahun ?></td>
                                     <td>
                                         <?= anchor('tenaga_ahli/pendaftaran/edit/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i> Edit </div>') ?>
                                     </td>
-                                    <td><?= anchor('tenaga_ahli/pendaftaran/hapus/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                                    <td><?= anchor('tenaga_ahli/pendaftaran/hapus/' . $pendf->no_daftar, '<div class="btn btn-danger btn-btn-sm">
+                        <i class="fa fa-trash"></i> Hapus </div>') ?>
                                     </td>
 
                                 </tr>

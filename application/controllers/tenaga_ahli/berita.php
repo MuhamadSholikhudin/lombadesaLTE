@@ -15,6 +15,7 @@ class Berita extends CI_Controller{
                     </div>');
             redirect('auth/login');
         }
+        $this->load->helper('tgl_indo');
     }
     
     public function index(){

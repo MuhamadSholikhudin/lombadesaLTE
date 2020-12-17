@@ -6,6 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">JADWAL PENILAIAN DESA</h1>
+
                 </div><!-- /.col -->
                 <div class="col-sm-12">
                     <br>
@@ -32,7 +33,7 @@
                                             <td><?= $no++ ?></td>
                                             <td><?= $jadw->kecamatan ?></td>
                                             <td><?= $jadw->desa ?></td>
-                                            <td><?= $jadw->tgl_jadwal ?></td>
+                                            <td><?= longdate_indo($jadw->tgl_jadwal) ?></td>
                                             <?php
                                             if ($jadw->tgl_jadwal == date('Y-m-d')) {
                                             ?>
@@ -42,7 +43,7 @@
                                         </div>') ?>
                                                 </td>
                                             <?php
-                                            } elseif($jadw->tgl_jadwal != date('Y-m-d')) {
+                                            } elseif ($jadw->tgl_jadwal != date('Y-m-d')) {
                                             ?>
                                                 <td>
                                                     <div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Form Penilaian Belum bisa di akses">&nbsp;Akses tidak bisa

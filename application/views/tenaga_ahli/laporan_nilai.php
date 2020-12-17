@@ -4,9 +4,10 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-12">
-                    <h1 class="m-0 text-dark">Laporan Nilai Lomba Desa </h1>
+                <div class="col-sm-12 mb-2 text-center">
+                    <h1 class="m-0 text-dark">Laporan Nilai Lomba Desa <?= 'as' ?></h1>
                 </div><!-- /.col -->
+                <br>
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">

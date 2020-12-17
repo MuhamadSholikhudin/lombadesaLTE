@@ -19,7 +19,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
-                            <table class="table table-sm" >
+                            <table class="table table-sm">
                                 <thead>
                                     <tr>
                                         <th style="width: 40px">NO</th>
@@ -40,7 +40,8 @@
                                                 <?= $jur->kecamatan ?>
                                             </td>
                                             <td>
-                                                <?= $jur->desa ?>
+
+                                                <a href="<?= base_url('tenaga_ahli/laporan/nilai/' . $jur->tahun) ?>" target="_blank" rel="noopener noreferrer"><?= $jur->desa ?></a>
                                             </td>
                                             <td>
                                                 <?= $jur->juara ?>

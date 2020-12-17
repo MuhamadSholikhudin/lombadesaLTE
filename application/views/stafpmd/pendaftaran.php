@@ -40,16 +40,16 @@
 
                                     <td><?= $no++ ?></td>
                                     <td><a href="<?= base_url('stafpmd/pendaftaran/listpendaftar/' . $pendf->no_daftar) ?>"><?= $pendf->judul ?></a></td>
-                                    <td><?= $pendf->tgl_buat ?></td>
-                                    <td><?= $pendf->tgl_selesai ?></td>
+                                    <td><?= longdate_indo($pendf->tgl_buat) ?></td>
+                                    <td><?= longdate_indo($pendf->tgl_selesai) ?></td>
                                     <td><?= 'Jumlah Desa' ?></td>
                                     <td><?= $pendf->tahun ?></td>
                                     <td>
                                         <?= anchor('stafpmd/pendaftaran/edit/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i>Edit </div>') ?>
                                     </td>
                                     <td><?= anchor('stafpmd/pendaftaran/hapus/' . $pendf->no_daftar, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                        <i class="fa fa-trash"></i>Hapus </div>') ?>
                                     </td>
 
                                 </tr>

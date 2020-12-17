@@ -43,7 +43,7 @@
                                                 <?= $jur->desa ?>
                                             </td>
                                             <td>
-                                                <?= $jur->tgl_ajuan ?>
+                                                <?= longdate_indo($jur->tgl_ajuan) ?>
                                             </td>
                                             <td><?= $jur->tahun  ?>
 

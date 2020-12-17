@@ -61,12 +61,12 @@
                                         <td><?= $jadw->tahun ?></td>
                                         <td class="text-center">
                                             <?= anchor('admin_sekda/jadwal_lomba/acc/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba">
-                                            <i class="fas fa-check"></i>
+                                            <i class="fas fa-check"> Setujui</i>
                                         </div>') ?>
                                         </td>
                                         <td>
                                             <?= anchor('admin_sekda/jadwal_lomba/kembalikan/' . $jadw->no_jadwal, '<div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Kembalikan Jadwal Lomba">
-                        <i class="fas fa-undo"></i> </div>') ?>
+                        <i class="fas fa-undo"></i>Kembalikan </div>') ?>
                                         </td>
                                     <?php
                                     }

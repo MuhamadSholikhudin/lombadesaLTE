@@ -18,6 +18,7 @@ class Penilaian extends CI_Controller
 
         $namatim = $this->session->userdata('nama');
         $penempatan = $this->session->userdata('penempatan');
+        $this->load->helper('tgl_indo');
     }
 
     public function index()

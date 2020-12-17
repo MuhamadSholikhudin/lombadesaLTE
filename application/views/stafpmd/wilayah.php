@@ -37,10 +37,10 @@
                                     <td><?= $wil->desa ?></td>
                                     <td>
                                         <?= anchor('stafpmd/wilayah/edit/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i>Edit </div>') ?>
                                     </td>
-                                    <td><?= anchor('stafpmd/wilayah/hapus/' . $wil->kode_wilayah, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                                    <td><?= anchor('stafpmd/wilayah/hapus/' . $wil->kode_wilayah, '<div class="btn btn-danger btn-btn-sm">
+                        <i class="fa fa-trash"></i>Hapus </div>') ?>
                                     </td>
 
                                 </tr>

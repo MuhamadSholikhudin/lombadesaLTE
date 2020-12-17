@@ -38,14 +38,58 @@
                                     <td><?= $peng->nama ?></td>
                                     <td><?= $peng->username ?></td>
                                     <td><?= $peng->password ?></td>
-                                    <td><?= $peng->hakakses ?></td>
-                                    <td><?= $peng->penempatan ?></td>
+
+                                    <td>
+
+                                        
+                                        <?php if ($peng->hakakses == 1) {
+                                            echo 'Tenaga Ahli PMD';
+                                        } elseif ($peng->hakakses == 2) {
+                                            echo 'STAF PMD';
+                                        } elseif ($peng->hakakses == 3) {
+                                            echo 'Admin Kecamatan';
+                                        } elseif ($peng->hakakses == 4) {
+                                            echo 'Admin Sekda';
+                                        } elseif ($peng->hakakses == 5) {
+                                            echo 'Penilai';
+                                        } 
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        <?php if ($peng->penempatan == "P1") {
+                                            echo 'Badan Perencanaan Pembangunan Daerah';
+                                        } elseif ($peng->penempatan === 'P2') {
+                                            echo 'Badan Penanggulangan Bencana Daerah';
+                                        } elseif ($peng->penempatan == 'P3') {
+                                            echo 'Satuan Pamong Praja';
+                                        } elseif ($peng->penempatan == 'P4') {
+                                            echo 'Pemerintahan Desa';
+                                        } elseif ($peng->penempatan == 'P5') {
+                                            echo 'Pemerintahan Masyarakat';
+                                        } elseif ($peng->penempatan == 'P6') {
+                                            echo 'DINAS Komunikasi dan Informasi';
+                                        } elseif ($peng->penempatan == 'P7') {
+                                            echo 'DINAS Kebudayaan dan Pariwisata<';
+                                        } elseif ($peng->penempatan == 'P8') {
+                                            echo 'DINAS Tenaga Kerja';
+                                        } elseif ($peng->penempatan == 'P9') {
+                                            echo 'DINAS Pendidikan Pemuda dan Olahraga';
+                                        } elseif ($peng->penempatan == 'P10') {
+                                            echo 'DINAS Kesehatan';
+                                        } elseif ($peng->penempatan == 'P11') {
+                                            echo 'DINAS Sosial P3AP2KB';
+                                        } else {
+                                            echo $peng->penempatan;
+                                        }
+                                        ?>
+                                    </td>
                                     <td>
                                         <?= anchor('tenaga_ahli/pengguna/edit/' . $peng->id_pengguna, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i> Edit </div>') ?>
                                     </td>
                                     <td><?= anchor('tenaga_ahli/pengguna/hapus/' . $peng->id_pengguna, '<div class="btn btn-danger btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                        <i class="fa fa-trash"></i> Hapus </div>') ?>
                                     </td>
 
                                 </tr>

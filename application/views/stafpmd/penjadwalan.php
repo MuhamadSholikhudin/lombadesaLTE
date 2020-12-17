@@ -46,10 +46,10 @@
 
                                         <td>
                                             <?= anchor('stafpmd/penjadwalan/edit/' . $jadw->no_jadwal, '<div class="btn btn-success btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Edit Jadwal">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i>Edit </div>') ?>
                                         </td>
                                         <td><?= anchor('stafpmd/penjadwalan/kembalikan/' . $jadw->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">
-                        <i class="fa fa-undo"></i> </div>') ?>
+                        <i class="fa fa-undo"></i>Kembalikan </div>') ?>
 
                                         </td>
                                         <td></td>
@@ -59,7 +59,7 @@
                                         if ($jadw->status_jadwal == 2) {
                                         ?>
                                             <td>
-                                                <?= $jadw->tgl_jadwal ?>
+                                                <?= longdate_indo($jadw->tgl_jadwal) ?>
                                             </td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="3" class="text-center">
@@ -71,7 +71,7 @@
                                         <?php
                                         } elseif ($jadw->status_jadwal == 1) {
                                         ?>
-                                            <td> <?= $jadw->tgl_jadwal ?></td>
+                                            <td> <?= longdate_indo($jadw->tgl_jadwal) ?></td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td colspan="2" class="text-center">
                                                 <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Sudah Mengajukan tunggu acc">
@@ -87,7 +87,7 @@
                                         } elseif ($jadw->status_jadwal == 0) {
                                         ?>
                                             <td>
-                                                <a href="<?= base_url('stafpmd/penjadwalan/edit/') . $jadw->no_jadwal; ?>" data-toggle="tooltip" data-placement="top" title="Edit Tanggal Jadwal"><?= $jadw->tgl_jadwal ?>
+                                                <a href="<?= base_url('stafpmd/penjadwalan/edit/') . $jadw->no_jadwal; ?>" data-toggle="tooltip" data-placement="top" title="Edit Tanggal Jadwal"><?= longdate_indo($jadw->tgl_jadwal) ?>
                                             </td>
                                             <td><?= $jadw->tahun ?></td>
                                             <td>

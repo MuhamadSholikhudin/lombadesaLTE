@@ -36,13 +36,13 @@
                                     <td><?= $wil->judul ?></td>
                                     <td>
                                         <img src="<?= base_url('uploads/') . $wil->gambar ?>" alt="Gambar tidak ditemukan" class="img-thumbnail"></td>
-                                    <td><?= $wil->tgl_buat ?></td>
+                                    <td><?= longdate_indo($wil->tgl_buat) ?></td>
                                     <td>
                                         <?= anchor('stafpmd/berita/edit/' . $wil->id_berita, '<div class="btn btn-success btn-btn-sm">
-                        <i class="fa fa-edit"></i> </div>') ?>
+                        <i class="fa fa-edit"></i>Edit </div>') ?>
                                     </td>
                                     <td><?= anchor('stafpmd/berita/hapus/' . $wil->id_berita, '<div class="btn btn-danger btn-btn-sm">
-                        <i class="fa fa-trash"></i> </div>') ?>
+                        <i class="fa fa-trash"></i>Hapus </div>') ?>
                                     </td>
 
                                 </tr>
