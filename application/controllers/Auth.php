@@ -25,6 +25,7 @@ class Auth extends CI_Controller{
                 $this->session->set_userdata('nama', $auth->nama);
                 $this->session->set_userdata('hakakses', $auth->hakakses);
                 $this->session->set_userdata('penempatan', $auth->penempatan);
+                $this->session->set_userdata('id_pengguna', $auth->id_pengguna);
 
                 switch($auth->hakakses){
                     case 1 : redirect('tenaga_ahli/dashboard');

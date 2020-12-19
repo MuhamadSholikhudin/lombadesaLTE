@@ -16,7 +16,10 @@
         <div class="row">
             <div class="col-sm-12 mt-4 mb-4 text-center">
                 <strong>
-                    Laporan data Pendaftar Lomba Desa Kabupaten Kudus
+                    <h4>
+
+                        Laporan data Pendaftar Lomba Desa Kabupaten Kudus
+                    </h4>
                 </strong>
             </div>
             <div class="col-sm-12">
@@ -54,6 +57,21 @@
 
                     </tbody>
                 </table>
+            </div>
+            <br>
+            <div class="col-sm-8">
+
+            </div>
+            <div class="col-sm-4">
+                <h5><?= longdate_indo(date('Y-m-d')) ?></h5>
+                <h5>Tenaga Ahli </h5>
+                <h5>Dinas Pemberdayaan Masyarakat dan Desa</h5>
+                <br>
+                <br>
+                <?php foreach ($tenagaahli as $teg) : ?>
+                    <h5> <?= $teg->nama ?></h5>
+                    <h5>NIP. <?= $teg->username ?></h5>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

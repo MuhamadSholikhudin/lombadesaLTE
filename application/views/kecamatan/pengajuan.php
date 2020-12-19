@@ -9,13 +9,31 @@
                 </div><!-- /.col -->
                 <?= $this->session->flashdata('message'); ?>
 
+                <div class="card card-primary col-sm-12">
+                    <div class="card-header">
+                        <h3 class="card-title">Informasi</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                        <!-- /.card-tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        Jangan sampai terlambat mengajukan desa, Jika terlambat mengajukan desa maka akan didiskualifikasi dan tidak ikut dalam berlombaan
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+
+
                 <div class="col-sm-12">
                     <br>
                     <table class="table table-border">
                         <tr>
                             <th>Judul</th>
                             <th>Tanggal dibuat</th>
-                            <th>Tanggal Selesai Pendaftaran</th>
+                            <th>Tanggal Terakhir Pendaftaran</th>
                             <th>Desa</th>
                             <th>Tahun</th>
                             <th colspan="3" class="text-center">Aksi</th>

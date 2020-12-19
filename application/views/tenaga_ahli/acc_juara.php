@@ -29,15 +29,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php if ($numjuara->num_rows() == 1) {
+                                    <?php if ($numjuara->num_rows() == 6) {
                                     ?>
+
                                         <?php $no = 1; ?>
                                         <?php foreach ($juara as $jur) : ?>
                                             <tr>
                                                 <form action="<?= base_url('tenaga_ahli/acc_juara/batalkan') ?>" enctype="multipart/form-data" method="POST">
                                                     <td class="text-center">
                                                         <?= $no;  ?>
-                                                        <input type="hidden" name="id_juara" value="<?= $jur->id_juara ?>">
+                                                        <input type="hidden" name="id_juara[]" value="<?= $jur->id_juara ?>">
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>
@@ -47,6 +48,15 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->juara;  ?>
+                                                        <?php if ($jur->juara == 4) {
+                                                            echo 'Juara Harapan 1';
+                                                        } elseif ($jur->juara == 5) {
+                                                            echo 'Juara Harapan 2';
+                                                        } elseif ($jur->juara == 6) {
+                                                            echo 'Juara Harapan 3';
+                                                        }
+
+                                                        ?>
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->total_nilai  ?>
@@ -74,6 +84,7 @@
                                     } elseif ($numjuara->num_rows() < 1) {
                                         if ($juaraini->num_rows() < 1) {
                                         ?>
+
                                             <tr>
                                                 <td colspan="4" class="text-center">
                                                     Data Belum Ada
@@ -116,10 +127,12 @@
                                                 <?php endforeach; ?>
 
                                             <?php
-                                        } elseif ($juaraini->num_rows() >= 5) {
+                                        } elseif ($juaraini->num_rows() >= 6) {
                                             ?>
-                                                <?php $no = 1; ?>
+
+
                                                 <form action="<?= base_url('tenaga_ahli/acc_juara/acc') ?>" enctype="multipart/form-data" method="POST">
+                                                    <?php $no = 1; ?>
                                                     <?php foreach ($juarabaru as $jur) : ?>
                                                 <tr class="text-center">
                                                     <td>
@@ -127,26 +140,38 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>
-                                                        <input type="hidden" name="kecamatan" value="<?= $jur->kecamatan ?>">
+                                                        <input type="hidden" name="kecamatan[]" value="<?= $jur->kecamatan ?>">
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->desa ?>
-                                                        <input type="hidden" name="desa" value="<?= $jur->desa ?>">
+                                                        <input type="hidden" name="desa[]" value="<?= $jur->desa ?>">
                                                     </td>
-                                                    <td class="text-center"><span class="badge bg-primary"><?= $no;  ?></span>
-                                                        <input type="hidden" name="juara" value="<?= $no; ?>">
+                                                    <td class="text-center">
+                                                        <span class="badge bg-primary">
+                                                            <?= $no  ?>
+                                                            <?php if ($no == 4) {
+                                                                echo 'Juara Harapan 1';
+                                                            } elseif ($no == 5) {
+                                                                echo 'Juara Harapan 2';
+                                                            } elseif ($no == 6) {
+                                                                echo 'Juara Harapan 3';
+                                                            }
+
+                                                            ?>
+                                                        </span>
+                                                        <input type="hidden" name="juara[]" value="<?= $no; ?>">
                                                     </td>
                                                     <td class="text-center"><?= $jur->total  ?>
-                                                        <input type="hidden" name="total_nilai" value="<?= $jur->total; ?>">
+                                                        <input type="hidden" name="total_nilai[]" value="<?= $jur->total; ?>">
                                                     </td>
                                                     <td class="text-center"><?= $jur->total_dadu  ?>
-                                                        <input type="hidden" name="total_dadu" value="<?= $jur->total_dadu; ?>">
+                                                        <input type="hidden" name="total_dadu[]" value="<?= $jur->total_dadu; ?>">
                                                     </td>
                                                 </tr>
                                                 <?php $no++; ?>
                                             <?php endforeach; ?>
 
-                                            <?php $no = 2; ?>
+                                            <?php $no = 7; ?>
                                             <?php foreach ($tidakjuara as $jur) : ?>
                                                 <tr class="text-center">
                                                     <td>

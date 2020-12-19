@@ -36,12 +36,12 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 1 ")->result();
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 6 ")->result();
 
         $data['tidakjuara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 9 OFFSET 1")->result();
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 9 OFFSET 6")->result();
 
         $data['numjuara'] = $this->db->query("SELECT * 
         FROM juara_lomba WHERE tahun = '$tahun' ");
@@ -59,27 +59,41 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
     }
 
     public function acc(){
-
-        $desa = $this->input->post('desa');
-        $kecamatan = $this->input->post('kecamatan');
-        $juara = $this->input->post('juara');
-        $total_nilai = $this->input->post('total_nilai');
-        $total_dadu = $this->input->post('total_dadu');
+        //acc satu data
+        // $desa = $this->input->post('desa');
+        // $kecamatan = $this->input->post('kecamatan');
+        // $juara = $this->input->post('juara');
+        // $total_nilai = $this->input->post('total_nilai');
+        // $total_dadu = $this->input->post('total_dadu');
 
         $tahun = date('Y');
 
-        $data = array(
-                'tahun'	=>  $tahun,
-                'desa'	=>  $desa,
-                'kecamatan'=>  $kecamatan,
-                'total_nilai'=>  $total_nilai,
-                'total_dadu'=>  $total_dadu,
-                'juara'	=>  $juara
-        );
+        // $data = array(
+        //         'tahun'	=>  $tahun,
+        //         'desa'	=>  $desa,
+        //         'kecamatan'=>  $kecamatan,
+        //         'total_nilai'=>  $total_nilai,
+        //         'total_dadu'=>  $total_dadu,
+        //         'juara'	=>  $juara
+        // );
 
-        $this->Model_juara->tambah_juara($data, 'juara_lomba');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA JUARA BERHASIL DI ACC', 'success')</script>");
+        // $this->Model_juara->tambah_juara($data, 'juara_lomba');
+        // $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA JUARA BERHASIL DI ACC', 'success')</script>");
+        // redirect('tenaga_ahli/acc_juara/');
 
+        $result = array();
+        foreach ($_POST['desa'] as $key => $val) {
+            $result[] = array(
+                'tahun'    =>  $tahun,
+                'desa'	=>  $_POST['desa'][$key],
+                'kecamatan '=>  $_POST['kecamatan'][$key],
+                'total_nilai'=>  $_POST['total_nilai'][$key],
+                'total_dadu '=>  $_POST['total_dadu'][$key],
+                'juara'	=>  $_POST['juara'][$key]
+            );
+        }
+        $this->db->insert_batch('juara_lomba', $result);
+$this->session->set_flashdata("message", "<script>Swal.fire('SUKSES)', 'DATA JUARA BERHASIL DI ACC', 'success')</script>");
         redirect('tenaga_ahli/acc_juara/');
 
     }
@@ -87,7 +101,7 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
     public function batalkan()
     {
 
-        $id_juara = $this->input->post('id_juara');
+        //## BAtalkan tidak Terpakai
         // $kecamatan = $this->input->post('kecamatan');
         // $desa = $this->input->post('desa');
         // $tahunini = date('Y');
@@ -97,22 +111,34 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         // $data = [
         //     'status_jadwal' => 2
         // ];
-
-        $where = [
-            'id_juara' => $id_juara
-        ];
-
         // $tahun = [
         //     'tahun' => $tahunini
         // ];
 
-        // $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
-        $this->Model_juara->hapusjuara($where, 'juara_lomba');
-
         // $id_pendf = $this->db->query('SELECT id_pendf FROM hasil_ajuan WHERE no_hasilajuan ='. $no_hasilajuan);
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA JUARA BERHASIL DI BATALKAN', 'success')</script>");
+        // $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
+
+        //##Batalkan cuma satu record
+        //     $id_juara = $this->input->post('id_juara');
+
+        //     $where = [
+        //         'id_juara' => $id_juara
+        //     ];
+        //     $this->Model_juara->hapusjuara($where, 'juara_lomba');
+
+        //     $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA JUARA BERHASIL DI BATALKAN', 'success')</script>");
+
+        //     redirect('tenaga_ahli/acc_juara/');
+        
+        
+        
+        //##batalkan banyak record
+        foreach ($_POST['id_juara'] as $id_juara) {
+            $this->Model_juara->delete($id_juara);
+        }
         redirect('tenaga_ahli/acc_juara/');
-    }
 
+
+        }
 }

@@ -26,19 +26,37 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="Selesai">Tanggal Selesai Pendafataran</label>
-                                        <input type="date" class="form-control" id="Selesai" name="tgl_selesai" value="<?= $daftar->tgl_selesai; ?>">
+                                        <input type="date" class="form-control" id="Selesai" name="tgl_selesai" value="<?= $daftar->tgl_selesai ?>">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="gambar">Upload file baru</label>
+
+                                        <input type="file" class="form-control" id="gambar" name="surat_sosialisasi" accept="application/pdf, application/vnd.ms-excel">
+
                                     </div>
                                 </div>
+
+
                                 <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary" confirm("Press a button!\nEither OK or Cancel.");>Simpan</button>
-                                </div>
+
                             <?php endforeach; ?>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary" confirm("Press a button!\nEither OK or Cancel.");>Simpan</button>
+                            </div>
                         </form>
+
                     </div>
 
-                </div><!-- /.col -->
+                </div>
+
+                <div class="col-sm-6">
+                    <object id="gambar1" type="application/pdf" data="<?= base_url('uploads/files/CAMSC.pdf') ?>" width="100%" height="700px">
+
+                </div>
+                <!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

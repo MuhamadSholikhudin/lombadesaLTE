@@ -150,7 +150,7 @@
                                             } elseif ($pengguna->hakakses == 3) {
                                                 // echo $pengguna->penempatan;
                                             ?>
-                                                <?php foreach ($klasikeca as $kla) : ?>                             
+                                                <?php foreach ($klasikeca as $kla) : ?>
                                                     <?php if ($kla->kec == $pengguna->penempatan) : ?>
                                                         <option value="<?= $kla->kec; ?>" selected><?= $kla->kec; ?></option>
                                                     <?php else : ?>
@@ -161,6 +161,21 @@
                                             } ?>
 
 
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <label for="status">Status</label>
+                                        <select type="text" class="form-control" id="status" name="status" required>
+                                            <?php foreach ($status as $sta) : ?>
+                                                <?php if ($sta == $pengguna->status) : ?>
+                                                    <option value="<?= $sta ?>" selected><?= $sta ?></option>
+                                                <?php else : ?>
+                                                    <option value="<?= $sta ?>"><?= $sta ?></option>
+                                                <?php endif ?>
+                                            <?php endforeach ?>
                                         </select>
                                     </div>
                                 </div>

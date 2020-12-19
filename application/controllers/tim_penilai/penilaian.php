@@ -58,6 +58,7 @@ class Penilaian extends CI_Controller
     
         $namatim = $this->session->userdata('nama');
         $penempatan = $this->session->userdata('penempatan');
+        $id_pengguna = $this->session->userdata('id_pengguna');
 
         $cari = $this->db->query("SELECT * FROM nilai WHERE nama = '$namatim' AND no_jadwal = '$id' ");
 
@@ -71,14 +72,15 @@ class Penilaian extends CI_Controller
                     'id_kriteria'  =>  $tag->id_kriteria,
                     'tahun'   =>  $tag->tahun,
                     'nama'   =>  $namatim,
-                    'nilai1' => 0,
-                    'nilai2' => 0,
-                    'dadu1' => 0,
-                    'dadu2' => 0,
+                    'id_pengguna' => $id_pengguna,
+                    'nilai1' => 1,
+                    'nilai2' => 1,
+                    'dadu1' => 1,
+                    'dadu2' => 1,
                     'no_jadwal'      =>  $id
                 );
-        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penilaian Lomba berhasil di muat', 'success')</script>");
                 $this->db->insert('nilai', $data);
+        $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penilaian Lomba berhasil di muat', 'success')</script>");
             }
 
             $data['namadesa'] = $this->db->query("SELECT hasil_ajuan.desa as desa FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE jadwal_lomba.no_jadwal = '$id' ")->result();

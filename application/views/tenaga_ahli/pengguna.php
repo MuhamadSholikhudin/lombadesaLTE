@@ -41,7 +41,7 @@
 
                                     <td>
 
-                                        
+
                                         <?php if ($peng->hakakses == 1) {
                                             echo 'Tenaga Ahli PMD';
                                         } elseif ($peng->hakakses == 2) {
@@ -52,7 +52,7 @@
                                             echo 'Admin Sekda';
                                         } elseif ($peng->hakakses == 5) {
                                             echo 'Penilai';
-                                        } 
+                                        }
                                         ?>
                                     </td>
 
@@ -147,6 +147,16 @@
                                         <label for="penempatan" class="col-sm-2 col-form-label">Penempatan</label>
                                         <div class="col-sm-10">
                                             <select type="text" class="form-control" id="penempatan" name="penempatan" required>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                        <div class="col-sm-10">
+                                            <select type="text" class="form-control" id="status" name="status" required>
+                                                <option value="Aktif" selected> Aktif </option>
+                                                <option value="Tidak-Aktif"> Tidak-Aktif </option>
 
                                             </select>
                                         </div>

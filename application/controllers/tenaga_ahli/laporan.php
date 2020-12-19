@@ -38,6 +38,7 @@ class Laporan extends CI_Controller
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan ORDER BY tgl_ajuan DESC")->result();
+        $data['tenagaahli'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 1")->result();
 
         $this->load->view('tenaga_ahli/cetak_pendaftar', $data);
        
@@ -62,7 +63,8 @@ class Laporan extends CI_Controller
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['juara'] = $this->db->query("SELECT * FROM juara_lomba ORDER BY tahun DESC")->result();
-
+        $data['tenagaahli'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 1")->result();
+        
         $this->load->view('tenaga_ahli/cetak_juara', $data);
     }
 

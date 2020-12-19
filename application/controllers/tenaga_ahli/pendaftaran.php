@@ -36,18 +36,36 @@ class Pendaftaran extends CI_Controller{
         $tahun = $this->input->post('tahun');
 $tgl_buat = date('Y-m-d');
 
-        $data = array(
-            'judul' => $judul,
-            'tgl_selesai' => $tgl_selesai,
-            'tgl_buat' => $tgl_buat,
-            'tahun' => $tahun,
-            'status_daftar' => 0
-        );
 
-        $this->Model_pendaftaran->tambah_daftar($data, 'daftar');
-        $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+        // $gambar = $_FILES['gambar']['name'];
+        // if ($gambar = '') {
+        // } else {
+            $config['upload_path'] = './uploads/files/';
+            $config['allowed_types'] = 'pdf';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('file_name')) {
+                   $error = array('error' => $this->upload->display_errors());
+            $this->load->view('index', $error);
+            } else {
+                $upload_data = $this->upload->data();
 
-        redirect('tenaga_ahli/pendaftaran/');
+
+            $data = array(
+                'judul' => $judul,
+                'tgl_selesai' => $tgl_selesai,
+                'tgl_buat' => $tgl_buat,
+                'tahun' => $tahun,
+                'surat_sosialisasi' => $upload_data['file_name']
+            );
+
+            $this->Model_pendaftaran->tambah_daftar($data, 'daftar');
+            $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI TAMBAHKAN', 'success')</script>");
+
+            redirect('tenaga_ahli/pendaftaran/');
+            }
+        // }
+
+        
     }
 
     public function edit($id)
@@ -67,8 +85,36 @@ $tgl_buat = date('Y-m-d');
         $judul = $this->input->post('judul');
         $tgl_selesai = $this->input->post('tgl_selesai');
         $tgl_buat = date('Y-m-d');
-        // $status_daftar = $this->input->post('status_daftar');
+        // $surat_sosialisasi = $this->input->post('surat_sosialisasi');
 
+        $ftg  = $this->db->query("SELECT surat_sosialisasi FROM daftar WHERE no_daftar = '$id' ");
+        $fil = $ftg->row();
+
+        $tg = $fil->surat_sosialisasi;
+
+        $old_file = $tg;
+
+        $upload_file = $_FILES['surat_sosialisasi']['name'];
+
+        if ($upload_file) {
+            $config['allowed_types'] = 'pdf';
+            $config['max_size']      = 0;
+            $config['upload_path'] = './uploads/files/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('surat_sosialisasi')) {
+                $old_file = $tg;
+                if ($old_file != 'default.pdf') {
+                    unlink(FCPATH . 'uploads/files/' . $old_file);
+                }
+                $new_surat_sosialisasi = $this->upload->data('file_name');
+                $this->db->set('surat_sosialisasi', $new_surat_sosialisasi);
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+
+        }
         $data = [
             'judul' => $judul,
             'tgl_selesai' => $tgl_selesai,
@@ -76,11 +122,13 @@ $tgl_buat = date('Y-m-d');
             // 'status_daftar' => $status_daftar,
         ];
 
-        $where = [
-            'no_daftar' => $id
-        ];
-
-        $this->Model_pendaftaran->update_data($where, $data, 'daftar');
+        // $where = [
+        //     'no_daftar' => $id
+        // ];
+        $this->db->set($data);
+        $this->db->where('no_daftar', $id);
+        $this->db->update('daftar');
+        // $this->Model_pendaftaran->update_data($where, $data, 'daftar');
         $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI UBAH', 'success')</script>");
 
         redirect('tenaga_ahli/pendaftaran/');
@@ -95,6 +143,17 @@ $tgl_buat = date('Y-m-d');
 
         }elseif($cari->num_rows() < 1){
             $where = ['no_daftar' => $id];
+
+            $ftg  = $this->db->query("SELECT surat_sosialisasi FROM daftar WHERE no_daftar = '$id' ");
+            $fil = $ftg->row();
+            
+            $tg = $fil->surat_sosialisasi;
+
+            $old_file = $tg;
+            if ($old_file != 'default.pdf') {
+                unlink(FCPATH . 'uploads/files/' . $old_file);
+            }
+
             $this->Model_pendaftaran->hapus_data($where, 'daftar');
             $this->session->set_flashdata("message", "<script>Swal.fire('SUKSES', 'DATA PENDAFTARAN BERHASIL DI HAPUS', 'success')</script>");
         }

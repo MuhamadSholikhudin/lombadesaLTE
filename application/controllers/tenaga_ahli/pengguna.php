@@ -36,12 +36,17 @@ class Pengguna extends CI_Controller
         $nama = $this->input->post('nama');
         $username = $this->input->post('username');
         $hakakses = $this->input->post('hakakses');
+        $password = $this->input->post('password');
         $penempatan = $this->input->post('penempatan');
+        $status = $this->input->post('status');
+
 
         $data = array(
             'nama' => $nama,
             'username' => $username,
+            'password' => $password,
             'hakakses' => $hakakses,
+            'status' => $status,
             'penempatan' => $penempatan
         );
 
@@ -58,7 +63,7 @@ class Pengguna extends CI_Controller
         $data['klasi'] = [1,2, 3, 4, 5];
         $data['klasitim']= ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8','P9', 'P10'];
         $data['klasikeca'] = $this->db->query("SELECT COUNT(kode_wilayah) as total, kecamatan as kec FROM wilayah GROUP BY kecamatan")->result();
-
+$data['status'] = ['Aktif', 'Tidak-Aktif'];
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('tenaga_ahli/editpengguna', $data);
@@ -72,6 +77,7 @@ class Pengguna extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $hakakses = $this->input->post('hakakses');
+        $status = $this->input->post('status');
         $penempatan = $this->input->post('penempatan');
 
         $data = [
@@ -79,6 +85,7 @@ class Pengguna extends CI_Controller
             'username' => $username,
             'password' => $password,
             'hakakses' => $hakakses,
+            'status' => $status,
             'penempatan' => $penempatan
 
         ];

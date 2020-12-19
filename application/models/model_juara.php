@@ -18,5 +18,10 @@ class Model_juara extends CI_Model
         $this->db->where($tahun);
         $this->db->delete($table);
     }
-    
+
+    public function delete($id_juara)
+    {
+        $this->db->where('id_juara', $id_juara);
+        $this->db->delete('juara_lomba');
+    }
 }
