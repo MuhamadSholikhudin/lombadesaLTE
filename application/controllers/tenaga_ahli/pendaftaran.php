@@ -89,11 +89,8 @@ $tgl_buat = date('Y-m-d');
 
         $ftg  = $this->db->query("SELECT surat_sosialisasi FROM daftar WHERE no_daftar = '$id' ");
         $fil = $ftg->row();
-
         $tg = $fil->surat_sosialisasi;
-
         $old_file = $tg;
-
         $upload_file = $_FILES['surat_sosialisasi']['name'];
 
         if ($upload_file) {
