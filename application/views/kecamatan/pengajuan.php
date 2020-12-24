@@ -61,7 +61,7 @@
                                     <tr>
 
                                         <td><a href="<?= base_url('admin_kecamatan/pengajuan/tambah') ?>"><?= $pendaftaran->judul ?></a></td>
-                                        <td><?= $pendaftaran->status_daftar ?></td>
+                                        <td></td>
                                         <td><?= longdate_indo($pendaftaran->tgl_selesai) ?></td>
 
                                         <td> - </td>
@@ -75,7 +75,7 @@
 
                                     </tr>
                                     <?php } elseif ($pengajuannum > 0) {
-                                    if ($pengajuan->status_ajuan == 2) { ?>
+                                    if ($pengajuan->status_ajuan == 3) { ?>
                                         <tr>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= longdate_indo($pengajuan->tgl_ajuan) ?></td>
@@ -90,7 +90,7 @@
 
 
                                         </tr>
-                                    <?php } elseif ($pengajuan->status_ajuan == 1) { ?>
+                                    <?php } elseif ($pengajuan->status_ajuan == 2) { ?>
                                         <tr>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= longdate_indo($pengajuan->tgl_ajuan) ?></td>
@@ -103,7 +103,7 @@
                                             </td>
 
                                         </tr>
-                                    <?php } elseif ($pengajuan->status_ajuan == 0) { ?>
+                                    <?php } elseif ($pengajuan->status_ajuan == 1) { ?>
                                         <tr>
                                             <td><?= $pendaftaran->judul ?></td>
                                             <td><?= longdate_indo($pengajuan->tgl_ajuan) ?></td>
@@ -112,14 +112,32 @@
                                             <td><?= $pengajuan->desa ?></td>
                                             <td><?= $pendaftaran->tahun ?></td>
                                             <td>
-                                                <?= anchor('admin_kecamatan/pengajuan/ajukan/' . $pengajuan->no_hasilajuan, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Ajukan">
-                        <i class="fas fa-check" ></i> Ajukan </div>') ?>
-                                            </td>
-                                            <td>
                                                 <?= anchor('admin_kecamatan/pengajuan/editdesa/' . $pengajuan->no_hasilajuan, '<div class="btn btn-success btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Edit Desa">
                         <i class="fa fa-edit" ></i>Edit </div>') ?>
+
+
+                                                <?= anchor('admin_kecamatan/pengajuan/batal/' . $pengajuan->no_hasilajuan, '<div class="btn btn-warning btn-btn-sm" title="Batalkan Ajuan">
+                        <i class="fas fa-window-close"></i> DiKembalikan </div>') ?>
                                             </td>
-                                            <td><?= anchor('admin_kecamatan/pengajuan/hapus/' . $pengajuan->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Hapus Desa">
+
+                                        </tr>
+                                    <?php } elseif ($pengajuan->status_ajuan == 0) { ?>
+                                        <tr>
+                                            <td><?= $pendaftaran->judul ?></td>
+                                            <td><?= longdate_indo($pengajuan->tgl_ajuan) ?></td>
+                                            <td><?= longdate_indo($pendaftaran->tgl_selesai) ?></td>
+                                            <td><?= $pengajuan->desa ?></td>
+                                            <td><?= $pendaftaran->tahun ?></td>
+                                            <td>
+                                                <a href="<?= base_url('admin_kecamatan/pengajuan/editdesa/' . $pengajuan->no_hasilajuan) ?>">as</a>
+
+                                                <?= anchor('admin_kecamatan/pengajuan/ajukan/' . $pengajuan->no_hasilajuan, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Ajukan">
+                        <i class="fas fa-check" ></i> Ajukan </div>') ?>
+
+                                                <?= anchor('admin_kecamatan/pengajuan/editdesa/' . $pengajuan->no_hasilajuan, '<div class="btn btn-success btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Edit Desa">
+                        <i class="fa fa-edit" ></i>Edit </div>') ?>
+
+                                                <?= anchor('admin_kecamatan/pengajuan/hapus/' . $pengajuan->no_hasilajuan, '<div class="btn btn-danger btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Hapus Desa">
                         <i class="fa fa-trash" ></i> Hapus </div>') ?>
                                             </td>
 
@@ -130,7 +148,7 @@
                             <?php } elseif ($tgl_sls > $tgl_now) { ?>
                                 <tr>
                                     <td><?= $pendaftaran->judul ?></td>
-                                    <td><?= $pendaftaran->status_daftar ?></td>
+                                    <td></td>
                                     <td><?= longdate_indo($pendaftaran->tgl_selesai) ?></td>
 
                                     <td><?= 'Desa Kosong' ?></td>

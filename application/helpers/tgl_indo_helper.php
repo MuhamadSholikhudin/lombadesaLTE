@@ -179,6 +179,9 @@
 	    }
 	}
 	
+
+
+	
 	//Long date indo Format
 	if ( ! function_exists('longdate_indo'))
 	{
@@ -203,5 +206,22 @@
 	        return $nama_hari.', '.$tgl.' '.$bulan.' '.$thn;
 	    }
 	}
-	 
-	
+
+
+
+
+//Long date medium indo Format
+if (!function_exists('longdateum_indo')) {
+	function longdateum_indo($tanggal)
+	{
+		$ubah = gmdate($tanggal, time() + 60 * 60 * 8);
+		$pecah = explode("-", $ubah);
+		$tgl = $pecah[2];
+		$bln = $pecah[1];
+		$thn = $pecah[0];
+		$bulan = bulan($pecah[1]);
+
+		
+		return  $tgl . ' ' . $bulan . ' ' . $thn;
+	}
+}

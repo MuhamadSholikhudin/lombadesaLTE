@@ -20,20 +20,34 @@ class Penjadwalan extends CI_Controller{
     
     public function index(){
 
-        $tahun = date('Y');
+        $data['pertahun'] =  $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,  hasil_ajuan.no_hasilajuan, hasil_ajuan.desa, hasil_ajuan.tahun, hasil_ajuan.kecamatan 
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan GROUP BY hasil_ajuan.tahun ")->result();
+        
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('stafpmd/list_penjadwalan', $data);
+        $this->load->view('templates_admin/footer.php');
+    }
+
+    public function index_pertahun($tahun)
+    {
+
+        // $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun'")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
         // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
-
+$data['tahunin'] = [$tahun];
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('stafpmd/penjadwalan', $data);
         $this->load->view('templates_admin/footer.php');
     }
+
     public function edit($id)
     {
         // $where = array('no_jadwal' => $id);

@@ -63,21 +63,31 @@ class Pengajuan extends CI_Controller{
         $this->form_validation->set_rules('desa', 'desa', 'required', ['required' => 'Desa wajib di Isi !']);
 
         $no_daftar = $this->input->post('no_daftar');
-        $judul = $this->input->post('judul');
         $kecamatan = $this->input->post('kecamatan');
         $desa = $this->input->post('desa');
         $tgl_ajuan = date("Y-m-d");
         $tahun = $this->input->post('tahun');
 
+        $config['upload_path'] = './uploads/files/';
+        $config['allowed_types'] = 'pdf';
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('file_name')) {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('index', $error);
+        } else {
+            $upload_data = $this->upload->data();
+        }
+
 
         $data = array (
                 'no_daftar' => $no_daftar,
-                'judul' => $judul,
                 'kecamatan' => $kecamatan,
                 'desa' => $desa,
                 'tgl_ajuan' => $tgl_ajuan,
                 'tahun' => $tahun,
-                'status_ajuan' => 0
+                'surat_balasan_desa' => $upload_data['file_name'],
+                'status_ajuan' => 0,
+                'catatan' => ' '
         );
 
         $this->Model_pengajuan->tambah_pengajuan($data, 'hasil_ajuan');
@@ -103,7 +113,7 @@ class Pengajuan extends CI_Controller{
     {
 
         $data = [
-            'status_ajuan' => 1
+            'status_ajuan' => 2
         ];
         $where = [
             'no_hasilajuan' => $no_hasilajuan
@@ -138,14 +148,54 @@ class Pengajuan extends CI_Controller{
     {
         $desa = $this->input->post('desa');
         $no_hasilajuan = $this->input->post('no_hasilajuan');
-        $data = [
-            'desa' => $desa
-        ];
-        $where = [
-            'no_hasilajuan' => $no_hasilajuan
-        ];
+        $file_lama = $this->input->post('file_lama');
 
-        $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+        // $data = [
+        //     'desa' => $desa
+        // ];
+        // $where = [
+        //     'no_hasilajuan' => $no_hasilajuan
+        // ];
+
+        // $ajuan_file = $this->db->query("SELECT surat_balasan_desa FROM hasil_ajuan WHERE no_hasilajuan = '$no_hasilajuan' ");
+        // $pt = $ajuan_file->row();
+        // $tg = $pt->surat_balasan_desa;
+
+        
+        // cek jika ada gambar yang akan diupload
+        $upload_file = $_FILES['file_name']['name'];
+
+        if ($upload_file) {
+            $config['allowed_types'] = 'pdf';
+            $config['max_size']      = '0';
+            // $config['max_width'] = '0';
+            // $config['max_height'] = '0';
+            $config['upload_path'] = './uploads/files/';
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('file_name')) {
+                $old_file = $file_lama;
+                if ($old_file != 'default.pdf') {
+                    unlink(FCPATH . 'uploads/files/' . $old_file);
+                }
+                $new_file = $this->upload->data('file_name');
+                $this->db->set('surat_balasan_desa', $new_file);
+            } else {
+                echo $this->upload->dispay_errors();
+            }
+        }
+        $data = array(
+            'no_hasilajuan' => $no_hasilajuan,
+            'desa' => $desa,
+        );
+
+        $this->db->set($data);
+        $this->db->where('no_hasilajuan', $no_hasilajuan);
+        $this->db->update('hasil_ajuan');
+
+
+        // $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ubah', 'success')</script>");
         redirect('admin_kecamatan/pengajuan/index');
     }

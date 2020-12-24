@@ -64,7 +64,15 @@
       <div class="info">
         <?php if ($this->session->userdata('username')) { ?>
 
-          <a href="#" class="d-block"><?= $this->session->userdata('nama'); ?></a>
+          <a href="#" class="d-block">
+            <?php if ($this->session->userdata('hakakses') == 3) { ?>
+              Kecamatan <?= $this->session->userdata('penempatan'); ?>
+
+            <?php }else{ ?>
+               <?= $this->session->userdata('penempatan'); ?>
+
+            <?php } ?>
+          </a>
 
         <?php } ?>
 
@@ -176,7 +184,7 @@
                   <p>Juara Lomba</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
 
