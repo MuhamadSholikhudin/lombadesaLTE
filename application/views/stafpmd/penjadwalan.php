@@ -25,13 +25,18 @@
                                 <th>DESA</th>
                                 <th>KECAMATAN</th>
                                 <!-- <th>Tahun</th> -->
-<?php foreach ($penjadwalan as $jadw) : 
-if ($jadw->status_jadwal == 0 ) { ?>
-                                <th colspan="3" class="text-center">Aksi</th>
-<?php }elseif ($jadw->status_jadwal == 2){
-echo '';
-}?>
-<?php endforeach; ?>
+                                
+                                
+                                <?php
+                                ini_set('display_errors', 'off');
+                                if ($jadini->status_jadwal == 0) {
+                                ?>
+                                    <th class="text-center">Aksi</th>
+
+                                <?php } elseif ($jadini->status_jadwal >= 1) {
+                                    echo '';
+                                } ?>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -83,15 +88,15 @@ echo '';
                                             <td> <?= longdate_indo($jadw->tgl_jadwal) ?></td>
                                             <td><?= $jadw->desa ?></td>
                                             <td><?= $jadw->kecamatan ?></td>
-                                            <td colspan="2" class="text-center">
-                                                <!-- <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Sudah Mengajukan tunggu acc">
+                                            <!-- <td colspan="2" class="text-center"> -->
+                                            <!-- <?= anchor('stafpmd/penjadwalan/ajukan/' . $jadw->no_jadwal, '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Sudah Mengajukan tunggu acc">
                                             <i><span> </span> Diajukan</i>
                                         </div>') ?>
                                             </td>
                                             <td> -->
-                                                <!-- <?= anchor('stafpmd/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="batalkan">
+                                            <!-- <?= anchor('stafpmd/penjadwalan/batalkan/' . $jadw->no_jadwal, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="batalkan">
                         <i class="fas fa-times"></i> </div>') ?> -->
-                                            </td>
+                                            <!-- </td> -->
 
                                         <?php
                                         } elseif ($jadw->status_jadwal == 0) {
@@ -148,17 +153,27 @@ echo '';
                                     <?php foreach ($tahunin as $tahu) :
                                         $numpengajua = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahu' ");
                                         $numpengjadw = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' ");
-                                        if ($numpengajua->num_rows() ==  $numpengjadw->num_rows()) { ?>
+                                        $jadacc = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' AND jadwal_lomba.status_jadwal = 2");
+                                        $jadkirim = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' AND jadwal_lomba.status_jadwal >= 1");
+
+                                        if ($numpengajua->num_rows() ==  $jadacc->num_rows()) { ?>
+                                            Ter Tanda tangani
+                                        <?php } elseif ($numpengajua->num_rows() ==  $jadkirim->num_rows()) { ?>
                                             <form action="<?= base_url('admin_sekda/jadwal_lomba/acc/') ?>" method="post" enctype="multipart/form-data">
                                                 <?php foreach ($penjadwalan as $jadw) : ?>
                                                     <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
                                                 <?php endforeach; ?>
-
-                                                <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check"> Kirim Ke Sekda</i></button>
+                                                <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check"> Sudah terkirim Ke Sekda</i></button>
+                                            </form>
+                                        <?php } elseif ($numpengajua->num_rows() ==  $numpengjadw->num_rows()) { ?>
+                                            <form action="<?= base_url('admin_sekda/jadwal_lomba/acc/') ?>" method="post" enctype="multipart/form-data">
+                                                <?php foreach ($penjadwalan as $jadw) : ?>
+                                                    <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
+                                                <?php endforeach; ?>
+                                                <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check">kirim sekda</i></button>
                                             </form>
                                         <?php } else { ?>
                                             <div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Ada Jadwal lomba yang belum di buat">Jadwal lomba belum Lengkap</i></div>
-
                                         <?php } ?>
 
                                     <?php endforeach; ?>
@@ -166,8 +181,8 @@ echo '';
                                 </h5>
                             </div>
                             <div>
-                                <h5 class="text-center"><u><?= $this->session->userdata('nama') ?></u> </h5>
-                                <h5 class="text-center">NIP : <?= $this->session->userdata('username') ?></h5>
+                                <h5 class="text-center"><u><?= $sekda->nama ?></u> </h5>
+                                <h5 class="text-center">NIP : <?= $sekda->username ?></h5>
                             </div>
                         </div>
                     </div>

@@ -17,11 +17,24 @@ class Pengajuan extends CI_Controller{
         }
         $this->load->helper('tgl_indo');
     }
-    
-    public function index(){
+
+    public function index()
+    {
+
+        $data['pertahun'] =  $this->db->query("SELECT * FROM daftar  GROUP BY tahun ")->result();
+
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('kecamatan/list_pengajuan', $data);
+        $this->load->view('templates_admin/footer.php');
+    }
+
+
+    public function index_pertahun($tahun){
         $data['user'] = $this->db->get_where('pengguna', ['penempatan' => $this->session->userdata('penempatan')])->row();
 
-        $tahun = date("Y");
+        // $tahun = date("Y");
         $kecamatan = $this->session->userdata('penempatan');
 
         $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->row();

@@ -35,11 +35,12 @@ class Penjadwalan extends CI_Controller{
 
         // $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
+        $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal, jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal, hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun'")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
-        // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
+        $data['sekda'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 4")->row();
+        $data['jadini'] = $this->db->query("SELECT jadwal_lomba.status_jadwal as status_jadwal FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun' AND jadwal_lomba.status_jadwal >= 1 LIMIT 1")->row();
 $data['tahunin'] = [$tahun];
 
         $this->load->view('templates_admin/header');
