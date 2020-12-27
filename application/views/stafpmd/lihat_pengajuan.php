@@ -156,10 +156,16 @@
                                         <!-- checkbox -->
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="1" name="cekpengajuan[]">
+                                                <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="1" <?php if ($pengajuan->status_ajuan == 3) {
+                                                                                                                                        echo 'checked="checked"';
+                                                                                                                                    } else {
+                                                                                                                                        echo ' ';
+                                                                                                                                    }
+                                                                                                                                    ?> name="cekpengajuan[]">
                                                 <label for="customCheckbox1" class="custom-control-label">Sudah benar</label>
                                             </div>
                                             <input class="" type="hidden" id="" value="<?= $pengajuan->no_hasilajuan ?>" name="no_hasilajuan">
+                                            <input class="" type="hidden" id="" value="<?= $pengajuan->tahun ?>" name="tahun">
 
                                         </div>
                                     </div>
@@ -189,7 +195,12 @@
                                     <!-- checkbox -->
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="customCheckbox2" value="2" name="cekpengajuan[]">
+                                            <input class="custom-control-input" type="checkbox" id="customCheckbox2" value="2" <?php if ($pengajuan->status_ajuan == 3) {
+                                                                                                                                    echo 'checked="checked"';
+                                                                                                                                } else {
+                                                                                                                                    echo ' ';
+                                                                                                                                }
+                                                                                                                                ?> name="cekpengajuan[]">
                                             <label for="customCheckbox2" class="custom-control-label">Sudah benar</label>
                                         </div>
 
@@ -211,28 +222,28 @@
 
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-6 text-right">
 
-                    <button href="<?= base_url('admin_kecamatan/pengajuan/index/'); ?>" class="btn btn-success btn--sm mt-3">kembali</button>
-                    <button class="btn btn-primary btn--sm mt-3" type="submit">Simpan</button>
-                    </form>
+                    <a href="<?= base_url('stafpmd/pengajuan/index_pertahun/' . $pengajuan->tahun); ?>" class="btn btn-success">kembali</a>
+                    <button class="btn btn-primary" type="submit">Simpan</button>
+                </div>
 
+                </form>
 
-
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
 
 
-            <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+
+        <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 </div>

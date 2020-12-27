@@ -3,16 +3,17 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 card">
+                <br>
                 <div class="col-sm-12">
-                    <h1 class="m-0 text-dark text-center">DATA PENGAJUAN DESA PESERTA LOMBA DESA</h1>
+                    <h1 class="m-0 text-dark text-center">DATA PENGAJUAN DESA PESERTA LOMBA DESA TAHUN <?= $tahun ?></h1>
                     <?= $this->session->flashdata('message'); ?>
 
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">
                     <br>
-                    <table class="table table-border">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>NO</th>
@@ -46,13 +47,16 @@
                                             </td>
                                             <td><?= $penga->tahun ?></td>
                                             <td class="text-center">
-                                                <?= anchor('stafpmd/pengajuan/editajuanjadwal/' . $penga->no_hasilajuan, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Batalkan">
-                        <i class="fas fa-window-close"></i> Batalkan</div>') ?>
+                                                <!-- <?= anchor('stafpmd/pengajuan/editajuanjadwal/' . $penga->no_hasilajuan, '<div class="btn btn-warning btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Batalkan">
+                        <i class="fas fa-window-close"></i> Batalkan</div>') ?> -->
+                                                <a href="<?= base_url('stafpmd/pengajuan/lihat_pengajuan/') . $penga->no_hasilajuan ?>" class="btn btn-info btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Berkas"><i class="fas fa-eye"></i> Lihat</a>
+
                                             </td>
                                         <?php   } elseif ($penga->status_ajuan > 0 && $penga->status_ajuan == 2) {
                                         ?>
-                                            <td><?php if ($penga->status_ajuan == 2) {
-                                                    echo 'Belum Di cek';
+                                            <td>
+                                                <?php if ($penga->status_ajuan == 2) {
+                                                    echo 'Belum di Cek';
                                                 } ?>
                                             </td>
                                             <td><?= $penga->tahun ?></td>
@@ -62,9 +66,10 @@
                                                 <!-- <?= anchor('stafpmd/pengajuan/lihat_berkas/' . $penga->no_hasilajuan, '<button type="submit"  class="btn btn-info btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Berkas">                        <i class="fas fa-eye"></i> Lihat </button>') ?> -->
                                                 <a href="<?= base_url('stafpmd/pengajuan/lihat_pengajuan/') . $penga->no_hasilajuan ?>" class="btn btn-info btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Lihat Berkas"><i class="fas fa-eye"></i> Lihat</a>
                                             </td>
+                                            <!--                                             
                                             <td class="text-center">
                                                 <?= anchor('stafpmd/pengajuan/dikembalikan/' . $penga->no_hasilajuan, '<div class="btn btn-success btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Dikembalikan">                        <i class="fas fa-undo"></i> Kembalikan </div>') ?>
-                                            </td>
+                                            </td> -->
                                         <?php   }  ?>
                                     </form>
                                 </tr>

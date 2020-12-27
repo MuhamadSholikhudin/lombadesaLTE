@@ -21,7 +21,7 @@ class Pengajuan extends CI_Controller{
     public function index()
     {
 
-        $data['pertahun'] =  $this->db->query("SELECT * FROM daftar  GROUP BY tahun ")->result();
+        $data['pertahun'] =  $this->db->query("SELECT * FROM daftar  GROUP BY tahun ORDER BY tahun DESC")->result();
 
 
         $this->load->view('templates_admin/header');
@@ -40,16 +40,33 @@ class Pengajuan extends CI_Controller{
         $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->row();
         $data['pendaftarannum'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->num_rows();
 
-
-
         $data['pengajuan'] = $this->Model_pengajuan->tampil_pengajuan($kecamatan)->row();
         $data['pengajuannum'] = $this->Model_pengajuan->tampil_pengajuan( $kecamatan)->num_rows();
-
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('kecamatan/pengajuan', $data);
         $this->load->view('templates_admin/footer');;
+    }
+
+    public function lihat_pengajuan($no_hasilajuan)
+    {
+
+        // $data['user'] = $this->db->get_where('pengguna', ['penempatan' => $this->session->userdata('penempatan')])->row();
+        $kecamatan = $this->session->userdata('penempatan');
+
+        $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
+        $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
+
+
+        $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
+
+        // $data['wilayah'] = $this->Model_wilayah->tampil_wilayah($kecamatan)->result();
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('kecamatan/lihat_pengajuan', $data);
+        $this->load->view('templates_admin/footer');
     }
 
 

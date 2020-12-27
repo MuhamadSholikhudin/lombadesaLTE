@@ -68,7 +68,11 @@
             <?php if ($this->session->userdata('hakakses') == 3) { ?>
               Kecamatan <?= $this->session->userdata('penempatan'); ?>
 
-            <?php }else{ ?>
+            <?php }elseif($this->session->userdata('hakakses') == 5){ ?>
+               <?= $this->session->userdata('nama'); ?>
+
+            <?php }
+            else{ ?>
                <?= $this->session->userdata('penempatan'); ?>
 
             <?php } ?>

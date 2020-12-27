@@ -9,12 +9,6 @@
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">
-
-
-
-
-
-
                     <div class="card">
                         <div class="card-header border-transparent">
                             <h3 class="card-title">Data Jadwal Perlombaan Desa Berdasarkan tahun</h3>

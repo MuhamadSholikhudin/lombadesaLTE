@@ -25,8 +25,8 @@
                                 <th>DESA</th>
                                 <th>KECAMATAN</th>
                                 <!-- <th>Tahun</th> -->
-                                
-                                
+
+
                                 <?php
                                 ini_set('display_errors', 'off');
                                 if ($jadini->status_jadwal == 0) {
@@ -159,20 +159,19 @@
                                         if ($numpengajua->num_rows() ==  $jadacc->num_rows()) { ?>
                                             Ter Tanda tangani
                                         <?php } elseif ($numpengajua->num_rows() ==  $jadkirim->num_rows()) { ?>
-                                            <form action="<?= base_url('admin_sekda/jadwal_lomba/acc/') ?>" method="post" enctype="multipart/form-data">
-                                                <?php foreach ($penjadwalan as $jadw) : ?>
-                                                    <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
-                                                <?php endforeach; ?>
-                                                <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check"> Sudah terkirim Ke Sekda</i></button>
-                                            </form>
+
+                                            Jadwal di kirim ke sekda
                                         <?php } elseif ($numpengajua->num_rows() ==  $numpengjadw->num_rows()) { ?>
-                                            <form action="<?= base_url('admin_sekda/jadwal_lomba/acc/') ?>" method="post" enctype="multipart/form-data">
+                                            <form action="<?= base_url('stafpmd/penjadwalan/ajukan/') ?>" method="post" enctype="multipart/form-data">
                                                 <?php foreach ($penjadwalan as $jadw) : ?>
                                                     <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
+                                                    <input type="hidden" name="tahun" value="<?= $jadw->tahun ?>">
                                                 <?php endforeach; ?>
                                                 <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check">kirim sekda</i></button>
                                             </form>
+
                                         <?php } else { ?>
+
                                             <div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Ada Jadwal lomba yang belum di buat">Jadwal lomba belum Lengkap</i></div>
                                         <?php } ?>
 

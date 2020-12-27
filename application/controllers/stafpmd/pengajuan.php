@@ -26,6 +26,22 @@ class Pengajuan extends CI_Controller{
         // $data['pengajuan'] = $this->db->where('hasil_ajuan', ['status_ajuan >' => 0])->result_array();
         $data['pengajuan'] = $this->db->query('SELECT * FROM hasil_ajuan WHERE status_ajuan > 1')->result();
 
+        $data['pertahun'] =  $this->db->query("SELECT * FROM hasil_ajuan  GROUP BY tahun ")->result();
+        
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('stafpmd/list_pengajuan', $data);
+        $this->load->view('templates_admin/footer');
+    }
+
+    public function index_pertahun($tahun)
+    {
+
+        // $data['pendaftaran'] = $this->db->get_where('daftar', ['id_pendf' => $id_pendf])->row();
+        // $data['pengajuan'] = $this->db->where('hasil_ajuan', ['status_ajuan >' => 0])->result_array();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan WHERE status_ajuan > 0 AND tahun = '$tahun'")->result();
+$data['tahun'] = $tahun;
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -59,14 +75,15 @@ class Pengajuan extends CI_Controller{
 
 public function cekpengajuan(){
 
-
         $no_hasilajuan = $this->input->post('no_hasilajuan');
         $cekpengajuan = $this->input->post('cekpengajuan');
+        $tahun = $this->input->post('tahun');
         $cekp = implode("", $cekpengajuan);
 
         if($cekp == '12'){
 
             $data = [
+                'catatan' => 'Surat pengajuan dari kecamatan sudah bernar dan surat balasan dari kecamatan sudah benar dokument persyaratan pengajuan peserta lomba desa di terima',
                 'status_ajuan' => 3
             ];
             $where = [
@@ -82,8 +99,8 @@ public function cekpengajuan(){
             $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
             $this->Model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
 
-            $this->session->set_flashdata("message", "<script>Swal.fire('Berhasil', 'Data Pengajuan di terima', 'success')</script>");
-            redirect('stafpmd/pengajuan/');
+            $this->session->set_flashdata("message", "<script>Swal.fire('Berhasil', 'Data Pengajuan peserta lomba di terima', 'success')</script>");
+            redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
         }elseif($cekp == '1'){
             $data = [
                 'catatan' => 'Surat pengajuan dari kecamatan sudah bernar akan tetapi surat balasan dari desa belum benar',

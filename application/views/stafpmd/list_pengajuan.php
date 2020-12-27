@@ -4,34 +4,34 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-12  mb-3 text-center">
-                    <h1 class="m-0 text-dark">Daftar Jadwal Lomba Berdasarkan Tahun</h1>
+                <div class="col-sm-12">
+                    <h1 class="m-0 text-dark">Daftar Pengajuan Lomba Desa Berdasarkan Tahun</h1>
                 </div><!-- /.col -->
 
                 <div class="col-sm-12">
+
                     <div class="card">
                         <div class="card-header border-transparent">
-                            <h3 class="card-title">Data Jadwal Perlombaan Desa Berdasarkan tahun</h3>
+                            <h3 class="card-title">Data Pengajuan Perlombaan Desa Berdasarkan tahun</h3>
 
                             <div class="card-tools">
-                                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
-                                </button> -->
+                                </button>
 
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <th>NO</th>
-                                            <th>Keterangan</th>
-                                            <th>taggal buat</th>
-                                            <th>Tanggal Terakhir Pendaftaran</th>
+                                            <td>NO</td>
+                                            <th>Keterangan </th>
                                             <th>Tahun</th>
                                             <th>Aksi</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -39,16 +39,16 @@
                                         <?php foreach ($pertahun as $tah) : ?>
                                             <tr>
                                                 <td><?= $no++; ?></td>
-                                                <td><?= $tah->judul ?></td>
-                                                <td><?= longdate_indo($tah->tgl_buat) ?></td>
-                                                <td><?= longdate_indo($tah->tgl_selesai) ?></td>
+                                                <td>Data pengajuan peserta lomba desa tahun</td>
                                                 <td><?= $tah->tahun ?></td>
-                                                <td><a href="<?= base_url('admin_kecamatan/pengajuan/index_pertahun/' . $tah->tahun) ?>">
+                                                <td><a href="<?= base_url('stafpmd/pengajuan/index_pertahun/' . $tah->tahun) ?>">
                                                         <span class="badge badge-success">
                                                             Lihat
                                                         </span></a>
                                                 </td>
-
+                                                <td>
+                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
 

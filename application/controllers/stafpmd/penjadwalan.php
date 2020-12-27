@@ -66,6 +66,7 @@ $data['tahunin'] = [$tahun];
     {
         $id = $this->input->post('no_jadwal');
         $tgl_jadwal = $this->input->post('tgl_jadwal');
+        $tahun = $this->input->post('tahun');
 
         $data = [
             'tgl_jadwal' => $tgl_jadwal,
@@ -78,23 +79,34 @@ $data['tahunin'] = [$tahun];
         $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan berhasil di Ubah', 'success')</script>");
         
-        redirect('stafpmd/penjadwalan/');
+        redirect('stafpmd/penjadwalan/index_pertahun/'. $tahun);
     }
 
-    public function ajukan($no_jadwal)
+    public function ajukan()
     {
-        $data = [
-            'status_jadwal' => 1
-        ];
-        $where = [
-            'no_jadwal' => $no_jadwal
-        ];
+        //LOGIKA PERTAMA
+        // $data = [
+        //     'status_jadwal' => 1
+        // ];
+        // $where = [
+        //     'no_jadwal' => $no_jadwal
+        // ];
+        // $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
 
-        $this->Model_penjadwalan->update_data($where, $data, 'jadwal_lomba');
+        $no_jadwal = $this->input->post('no_jadwal');
+        $tahun = $this->input->post('tahun');
+        $result = array();
+        foreach ($no_jadwal as $key => $val) {
+            $result[] = array(
+                "no_jadwal" => $no_jadwal[$key],
+                "status_jadwal" => 1
+            );
+        }
+        $this->db->update_batch('jadwal_lomba', $result, 'no_jadwal');
+
 
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Penjadwalan berhasil di Ajukan', 'success')</script>");
-
-        redirect('stafpmd/penjadwalan/');
+        redirect('stafpmd/penjadwalan/index_pertahun/'. $tahun);
     }
 
     public function batalkan($no_jadwal)

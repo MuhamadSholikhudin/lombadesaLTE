@@ -69,86 +69,86 @@
 
                         </div>
                         <hr>
-                        <form action="<?= base_url('admin_kecamatan/pengajuan/edit_aksi'); ?>" method="post" enctype="multipart/form-data">
-                            <div class="body">
+                        <div class="body">
 
-                                <h3 class="text-center"><u>SURAT KETERANGAN</u> </h3>
+                            <h3 class="text-center"><u>SURAT KETERANGAN</u> </h3>
 
-                                <h4 class="text-center">NOMOR : 090 / 300./ 16.<?= $pengajuan->no_hasilajuan ?> / <?= $pengajuan->tahun ?></h4>
+                            <h4 class="text-center">NOMOR : 090 / 300./ 16.<?= $pengajuan->no_hasilajuan ?> / <?= $pengajuan->tahun ?></h4>
 
-                                <br>
-                                <br>
-                                <h5>
-                                    <p> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        Bahwa dalam Rangka Ikut Serta kegitan Lomba Desa Tahun <?= $pengajuan->tahun ?> yang diadakan oleh Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Kudus Dengan ini Pemerintah Kecamatan Jekulo Mengajukan Desa <select name="desa" id="desa">
-                                            <?php foreach ($wilayah as $wil) : ?>
-                                                <?php if ($wil->desa == $pengajuan->desa) : ?>
-                                                    <option value="<?= $wil->desa; ?>" selected><?= $wil->desa; ?></option>
-                                                <?php else : ?>
-                                                    <option value="<?= $wil->desa; ?>"><?= $wil->desa; ?></option>
-                                                <?php endif ?>
-                                            <?php endforeach; ?>
-                                            <?= form_error('desa', '<div class="text-danger small ml-2">', '</div>'); ?>
-                                        </select>
+                            <br>
+                            <br>
+                            <h5>
+                                <p> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    Bahwa dalam Rangka Ikut Serta kegitan Lomba Desa Tahun <?= $pengajuan->tahun ?>
+                                    yang diadakan oleh Dinas Pemberdayaan Masyarakat
+                                    dan Desa Kabupaten Kudus Dengan ini Pemerintah Kecamatan Jekulo Mengajukan Desa
+                                    <?= $pengajuan->desa ?>
+                                    Ikut serta dalam perlombaan yang diadakan
+                                    Oleh dinas Pemberdayaan Masyarakat dan desa.
 
 
-                                        Ikut serta dalam perlombaan yang diadakan
-                                        Oleh dinas Pemberdayaan Masyarakat dan desa.
+                                </p>
+                            </h5>
+                            <h5>
+                                <p>
+                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    Demikian surat pengajuan ini agar di sampaikan dengan sebaik baiknya.
+                                </p>
+                            </h5>
 
 
-                                    </p>
-                                </h5>
-                                <h5>
-                                    <p>
-                                        &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        Demikian surat pengajuan ini agar di sampaikan dengan sebaik baiknya.
-                                    </p>
-                                </h5>
-
-
-                                <div class="row">
-                                    <div class="col-sm-7">
-                                        <div class="content-bottom">
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-5">
-
-                                        <div>
-                                            <h4 class="text-center">Kudus, <?= longdateum_indo($pengajuan->tgl_ajuan) ?> </h4>
-                                            <h4 class="text-center">CAMAT <?= $this->session->userdata('penempatan') ?></h4>
-                                        </div>
-                                        <div class="mb-3">
-                                            <br>
-                                            <h4 class="text-center"></h4><br>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-center"><u><?= $this->session->userdata('nama') ?></u> </h4>
-                                            <h4 class="text-center">NIP : <?= $this->session->userdata('username') ?></h4>
-                                        </div>
-
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <div class="content-bottom">
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
 
                                     </div>
                                 </div>
+
+                                <div class="col-sm-5">
+
+                                    <div>
+                                        <h4 class="text-center">Kudus, <?= longdateum_indo($pengajuan->tgl_ajuan) ?> </h4>
+                                        <h4 class="text-center">CAMAT <?= $this->session->userdata('penempatan') ?></h4>
+                                    </div>
+                                    <div class="mb-3">
+                                        <br>
+                                        <h4 class="text-center"></h4><br>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-center"><u><?= $this->session->userdata('nama') ?></u> </h4>
+                                        <h4 class="text-center">NIP : <?= $this->session->userdata('username') ?></h4>
+                                    </div>
+
+
+                                </div>
                             </div>
+                        </div>
                     </div>
 
                 </div>
                 <div class="col-sm-3">
-                    <h5 class="text-center">
-                        Catatan
-                    </h5>
-                    <?= $pengajuan->catatan ?>
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Catatan</h3>
+                        </div>
+                        <div class="card-body">
+                            <?= $pengajuan->catatan ?>
+
+
+
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="col-sm-9">
@@ -161,8 +161,6 @@
 
                 </div>
                 <div class="col-sm-9">
-                    <input name="file_lama" type="hidden" value="<?= $pengajuan->surat_balasan_desa ?> " />
-                    <input name="file_name" type="file" accept="application/pdf, application/vnd.ms-excel" />
 
                 </div>
                 <div class="col-sm-3">
@@ -205,9 +203,7 @@
                     <input type="text" class="form-control" name="tahun" id="tahun" value="<?= date('Y'); ?>" readonly>
                 </div> -->
 
-                    <button href="<?= base_url('admin_kecamatan/pengajuan/index/'); ?>" class="btn btn-success btn--sm mt-3">kembali</button>
-                    <button class="btn btn-primary btn--sm mt-3" type="submit">Simpan</button>
-                    </form>
+                    <a href="<?= base_url('admin_kecamatan/pengajuan/index/'); ?>" class="btn btn-success btn--sm mt-3">kembali</a>
 
 
 

@@ -27,6 +27,7 @@
                                     <div class="form-group">
                                         <label for="1Judul">Desa</label>
                                         <input type="hidden" class="form-control" name="no_jadwal" value="<?= $jadw->no_jadwal; ?>">
+                                        <input type="hidden" class="form-control" name="tahun" value="<?= $jadw->tahun; ?>">
                                         <input type="text" class="form-control" id="1Judul" value="<?= $jadw->desa; ?>" readonly disabled>
                                     </div>
                                     <div class="form-group">

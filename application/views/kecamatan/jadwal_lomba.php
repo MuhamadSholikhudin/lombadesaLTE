@@ -3,6 +3,8 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
+
+            <a href="<?= base_url('admin_kecamatan/jadwal_lomba/cetak/'. $tahun) ?>" target="_blank" class="btn btn-warning mb-2"><i class="fas fa-print"></i> Cetak</a>
             <div class="row card p-4 mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">JADWAL PELAKSANAAN EVALUASI PERKEMBANGAN DESA</h1>
@@ -115,54 +117,14 @@
                                 <?= anchor('admin_sekda/jadwal_lomba/acc/', '<div class="btn btn-primary btn-btn-sm"  data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba">
                                             <i class="fas fa-check"> Setujui</i>
                                         </div>') ?> -->
-                                <?php foreach ($tahunin as $tahu) :
-                                    $numpengajua = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahu' ");
-                                    $numpengjadw = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' ");
-                                    $jadacc = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' AND jadwal_lomba.status_jadwal = 2");
-                                    $jadkirim = $this->db->query("SELECT * FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE tahun = '$tahu' AND jadwal_lomba.tgl_jadwal != '0000-00-00' AND jadwal_lomba.status_jadwal >= 1");
-
-                                    if ($numpengajua->num_rows() ==  $jadacc->num_rows()) { ?>
-                                        Ter Tanda tangani
-                                    <?php } elseif ($numpengajua->num_rows() ==  $jadkirim->num_rows()) { ?>
-
-                                        <form action="<?= base_url('admin_sekda/jadwal_lomba/batalkan/') ?>" method="post" enctype="multipart/form-data">
-                                            <?php foreach ($penjadwalan as $jadw) : ?>
-                                                <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
-                                            <?php endforeach; ?>
-
-                                            <button type="submit" class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Kembalikan Jadwal Lomba"><i class="fas fa-undo"></i>Kembalikan</button>
-                                        </form>
-                                        <form action="<?= base_url('admin_sekda/jadwal_lomba/acc/') ?>" method="post" enctype="multipart/form-data">
-                                            <?php foreach ($penjadwalan as $jadw) : ?>
-                                                <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
-                                                <input type="hidden" name="tahun" value="<?= $jadw->tahun ?>">
-
-                                            <?php endforeach; ?>
-
-                                            <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check"> Setujui</i></button>
-                                        </form>
-                                    <?php } elseif ($numpengajua->num_rows() ==  $numpengjadw->num_rows()) { ?>
-                                        <form action="<?= base_url('stafpmd/penjadwalan/acc/') ?>" method="post" enctype="multipart/form-data">
-                                            <?php foreach ($penjadwalan as $jadw) : ?>
-                                                <input type="hidden" name="no_jadwal[]" value="<?= $jadw->no_jadwal ?>">
-                                                <input type="text" name="tahun" value="<?= $jadw->tahun ?>">
-                                            <?php endforeach; ?>
-                                            <button class="btn btn-primary btn-btn-sm" type="submit" data-toggle="tooltip" data-placement="top" title="Setujui jadwal Lomba"><i class="fas fa-check">kirim sekda</i></button>
-                                        </form>
-
-                                    <?php } else { ?>
-
-                                        <div class="btn btn-danger btn-btn-sm" data-toggle="tooltip" data-placement="top" title="Ada Jadwal lomba yang belum di buat">Jadwal lomba belum Lengkap</i></div>
-                                    <?php } ?>
-
-                                <?php endforeach; ?>
+                               Tertanda Tangani
 
 
                                 <br>
                             </div>
                             <div>
-                                <h5 class="text-center"><u><?= $this->session->userdata('nama') ?></u> </h5>
-                                <h5 class="text-center">NIP : <?= $this->session->userdata('username') ?></h5>
+                                <h5 class="text-center"><u><?= $sekda->nama ?></u> </h5>
+                                <h5 class="text-center">NIP : <?= $sekda->username ?></h5>
                             </div>
 
                         </div>

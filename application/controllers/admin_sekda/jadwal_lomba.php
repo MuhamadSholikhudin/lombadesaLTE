@@ -22,18 +22,34 @@ class Jadwal_lomba extends CI_Controller
     public function index()
     {
 
-        $tahun = date('Y');
+        $data['pertahun'] =  $this->db->query("SELECT jadwal_lomba.no_jadwal, jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,  hasil_ajuan.no_hasilajuan, hasil_ajuan.desa, hasil_ajuan.tahun, hasil_ajuan.kecamatan 
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan  WHERE jadwal_lomba.status_jadwal > 0 GROUP BY hasil_ajuan.tahun")->result();
+
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('admin_sekda/list_jadwal_lomba', $data);
+        $this->load->view('templates_admin/footer');
+    }
+
+
+    public function index_pertahun($tahun)
+    {
+
+        // $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
         $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, hasil_ajuan.desa,hasil_ajuan.tahun, hasil_ajuan.kecamatan 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahun' AND jadwal_lomba.status_jadwal > 0")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
         // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
+$data['tahunin'] = [$tahun];
+
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('admin_sekda/jadwal_lomba', $data);
-        $this->load->view('templates_admin/footer.php');
+        $this->load->view('templates_admin/footer');
     }
 
     public function jadwal_lomba()
@@ -82,6 +98,7 @@ class Jadwal_lomba extends CI_Controller
 
         //LOGIKA KEDUA SETELAH REVISI
         $no_jadwal = $this->input->post('no_jadwal');
+        $tahun = $this->input->post('tahun');
         $result = array();
         foreach ($no_jadwal as $key => $val) {
             $result[] = array(
@@ -91,7 +108,7 @@ class Jadwal_lomba extends CI_Controller
         }
         $this->db->update_batch('jadwal_lomba', $result, 'no_jadwal');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Jadwal Lomba berhasil di Acc', 'success')</script>");
-        redirect('admin_sekda/Jadwal_lomba/');
+        redirect('admin_sekda/Jadwal_lomba/index_pertahun/'. $tahun);
     }
 
     public function batalkan()
