@@ -26,25 +26,25 @@
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
+                                            <th>NO</th>
                                             <th>Keterangan </th>
                                             <th>Tahun</th>
                                             <th>Lihat</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $no = 1; ?>
                                         <?php foreach ($pertahun as $tah) : ?>
                                             <tr>
-                                                <td>OR9842</td>
+                                                <td><?= $no++; ?></td>
+                                                <td>Data Pelaksanaan Lomba Desa </td>
                                                 <td><?= $tah->tahun ?></td>
                                                 <td><a href="<?= base_url('stafpmd/penjadwalan/index_pertahun/'. $tah->tahun ) ?>">
                                                 <span class="badge badge-success">
                                                             Lihat
                                                         </span></a>
                                                 </td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                                </td>
+                                                
                                             </tr>
                                         <?php endforeach; ?>
 

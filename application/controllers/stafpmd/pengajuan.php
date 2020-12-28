@@ -40,7 +40,8 @@ class Pengajuan extends CI_Controller{
 
         // $data['pendaftaran'] = $this->db->get_where('daftar', ['id_pendf' => $id_pendf])->row();
         // $data['pengajuan'] = $this->db->where('hasil_ajuan', ['status_ajuan >' => 0])->result_array();
-        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan WHERE status_ajuan > 0 AND tahun = '$tahun'")->result();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.status_ajuan > 1 AND hasil_ajuan.tahun = '$tahun'")->result();
 $data['tahun'] = $tahun;
 
         $this->load->view('templates_admin/header');
@@ -56,10 +57,14 @@ $data['tahun'] = $tahun;
         // $data['user'] = $this->db->get_where('pengguna', ['penempatan' => $this->session->userdata('penempatan')])->row();
         // $kecamatan = $this->session->userdata('penempatan');
 
+        // $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
         $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
-        $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
-        // $kecamatan =  $data['pengajuan']['kecamatan'];
-    $lipeng = $this->db->query("SELECT * FROM hasil_ajuan WHERE no_hasilajuan = '$no_hasilajuan' ");
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.no_hasilajuan = '$no_hasilajuan'")->row();
+        
+    $lipeng = $this->db->query("SELECT * FROM hasil_ajuan 
+    JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah
+    WHERE hasil_ajuan.no_hasilajuan = '$no_hasilajuan' ");
     $pengli = $lipeng->row();
     $kecamatan = $pengli->kecamatan;
     $data['pengguna'] = $this->db->query("SELECT * FROM pengguna WHERE penempatan = '$kecamatan' ")->result();
@@ -111,7 +116,7 @@ public function cekpengajuan(){
             ];
             $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
             $this->session->set_flashdata("message", "<script>Swal.fire('Dikembalikan', 'Data Pengajuan di dikembalikan karena berkas surat balasan dari desa kurang benar', 'info')</script>");
-            redirect('stafpmd/pengajuan/');
+            redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
         }elseif ($cekp == '2') {
             $data = [
                 'catatan' => 'Surat balasan dari desa sudah bernar akan tetapi surat pengajuan dari kecamatan belum benar',
@@ -123,7 +128,7 @@ public function cekpengajuan(){
             $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
 
             $this->session->set_flashdata("message", "<script>Swal.fire('Dikembalikan', 'Data Pengajuan di dikembalikan karena berkas surat pengajuan dari kecamatan kurang benar', 'success')</script>");
-            redirect('stafpmd/pengajuan/');
+            redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
         } elseif ($cekp == '') {
             $data = [
                 'catatan' => 'Surat pengajuan dari kecamatan dan surat balasan dari desa belum benar',
@@ -135,7 +140,7 @@ public function cekpengajuan(){
             $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
 
             $this->session->set_flashdata("message", "<script>Swal.fire('Dikembalikan', 'Data Pengajuan di dikembalikan karena berkas surat pengajuan dan surat balasan dari desa tidak ada yang benar', 'success')</script>");
-            redirect('stafpmd/pengajuan/');
+            redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
         }
 }
 

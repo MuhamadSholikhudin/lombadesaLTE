@@ -39,7 +39,7 @@
                     <div class="callout callout-success alert-danger ">
                         <h5>Perhatian !</h5>
                         <p>
-                            Data Dukung yang dipakai adalah data berkas selama dua tahun ke belakang yaitu berkas tahun <?php echo date('Y') - 1; ?> &nbsp; dan <?php echo date('Y') - 2; ?>.
+                            Data Dukung yang dipakai adalah data berkas selama dua tahun ke belakang yaitu berkas tahun <?php echo date('Y') - 1; ?>  dan <?php echo date('Y') - 2; ?>.
                         </p>
                     </div>
                 </div><!-- /.col -->

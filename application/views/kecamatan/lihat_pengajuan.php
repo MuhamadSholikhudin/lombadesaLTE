@@ -152,8 +152,23 @@
                 </div>
 
                 <div class="col-sm-9">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Dokumen dari desa  <?= $pendaftaran->tahun ?></h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                      
+                        </div>
+                        
+                        <div class="card-body">
+                            <iframe src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="100%" height="600"></iframe>
+                        </div>
+                        
+                    </div>
                     <!-- <object type="application/pdf" data="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="300" height="350"> -->
-                    <iframe src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="100%" height="600"></iframe>
                     <!-- <iframe src="<?= base_url('uploads/files/') ?>2x3_maps.pdf" width="100%" height="600"></iframe> -->
                     <!-- <embed type="application/pdf" src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="600" height="400"></embed> -->
                 </div>

@@ -24,24 +24,27 @@ class Acc_juara extends CI_Controller
 
         $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['juaraini'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan, SUM(nilai.nilai1 + nilai.nilai2 + nilai.dadu1 + nilai.dadu2) as total 
+        $data['juaraini'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, wilayah.desa, wilayah.kecamatan, SUM(nilai.nilai1 + nilai.nilai2 + nilai.dadu1 + nilai.dadu2) as total 
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan");
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY wilayah.kecamatan");
 
 $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total , no_jadwal FROM nilai GROUP BY no_jadwal ORDER BY total DESC")->result(); 
 
 // RANK () OVER ( ORDER BY SUM(nilai . nilai1 + nilai . nilai2) DESC ) price_rank
 
-        $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
+        $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, wilayah.desa, wilayah.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 6 ")->result();
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY wilayah.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 6 ")->result();
 
-        $data['tidakjuara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
+        $data['tidakjuara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, wilayah.desa, wilayah.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 9 OFFSET 6")->result();
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY wilayah.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 9 OFFSET 6")->result();
 
         $data['numjuara'] = $this->db->query("SELECT * 
         FROM juara_lomba WHERE tahun = '$tahun' ");
@@ -82,11 +85,11 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         // redirect('tenaga_ahli/acc_juara/');
 
         $result = array();
-        foreach ($_POST['desa'] as $key => $val) {
+        foreach ($_POST['kode_wilayah'] as $key => $val) {
             $result[] = array(
                 'tahun'    =>  $tahun,
-                'desa'	=>  $_POST['desa'][$key],
-                'kecamatan '=>  $_POST['kecamatan'][$key],
+                // 'desa'	=>  $_POST['desa'][$key],
+                // 'kecamatan '=>  $_POST['kecamatan'][$key],
                 'total_nilai'=>  $_POST['total_nilai'][$key],
                 'total_dadu '=>  $_POST['total_dadu'][$key],
                 'juara'	=>  $_POST['juara'][$key]

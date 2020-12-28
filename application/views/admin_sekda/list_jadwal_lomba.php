@@ -31,7 +31,6 @@
                                             <th>Keterangan </th>
                                             <th>Tahun</th>
                                             <th>Aksi</th>
-                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,9 +45,7 @@
                                                             Lihat
                                                         </span></a>
                                                 </td>
-                                                <td>
-                                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                                </td>
+                                                
                                             </tr>
                                         <?php endforeach; ?>
 

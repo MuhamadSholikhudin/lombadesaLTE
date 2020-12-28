@@ -79,9 +79,9 @@
                                 <h5>
                                     <p> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                                         Bahwa dalam Rangka Ikut Serta kegitan Lomba Desa Tahun <?= date('Y') ?> yang diadakan oleh Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Kudus Dengan ini Pemerintah Kecamatan Jekulo Mengajukan Desa
-                                        <select name="desa" id="desa">
+                                        <select name="kode_wilayah" id="kode_wilayah">
                                             <?php foreach ($wilayah as $wil) : ?>
-                                                <option value="<?= $wil->desa ?>"> <?= $wil->desa ?></option>
+                                                <option value="<?= $wil->kode_wilayah ?>"> <?= $wil->desa ?></option>
                                             <?php endforeach; ?>
                                             <?= form_error('desa', '<div class="text-danger small ml-2">', '</div>'); ?>
                                         </select>
@@ -142,25 +142,27 @@
                 <div class="col-sm-3">
 
                 </div>
-                <div class="col-sm-9">
-                    <input name="file_name" type="file" accept="application/pdf, application/vnd.ms-excel" required />
 
+                <div class="col-sm-9 mt-3 card">
+                    <label for="surat_desa">Upload Dokumen dari desa</label>
+                    <input name="file_name" class="form-control" id="surat_desa" type="file" accept="application/pdf, application/vnd.ms-excel" required />
+                    <div class="mt-3"></div>
                 </div>
 
 
 
 
-                <div class="col-sm-12">
+                <div class="col-sm-12 ">
                     <!-- <h3> <i class="fas fa-edit"></i> Pengajuan Desa</h3> -->
-                    <div class="for-group mb-3">
+                    <div class="for-group mb-3 d-none">
                         <label for="judul">No Daftar</label>
                         <!-- <input type="text" class="form-control" name="judul" id="judul" value="<?= $pendaftaran->judul ?>" readonly> -->
                         <input type="text" class="form-control" name="no_daftar" id="judul" value="<?= $pendaftaran->no_daftar ?>" readonly>
                     </div>
-                    <div class="for-group mb-3">
+                    <!-- <div class="for-group mb-3">
                         <label for="kecamatan">Kecamatan</label>
                         <input type="text" class="form-control" name="kecamatan" id="kecamatan" value="<?= $this->session->userdata('penempatan'); ?>" readonly>
-                    </div>
+                    </div> -->
                     <!-- <div class="for-group mb-3">
                         <label for="desa">Desa</label>
                         <select name="desa" id="desa" class="form-control">
@@ -171,7 +173,7 @@
                         </select>
                     </div> -->
 
-                    <div class="for-group mb-3">
+                    <div class="for-group mb-3 d-none">
                         <label for="tahun">Tahun</label>
                         <input type="text" class="form-control" name="tahun" id="tahun" value="<?= date('Y'); ?>" readonly>
                     </div>

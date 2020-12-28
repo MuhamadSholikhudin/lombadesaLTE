@@ -12,18 +12,26 @@
                 $kecamatan = $this->session->userdata('penempatan');
                 $tahunini = date('Y');
                 $sosialisasi = $this->db->query("SELECT * FROM daftar WHERE tahun = '$tahunini' ");
-                $membuatpengajuan = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahunini' AND kecamatan = '$kecamatan' ");
+                // SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = 30
+                // $membuatpengajuan = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahunini' AND kecamatan = '$kecamatan' ");
+                $membuatpengajuan = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan' ");
 
 
-                $mengajukan = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahunini' AND kecamatan = '$kecamatan'  AND status_ajuan > 0 ");
-                $diterima = $this->db->query("SELECT * FROM hasil_ajuan WHERE tahun = '$tahunini' AND kecamatan = '$kecamatan'  AND status_ajuan > 1 ");
-                $accjadwal = $this->db->query("SELECT tgl_jadwal FROM jadwal_lomba JOIN hasil_ajuan ON hasil_ajuan.no_hasilajuan = jadwal_lomba.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahunini' AND hasil_ajuan.kecamatan = '$kecamatan'  AND jadwal_lomba.status_jadwal > 0 ");
+                $mengajukan = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND hasil_ajuan.status_ajuan > 0 ");
+                $diterima = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND hasil_ajuan.status_ajuan > 1 ");
+                $accjadwal = $this->db->query("SELECT tgl_jadwal FROM jadwal_lomba 
+                JOIN hasil_ajuan ON hasil_ajuan.no_hasilajuan = jadwal_lomba.no_hasilajuan 
+                JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah
+                WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND jadwal_lomba.status_jadwal > 0 ");
                 $barismem = $accjadwal->row();
 
                 $barm = $barismem->tgl_jadwal;
 
 
-                $penilaian = $this->db->query("SELECT * FROM hasil_ajuan JOIN jadwal_lomba ON hasil_ajuan.no_hasilajuan = jadwal_lomba.no_hasilajuan WHERE hasil_ajuan.tahun = '$tahunini' AND hasil_ajuan.kecamatan = '$kecamatan'  AND jadwal_lomba.tgl_jadwal = '$barm'  ");
+                $penilaian = $this->db->query("SELECT * FROM hasil_ajuan 
+                JOIN jadwal_lomba ON hasil_ajuan.no_hasilajuan = jadwal_lomba.no_hasilajuan
+                JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah 
+                WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND jadwal_lomba.tgl_jadwal = '$barm'  ");
                 $juaralomba = $this->db->query("SELECT * FROM juara_lomba WHERE tahun = '$tahunini' ");
 
                 ?>

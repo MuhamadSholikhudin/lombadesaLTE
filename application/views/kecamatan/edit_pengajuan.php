@@ -80,12 +80,13 @@
                                 <br>
                                 <h5>
                                     <p> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                                        Bahwa dalam Rangka Ikut Serta kegitan Lomba Desa Tahun <?= $pengajuan->tahun ?> yang diadakan oleh Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Kudus Dengan ini Pemerintah Kecamatan Jekulo Mengajukan Desa <select name="desa" id="desa">
+                                        Bahwa dalam Rangka Ikut Serta kegitan Lomba Desa Tahun <?= $pengajuan->tahun ?> yang diadakan oleh Dinas Pemberdayaan Masyarakat dan Desa Kabupaten Kudus Dengan ini Pemerintah Kecamatan Jekulo Mengajukan Desa
+                                        <select name="kode_wilayah" id="kode_wilayah">
                                             <?php foreach ($wilayah as $wil) : ?>
-                                                <?php if ($wil->desa == $pengajuan->desa) : ?>
-                                                    <option value="<?= $wil->desa; ?>" selected><?= $wil->desa; ?></option>
+                                                <?php if ($wil->kode_wilayah == $pengajuan->kode_wilayah) : ?>
+                                                    <option value="<?= $wil->kode_wilayah; ?>" selected><?= $wil->desa; ?></option>
                                                 <?php else : ?>
-                                                    <option value="<?= $wil->desa; ?>"><?= $wil->desa; ?></option>
+                                                    <option value="<?= $wil->kode_wilayah; ?>"><?= $wil->desa; ?></option>
                                                 <?php endif ?>
                                             <?php endforeach; ?>
                                             <?= form_error('desa', '<div class="text-danger small ml-2">', '</div>'); ?>
@@ -145,25 +146,52 @@
 
                 </div>
                 <div class="col-sm-3">
-                    <h5 class="text-center">
-                        Catatan
-                    </h5>
-                    <?= $pengajuan->catatan ?>
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Catatan</h3>
+                        </div>
+                        <div class="card-body">
+                            <?= $pengajuan->catatan ?>
+
+
+
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-sm-9">
+                <div class="col-sm-9 ">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Dokumen dari desa <?= $pendaftaran->tahun ?></h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+                            <iframe src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="100%" height="600"></iframe>
+                        </div>
+
+                    </div>
+
+
                     <!-- <object type="application/pdf" data="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="300" height="350"> -->
-                    <iframe src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="100%" height="600"></iframe>
+                    <!-- <iframe src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="100%" height="600"></iframe> -->
                     <!-- <iframe src="<?= base_url('uploads/files/') ?>2x3_maps.pdf" width="100%" height="600"></iframe> -->
                     <!-- <embed type="application/pdf" src="<?= base_url('uploads/files/') ?><?= $pengajuan->surat_balasan_desa ?>" width="600" height="400"></embed> -->
                 </div>
                 <div class="col-sm-3">
 
                 </div>
-                <div class="col-sm-9">
-                    <input name="file_lama" type="hidden" value="<?= $pengajuan->surat_balasan_desa ?> " />
-                    <input name="file_name" type="file" accept="application/pdf, application/vnd.ms-excel" />
 
+                <div class="col-sm-9  mt-3 card">
+                    <label for="surat_desa">Edit Upload Dokumen dari desa</label>
+                    <input name="file_lama" type="hidden" value="<?= $pengajuan->surat_balasan_desa ?> " />
+                    <input name="file_name" type="file" id="surat_desa" accept="application/pdf, application/vnd.ms-excel" />
+                    <div class="mt-3"></div>
                 </div>
                 <div class="col-sm-3">
 

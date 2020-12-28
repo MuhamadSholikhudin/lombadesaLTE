@@ -40,8 +40,11 @@ class Pengajuan extends CI_Controller{
         $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->row();
         $data['pendaftarannum'] = $this->Model_pendaftaran->tampil_pendaftaran($tahun)->num_rows();
 
-        $data['pengajuan'] = $this->Model_pengajuan->tampil_pengajuan($kecamatan)->row();
-        $data['pengajuannum'] = $this->Model_pengajuan->tampil_pengajuan( $kecamatan)->num_rows();
+
+        $data['pengajuan'] = $this->db->query("SELECT * FROM `hasil_ajuan` JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE wilayah.kecamatan = '$kecamatan'")->row();
+        $data['pengajuannum'] = $this->db->query("SELECT * FROM `hasil_ajuan` JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE wilayah.kecamatan = '$kecamatan'")->num_rows();
+        // $data['pengajuan'] = $this->Model_pengajuan->tampil_pengajuan($kecamatan)->row();
+        // $data['pengajuannum'] = $this->Model_pengajuan->tampil_pengajuan( $kecamatan)->num_rows();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -56,7 +59,9 @@ class Pengajuan extends CI_Controller{
         $kecamatan = $this->session->userdata('penempatan');
 
         $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
-        $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.no_hasilajuan = '$no_hasilajuan' ")->row();
+
+        // $data['pengajuan'] = $this->Model_pengajuan->idpengajuan($no_hasilajuan)->row();
 
 
         $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
@@ -93,8 +98,9 @@ class Pengajuan extends CI_Controller{
         $this->form_validation->set_rules('desa', 'desa', 'required', ['required' => 'Desa wajib di Isi !']);
 
         $no_daftar = $this->input->post('no_daftar');
-        $kecamatan = $this->input->post('kecamatan');
-        $desa = $this->input->post('desa');
+        // $kecamatan = $this->input->post('kecamatan');
+        // $desa = $this->input->post('desa');
+        $kode_wilayah = $this->input->post('kode_wilayah');
         $tgl_ajuan = date("Y-m-d");
         $tahun = $this->input->post('tahun');
 
@@ -111,8 +117,8 @@ class Pengajuan extends CI_Controller{
 
         $data = array (
                 'no_daftar' => $no_daftar,
-                'kecamatan' => $kecamatan,
-                'desa' => $desa,
+            'kode_wilayah' => $kode_wilayah,
+                // 'desa' => $desa,
                 'tgl_ajuan' => $tgl_ajuan,
                 'tahun' => $tahun,
                 'surat_balasan_desa' => $upload_data['file_name'],
@@ -139,7 +145,7 @@ class Pengajuan extends CI_Controller{
         redirect('admin_kecamatan/pengajuan/index');
     }
 
-    public function ajukan($no_hasilajuan)
+    public function ajukan($no_hasilajuan, $tahun)
     {
 
         $data = [
@@ -151,7 +157,7 @@ class Pengajuan extends CI_Controller{
 
         $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
         $this->session->set_flashdata("message", "<script>Swal.fire('Sukses', 'Data Peserta Lomba berhasil di Ajukan', 'success')</script>");
-        redirect('admin_kecamatan/pengajuan/index/');
+        redirect('admin_kecamatan/pengajuan/index_pertahun/'. $tahun);
     }
 
     public function editdesa($no_hasilajuan)
@@ -176,7 +182,7 @@ class Pengajuan extends CI_Controller{
 
     public function edit_aksi()
     {
-        $desa = $this->input->post('desa');
+        $kode_wilayah = $this->input->post('kode_wilayah');
         $no_hasilajuan = $this->input->post('no_hasilajuan');
         $file_lama = $this->input->post('file_lama');
 
@@ -216,8 +222,8 @@ class Pengajuan extends CI_Controller{
             }
         }
         $data = array(
-            'no_hasilajuan' => $no_hasilajuan,
-            'desa' => $desa,
+            // 'no_hasilajuan' => $no_hasilajuan,
+            'kode_wilayah' => $kode_wilayah,
         );
 
         $this->db->set($data);
@@ -241,22 +247,21 @@ class Pengajuan extends CI_Controller{
 
     public function lihat($no_hasilajuan){
 
-        $tahun = date('Y');
+        // $tahun = date('Y');
 
-        $data['pengajuan'] = $this->db->query(" SELECT * FROM hasil_ajuan WHERE no_hasilajuan = '$no_hasilajuan' ")->result();
+        $kecamatan = $this->session->userdata('penempatan');
 
-        $data['jadwal'] = $this->db->query(" SELECT * FROM jadwal_lomba WHERE no_hasilajuan = '$no_hasilajuan' AND status_jadwal = 2")->result();
+        $data['pendaftaran'] = $this->Model_pendaftaran->tampil_pendaftaran()->row();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.no_hasilajuan = '$no_hasilajuan' ")->row();
 
-        $data['numjadwal'] = $this->db->query(" SELECT * FROM jadwal_lomba WHERE no_hasilajuan = '$no_hasilajuan' AND status_jadwal = 2")->num_rows();
 
-        $data['urujuara'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, hasil_ajuan.desa, hasil_ajuan.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
-        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
-        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY hasil_ajuan.kecamatan ORDER BY total DESC, total_dadu DESC  ")->result();
+        $data['wilayah'] = $this->db->query(" SELECT * FROM wilayah WHERE kecamatan = '$kecamatan' ")->result();
+
+        // $data['wilayah'] = $this->Model_wilayah->tampil_wilayah($kecamatan)->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
-        $this->load->view('kecamatan/lihat_jadwal', $data);
+        $this->load->view('kecamatan/lihat_pengajuan', $data);
         $this->load->view('templates_admin/footer');
     }
 

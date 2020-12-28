@@ -32,8 +32,8 @@
 
                                     <form action="<?= base_url('stafpmd/pengajuan/diterima/' . $penga->no_hasilajuan) ?>" method="post">
                                         <input type="hidden" name="no_hasilajuan" id="" value="<?= $penga->no_hasilajuan ?>">
-                                        <input type="hidden" name="kecamatan" id="" value="<?= $penga->kecamatan ?>">
-                                        <input type="hidden" name="desa" id="" value="<?= $penga->desa ?>">
+                                        <!-- <input type="hidden" name="kecamatan" id="" value="<?= $penga->kecamatan ?>"> -->
+                                        <!-- <input type="hidden" name="desa" id="" value="<?= $penga->desa ?>"> -->
                                         <input type="hidden" name="tahun" id="" value="<?= $penga->tahun ?>">
 
                                         <td><?= $penga->kecamatan ?></td>

@@ -12,7 +12,7 @@
                     <br>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Jadwal Penilaian Desa Kabupaten Kudus Tahun <?= date('Y'); ?></h3>
+                            <h3 class="card-title">Jadwal Penilaian Desa Kabupaten Kudus Tahun <?= date('Y') ?></h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-0">

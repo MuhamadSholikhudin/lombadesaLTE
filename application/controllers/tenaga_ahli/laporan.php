@@ -71,10 +71,15 @@ class Laporan extends CI_Controller
 
     public function nilai($tahun){
 
-        $data['pengajuan'] = $this->db->query("SELECT * FROM  hasil_ajuan WHERE tahun = '$tahun' ORDER BY desa ASC")->result();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM  hasil_ajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                
+        WHERE tahun = '$tahun' ORDER BY wilayah.desa ASC")->result();
         $data['penilai'] = $this->db->query("SELECT * FROM  pengguna WHERE hakakses = 5 ")->result();
         $data['nilai'] = $this->db->query("SELECT * FROM  nilai WHERE tahun = '$tahun' ORDER BY no_jadwal ASC")->result();
-        $data['jadwal'] = $this->db->query("SELECT jadwal_lomba.no_jadwal, hasil_ajuan.no_hasilajuan, hasil_ajuan.desa FROM  jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan WHERE YEAR(jadwal_lomba.tgl_jadwal) = '$tahun' ORDER BY jadwal_lomba.no_jadwal ASC")->result();
+        $data['jadwal'] = $this->db->query("SELECT jadwal_lomba.no_jadwal, hasil_ajuan.no_hasilajuan, wilayah.desa FROM jadwal_lomba         
+        JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                
+        WHERE YEAR(jadwal_lomba.tgl_jadwal) = '$tahun' ORDER BY jadwal_lomba.no_jadwal ASC")->result();
         
 
 $this->load->view('templates_admin/header');

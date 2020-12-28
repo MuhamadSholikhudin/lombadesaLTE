@@ -32,6 +32,13 @@
   <script>
     $(document).ready(function() {
 
+      // $("#desa").on('change', function() {
+      //   var data = $(this).val();
+      //   $('#kode_wilayah').val(data);
+
+      // });
+
+
       $("#hakakses").on('change', function() {
         var hakakses = $(this).val();
         // alert(id_kec);
