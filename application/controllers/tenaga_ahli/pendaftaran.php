@@ -91,22 +91,22 @@ $tgl_buat = date('Y-m-d');
         $fil = $ftg->row();
         $tg = $fil->surat_sosialisasi;
         $old_file = $tg;
-        $upload_file = $_FILES['surat_sosialisasi']['name'];
+        $upload_file = $_FILES['file_name']['name'];
 
         if ($upload_file) {
             $config['allowed_types'] = 'pdf';
-            $config['max_size']      = 0;
+            $config['max_size']      = '0';
             $config['upload_path'] = './uploads/files/';
 
             $this->load->library('upload', $config);
 
-            if ($this->upload->do_upload('surat_sosialisasi')) {
+            if ($this->upload->do_upload('file_name')) {
                 $old_file = $tg;
                 if ($old_file != 'default.pdf') {
                     unlink(FCPATH . 'uploads/files/' . $old_file);
                 }
-                $new_surat_sosialisasi = $this->upload->data('file_name');
-                $this->db->set('surat_sosialisasi', $new_surat_sosialisasi);
+                $new_surat = $this->upload->data('file_name');
+                $this->db->set('surat_sosialisasi', $new_surat);
             } else {
                 echo $this->upload->dispay_errors();
             }

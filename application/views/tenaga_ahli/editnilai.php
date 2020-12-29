@@ -33,31 +33,36 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="skor">Nilai maks</label>
-                                        <div class="form-control" disabled><?= $nilai->nilai_maks; ?></div>
+                                        <div class="form-control" disabled><?= $nilai->nilai_maks ?></div>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Th <?= date('Y') - 2; ?></label>
-                                        <input type="number" class="form-control" id="nilai1" name="nilai1" min="0" max="<?= $nilai->nilai_maks; ?>" value="<?= $nilai->nilai1; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="nilai1" min="0" max="<?= $nilai->nilai_maks ?>" value="<?= $nilai->nilai1; ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Th <?= date('Y') - 1; ?></label>
-                                        <input type="number" class="form-control" id="nilai2" name="nilai2" min="0" max="<?= $nilai->nilai_maks; ?>" value="<?= $nilai->nilai2; ?>" required>
+                                        <input type="number" class="form-control" id="nilai2" name="nilai2" min="0" max="<?= $nilai->nilai_maks ?>" value="<?= $nilai->nilai2; ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Dadu <?= date('Y') - 2; ?></label>
-                                        <input type="number" class="form-control" id="nilai1" name="dadu1" min="0" max="5" value="<?= $nilai->dadu1; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="dadu1" min="0" max="5" value="<?= $nilai->dadu1 ?>" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="nilai">Dadu <?= date('Y') - 1; ?></label>
-                                        <input type="number" class="form-control" id="nilai1" name="dadu2" min="0" max="5" value="<?= $nilai->dadu2; ?>" required>
+                                        <input type="number" class="form-control" id="nilai1" name="dadu2" min="0" max="5" value="<?= $nilai->dadu2 ?>" required>
                                     </div>
-                                </div>
-                                <!-- /.card-body -->
+                                    <div class="form-group">
+                                        <label for="nama">Nama Penilai</label>
+                                        <div class="form-control" required><?= $nilai->nama ?>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
 
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary" confirm("Press a button!\nEither OK or Cancel.");>Simpan</button>
-                                </div>
-                            <?php endforeach; ?>
+                                    <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary" confirm("Press a button!\nEither OK or Cancel.");>Simpan</button>
+                                    </div>
+                                <?php endforeach; ?>
                         </form>
                     </div>
 

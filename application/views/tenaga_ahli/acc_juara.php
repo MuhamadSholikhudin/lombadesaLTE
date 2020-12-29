@@ -47,13 +47,14 @@
                                                         <?= $jur->desa ?>
                                                     </td>
                                                     <td class="text-center">
-                                                        <?= $jur->juara;  ?>
                                                         <?php if ($jur->juara == 4) {
                                                             echo 'Juara Harapan 1';
                                                         } elseif ($jur->juara == 5) {
                                                             echo 'Juara Harapan 2';
                                                         } elseif ($jur->juara == 6) {
                                                             echo 'Juara Harapan 3';
+                                                        } else {
+                                                            echo $jur->juara;
                                                         }
 
                                                         ?>
@@ -93,6 +94,7 @@
                                         <?php
                                         } elseif ($juaraini->num_rows() >= 1 and $juaraini->num_rows() <= 4) {
                                         ?>
+
                                             <?php $no = 1; ?>
                                             <?php foreach ($juarabaru as $jur) : ?>
                                                 <tr class="text-center ">
@@ -130,7 +132,6 @@
                                         } elseif ($juaraini->num_rows() >= 6) {
                                             ?>
 
-
                                                 <form action="<?= base_url('tenaga_ahli/acc_juara/acc') ?>" enctype="multipart/form-data" method="POST">
                                                     <?php $no = 1; ?>
                                                     <?php foreach ($juarabaru as $jur) : ?>
@@ -140,21 +141,23 @@
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->kecamatan ?>
-                                                        <input type="hidden" name="kecamatan[]" value="<?= $jur->kecamatan ?>">
+                                                        <input type="hidden" name="kode_wilayah[]" value="<?= $jur->kode_wilayah ?>">
                                                     </td>
                                                     <td class="text-center">
                                                         <?= $jur->desa ?>
-                                                        <input type="hidden" name="desa[]" value="<?= $jur->desa ?>">
+                                                        <!-- <input type="hidden" name="desa[]" value="<?= $jur->desa ?>"> -->
                                                     </td>
                                                     <td class="text-center">
                                                         <span class="badge bg-primary">
-                                                            <?= $no  ?>
+
                                                             <?php if ($no == 4) {
                                                                 echo 'Juara Harapan 1';
                                                             } elseif ($no == 5) {
                                                                 echo 'Juara Harapan 2';
                                                             } elseif ($no == 6) {
                                                                 echo 'Juara Harapan 3';
+                                                            } else {
+                                                                echo $no;
                                                             }
 
                                                             ?>
@@ -237,6 +240,8 @@
                                         <th class="text-center">Desa</th>
                                         <th style="width: 100px">Juara Ke</th>
                                         <th style="width: 120px">Total Nilai</th>
+                                        <th style="width: 120px">Total Dadu</th>
+                                        <th style="width: 120px">Tahun</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -255,7 +260,9 @@
                                             <td>
                                                 <?= $jur->juara ?>
                                             </td>
-                                            <td><?= $jur->total_nilai  ?>
+                                            <td><?= $jur->total_nilai  ?></td>
+                                            <td><?= $jur->total_dadu  ?></td>
+                                            <td><?= $jur->tahun  ?></td>
                                         </tr>
                                         <?php $no++; ?>
                                     <?php endforeach; ?>

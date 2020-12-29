@@ -45,7 +45,7 @@
 
         <div class="row card p-4 mb-2">
             <div class="col-sm-12">
-                <h1 class="m-0 text-dark text-center">JADWAL PELAKSANAAN EVALUASI PERKEMBANGAN DESA</h1>
+                <h1 class="m-0 text-dark text-center">SUSUNAN JUARA PERLOMBAAN DESA</h1>
                 <h1 class="m-0 text-dark text-center">TINGKAT KABUPATEN KUDUS TAHUN <?= $tahun ?></h1>
 
             </div><!-- /.col -->
@@ -58,9 +58,12 @@
 
                         <tr>
                             <th>NO</th>
-                            <th>HARI / TANGGAL</th>
                             <th>DESA</th>
                             <th>KECAMATAN</th>
+                            <th>Juara</th>
+                            <th>Tahun</th>
+                            <th>Total Nilai</th>
+                            <th>Total Data Dukung</th>
 
                         </tr>
                     </thead>
@@ -68,13 +71,27 @@
 
 
                         <?php $no = 1; ?>
-                        <?php foreach ($penjadwalan as $jadw) : ?>
+                        <?php foreach ($juara as $jur) : ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= longdate_indo($jadw->tgl_jadwal) ?></td>
-                                <td><?= $jadw->desa ?></td>
-                                <td><?= $jadw->kecamatan ?>
+                                <td><?= $jur->desa ?></td>
+                                <td><?= $jur->kecamatan ?> </td>
+                                <td>
+                                    <?php if ($jur->juara == 4) {
+                                        echo 'Juara Harapan 1';
+                                    } elseif ($jur->juara == 5) {
+                                        echo 'Juara Harapan 2';
+                                    } elseif ($jur->juara == 6) {
+                                        echo 'Juara Harapan 3';
+                                    } else {
+                                        echo $jur->juara;
+                                    }
+
+                                    ?>
                                 </td>
+                                <td><?= $jur->tahun ?> </td>
+                                <td><?= $jur->total_nilai ?> </td>
+                                <td><?= $jur->total_dadu ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -96,8 +113,8 @@
 
                     <div class="col-sm-5">
                         <div>
-                            <h5 class="text-center">An , BUPATI KUDUS </h5>
-                            <h5 class="text-center">Sekretaris Daerah</h5>
+                            <h5 class="text-center">An , Tenaga Ahli </h5>
+                            <h5 class="text-center">Dinas Pemberdayaan Masyarakat dan Desa</h5>
                         </div>
                         <div class="mb-3 text-center">
                             <br>

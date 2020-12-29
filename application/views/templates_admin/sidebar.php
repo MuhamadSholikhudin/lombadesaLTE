@@ -68,12 +68,11 @@
             <?php if ($this->session->userdata('hakakses') == 3) { ?>
               Kecamatan <?= $this->session->userdata('penempatan'); ?>
 
-            <?php }elseif($this->session->userdata('hakakses') == 5){ ?>
-               <?= $this->session->userdata('nama'); ?>
+            <?php } elseif ($this->session->userdata('hakakses') == 5) { ?>
+              <?= $this->session->userdata('nama'); ?>
 
-            <?php }
-            else{ ?>
-               <?= $this->session->userdata('penempatan'); ?>
+            <?php } else { ?>
+              <?= $this->session->userdata('penempatan'); ?>
 
             <?php } ?>
           </a>
@@ -113,6 +112,14 @@
               <i class="nav-icon far fa-check-square"></i>
               <p>
                 Juara Lomba
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url('tenaga_ahli/penilaian'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-pen-alt"></i>
+              <p>
+                Penilaian
               </p>
             </a>
           </li>

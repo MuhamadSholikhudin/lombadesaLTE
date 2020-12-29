@@ -19,13 +19,18 @@
 
                 $mengajukan = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND hasil_ajuan.status_ajuan > 0 ");
                 $diterima = $this->db->query("SELECT * FROM hasil_ajuan JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND hasil_ajuan.status_ajuan > 1 ");
-                $accjadwal = $this->db->query("SELECT tgl_jadwal FROM jadwal_lomba 
+                $accjadwal = $this->db->query("SELECT jadwal_lomba.tgl_jadwal as tgl_jadwal FROM jadwal_lomba 
                 JOIN hasil_ajuan ON hasil_ajuan.no_hasilajuan = jadwal_lomba.no_hasilajuan 
                 JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah
                 WHERE hasil_ajuan.tahun = '$tahunini' AND wilayah.kecamatan = '$kecamatan'  AND jadwal_lomba.status_jadwal > 0 ");
-                $barismem = $accjadwal->row();
+                $numaccjadwal = $accjadwal->num_rows();
+                if($numaccjadwal > 0){
+                    $barismem = $accjadwal->row();
+                    $barm = $barismem->tgl_jadwal;
+                }elseif($numaccjadwal < 1){
+                    $barm = '2021-12-31';
+                }
 
-                $barm = $barismem->tgl_jadwal;
 
 
                 $penilaian = $this->db->query("SELECT * FROM hasil_ajuan 
@@ -165,7 +170,7 @@
                                             <input type="checkbox" value="" name="todo2" id="td6" <?php
                                                                                                     if ($barm <= date('Y-m-d')) {
                                                                                                         echo 'checked="checked"';
-                                                                                                    } elseif ($barm > date('Y-m-d')) {
+                                                                                                    } elseif ($barm >= date('Y-m-d')) {
                                                                                                         echo ' ';
                                                                                                     }
                                                                                                     ?> disabled>
@@ -173,9 +178,9 @@
                                         </div>
                                         <span class="text">
                                             <?php if ($barm <= date('Y-m-d')) { ?>
-                                                <a href="<?= base_url('admin_kecamatan/penilaian/index_pertahun/') . $tahunini ?>">Process Penilaian </a>
-                                            <?php } elseif ($barm > date('Y-m-d')) {
-                                                echo '<a href="http://">Process Penilaian </a>';
+                                                                                            <a href="<?= base_url('admin_kecamatan/penilaian/index_pertahun/') . $tahunini ?>">Process Penilaian </a>
+                                            <?php } elseif ($barm >= date('Y-m-d')) {
+                                                echo '<a href="">Process Penilaian </a>';
                                             }
                                             ?>
                                         </span>
@@ -193,9 +198,9 @@
                                             <label for="td7"></label>
                                         </div>
                                         <span class="text">
-                                            <?php if ($accjadwal->num_rows() > 0) { ?>
+                                            <?php if ($juaralomba->num_rows() > 0) { ?>
                                                 <a href="<?= base_url('admin_kecamatan/juara/index_pertahun/') . $tahunini ?>">Juara lomba sudah di tentukan </a>
-                                            <?php } elseif ($accjadwal->num_rows() < 1) {
+                                            <?php } elseif ($juaralomba->num_rows() < 1) {
                                                 echo '<a href="http://">Juara lomba sudah di tentukan </a>';
                                             }
                                             ?>

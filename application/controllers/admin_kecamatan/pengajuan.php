@@ -149,7 +149,8 @@ class Pengajuan extends CI_Controller{
     {
 
         $data = [
-            'status_ajuan' => 2
+            'status_ajuan' => 2,
+            'tgl_ajuan' => date('Y-m-d')
         ];
         $where = [
             'no_hasilajuan' => $no_hasilajuan

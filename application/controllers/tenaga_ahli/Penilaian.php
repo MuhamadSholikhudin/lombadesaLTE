@@ -7,7 +7,7 @@ class Penilaian extends CI_Controller
     {
         parent::__construct();
 
-        if ($this->session->userdata('hakakses') != 3) {
+        if ($this->session->userdata('hakakses') != 1) {
             $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Anda Belum Login
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -19,6 +19,22 @@ class Penilaian extends CI_Controller
         $this->load->helper('tgl_indo');
     }
 
+    public function index()
+    {
+
+        // $tahun = date('Y');
+        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
+        $data['pertahun'] = $this->db->query("SELECT * FROM nilai GROUP BY tahun")->result();
+        // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
+
+        // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
+
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('tenaga_ahli/list_penilaian', $data);
+        $this->load->view('templates_admin/footer.php');
+    }
 
     public function index_pertahun($tahun)
     {

@@ -14,10 +14,10 @@
         <div class="row">
             <div class="col-sm-12 text-center mt-4 mb-4">
                 <strong>
-<h4>
+                    <h4>
 
-    Laporan data Juara Lomba Desa Kabupaten Kudus
-</h4>
+                        Laporan data Juara Lomba Desa Kabupaten Kudus
+                    </h4>
                 </strong>
             </div>
             <div class="col-sm-12">
@@ -28,8 +28,9 @@
                             <th>Kecamatan</th>
                             <th>Desa</th>
                             <th>Juara</th>
-                            <th>Total Nilai</th>
                             <th>Tahun</th>
+                            <th>Total Nilai</th>
+                            <th>Total Data Dukung</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,12 +47,24 @@
                                     <?= $jur->desa ?>
                                 </td>
                                 <td>
-                                    <?= $jur->juara ?>
+                                    <?php if ($jur->juara == 4) {
+                                        echo 'Juara Harapan 1';
+                                    } elseif ($jur->juara == 5) {
+                                        echo 'Juara Harapan 2';
+                                    } elseif ($jur->juara == 6) {
+                                        echo 'Juara Harapan 3';
+                                    } else {
+                                        echo $jur->juara;
+                                    }
+                                    ?>
                                 </td>
+                                <td><?= $jur->tahun  ?></td>
                                 <td>
                                     <?= $jur->total_nilai ?>
                                 </td>
-                                <td><?= $jur->tahun  ?>
+                                <td>
+                                    <?= $jur->total_dadu ?>
+                                </td>
 
                             </tr>
                             <?php $no++; ?>
@@ -62,7 +75,7 @@
             </div>
             <br>
             <div class="col-sm-8">
-                
+
             </div>
             <div class="col-sm-4">
                 <h5><?= longdate_indo(date('Y-m-d')) ?></h5>

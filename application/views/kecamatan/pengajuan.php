@@ -56,7 +56,7 @@
                             if ($tgl_sls > $tgl_now) {
                                 if ($pengajuannum < 1) { ?>
                                     <tr>
-                                        <td><a href="<?= base_url('admin_kecamatan/pengajuan/tambah') ?>"></a><?= $pendaftaran->judul ?></td>
+                                        <td><a href="<?= base_url('admin_kecamatan/pengajuan/tambah') ?>"><?= $pendaftaran->judul ?></a></td>
                                         <td><?= longdate_indo($pendaftaran->tgl_buat) ?></td>
                                         <td><?= longdate_indo($pendaftaran->tgl_selesai) ?></td>
                                         <td> - </td>

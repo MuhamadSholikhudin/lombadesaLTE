@@ -28,13 +28,13 @@ class Acc_juara extends CI_Controller
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
         JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
-        WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY wilayah.kecamatan");
+        WHERE hasil_ajuan.tahun = '$tahun' GROUP BY wilayah.kecamatan");
 
 $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total , no_jadwal FROM nilai GROUP BY no_jadwal ORDER BY total DESC")->result(); 
 
 // RANK () OVER ( ORDER BY SUM(nilai . nilai1 + nilai . nilai2) DESC ) price_rank
 
-        $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, wilayah.desa, wilayah.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
+        $data['juarabaru'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, wilayah.kode_wilayah, wilayah.desa, wilayah.kecamatan , SUM(nilai.nilai1 + nilai.nilai2) as total, SUM(nilai.dadu1 + nilai.dadu2) as total_dadu
         FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
         JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal
         JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
@@ -46,14 +46,17 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
         WHERE hasil_ajuan.tahun = '$tahun'  GROUP BY wilayah.kecamatan ORDER BY total DESC, total_dadu DESC  LIMIT 9 OFFSET 6")->result();
 
-        $data['numjuara'] = $this->db->query("SELECT * 
-        FROM juara_lomba WHERE tahun = '$tahun' ");
+        $data['numjuara'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE juara_lomba.tahun = '$tahun' ");
 
-        $data['juara'] = $this->db->query("SELECT * 
-        FROM juara_lomba WHERE tahun = '$tahun' ")->result();
+        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE juara_lomba.tahun = '$tahun' ")->result();
 
-        $data['juaralama'] = $this->db->query("SELECT * 
-        FROM juara_lomba WHERE tahun != '$tahun' ORDER BY total_nilai")->result();
+        $data['juaralama'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE juara_lomba.tahun != '$tahun' ORDER BY juara_lomba.total_nilai")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -88,7 +91,7 @@ $data['nilaisementara'] = $this->db->query("SELECT SUM(nilai1 + nilai2) as total
         foreach ($_POST['kode_wilayah'] as $key => $val) {
             $result[] = array(
                 'tahun'    =>  $tahun,
-                // 'desa'	=>  $_POST['desa'][$key],
+                'kode_wilayah'	=>  $_POST['kode_wilayah'][$key],
                 // 'kecamatan '=>  $_POST['kecamatan'][$key],
                 'total_nilai'=>  $_POST['total_nilai'][$key],
                 'total_dadu '=>  $_POST['total_dadu'][$key],

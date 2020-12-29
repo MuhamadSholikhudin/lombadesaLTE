@@ -87,25 +87,42 @@ public function cekpengajuan(){
 
         if($cekp == '12'){
 
-            $data = [
-                'catatan' => 'Surat pengajuan dari kecamatan sudah bernar dan surat balasan dari kecamatan sudah benar dokument persyaratan pengajuan peserta lomba desa di terima',
-                'status_ajuan' => 3
-            ];
-            $where = [
-                'no_hasilajuan' => $no_hasilajuan
-            ];
+$cekjadw = $this->db->query("SELECT * FROM jadwal_lomba WHERE no_hasilajuan = $no_hasilajuan");
 
-            $datat = array(
-                'no_hasilajuan' => $no_hasilajuan,
-                'tgl_jadwal' =>  '0000-00-00',
-                'status_jadwal' => 0
-            );
+if($cekjadw->num_rows() > 0){
+                $data = [
+                    'catatan' => 'Surat pengajuan dari kecamatan sudah bernar dan surat balasan dari kecamatan sudah benar dokument persyaratan pengajuan peserta lomba desa di terima',
+                    'status_ajuan' => 3
+                ];
+                $where = [
+                    'no_hasilajuan' => $no_hasilajuan
+                ];
+                $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+                $this->session->set_flashdata("message", "<script>Swal.fire('Berhasil', 'Data Pengajuan peserta lomba di terima', 'success')</script>");
+                redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
+}elseif($cekjadw->num_rows() < 1){
+                $data = [
+                    'catatan' => 'Surat pengajuan dari kecamatan sudah bernar dan surat balasan dari kecamatan sudah benar dokument persyaratan pengajuan peserta lomba desa di terima',
+                    'status_ajuan' => 3
+                ];
+                $where = [
+                    'no_hasilajuan' => $no_hasilajuan
+                ];
 
-            $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
-            $this->Model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
+                $datat = array(
+                    'no_hasilajuan' => $no_hasilajuan,
+                    'tgl_jadwal' =>  '0000-00-00',
+                    'status_jadwal' => 0
+                );
 
-            $this->session->set_flashdata("message", "<script>Swal.fire('Berhasil', 'Data Pengajuan peserta lomba di terima', 'success')</script>");
-            redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
+                $this->Model_pengajuan->update_data($where, $data, 'hasil_ajuan');
+                $this->Model_penjadwalan->tambah_jadwal($datat, 'jadwal_lomba');
+
+                $this->session->set_flashdata("message", "<script>Swal.fire('Berhasil', 'Data Pengajuan peserta lomba di terima', 'success')</script>");
+                redirect('stafpmd/pengajuan/index_pertahun/' . $tahun);
+}
+
+            
         }elseif($cekp == '1'){
             $data = [
                 'catatan' => 'Surat pengajuan dari kecamatan sudah bernar akan tetapi surat balasan dari desa belum benar',

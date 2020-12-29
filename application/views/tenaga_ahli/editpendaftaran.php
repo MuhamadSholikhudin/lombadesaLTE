@@ -32,8 +32,7 @@
 
                                     <div class="form-group">
                                         <label for="gambar">Upload file baru</label>
-
-                                        <input type="file" class="form-control" id="gambar" name="surat_sosialisasi" accept="application/pdf, application/vnd.ms-excel">
+                                        <input type="file" class="form-control" id="gambar" name="file_name" accept="application/pdf, application/vnd.ms-excel">
 
                                     </div>
                                 </div>
@@ -53,7 +52,8 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <object id="gambar1" type="application/pdf" data="<?= base_url('uploads/files/CAMSC.pdf') ?>" width="100%" height="700px">
+                    <!-- <object id="gambar1" type="application/pdf" data="<?= base_url('uploads/files/CAMSC.pdf') ?>" width="100%" height="700px"> -->
+                    <iframe src="<?= base_url('uploads/files/') ?><?= $daftar->surat_sosialisasi ?>" width="100%" height="600"></iframe>
 
                 </div>
                 <!-- /.col -->

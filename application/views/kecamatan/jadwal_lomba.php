@@ -8,7 +8,7 @@
             <div class="row card p-4 mb-2">
                 <div class="col-sm-12">
                     <h1 class="m-0 text-dark text-center">JADWAL PELAKSANAAN EVALUASI PERKEMBANGAN DESA</h1>
-                    <h1 class="m-0 text-dark text-center">TINGKAT KABUPATEN KUDUS TAHUN 2020</h1>
+                    <h1 class="m-0 text-dark text-center">TINGKAT KABUPATEN KUDUS TAHUN <?= $tahun ?></h1>
 
                 </div><!-- /.col -->
 

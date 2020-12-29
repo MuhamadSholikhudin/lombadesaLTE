@@ -20,13 +20,31 @@ class Laporan extends CI_Controller
 
     }
 
+
     public function pendaftar()
     {
 
-        $tahun = date('Y');
+        // $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan ORDER BY tgl_ajuan DESC")->result();
+        $data['pertahun'] = $this->db->query("SELECT * FROM hasil_ajuan GROUP BY tahun")->result();
 
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('tenaga_ahli/list_laporan_pendaftar', $data);
+        $this->load->view('templates_admin/footer');
+    }
+    public function pendaftar_pertahun($tahun)
+    {
+
+        // $tahun = date('Y');
+        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah
+        WHERE hasil_ajuan.status_ajuan = 3                        
+        ORDER BY tgl_ajuan DESC")->result();
+
+        $data['tahun'] = $tahun;
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -34,37 +52,61 @@ class Laporan extends CI_Controller
         $this->load->view('templates_admin/footer');
     }
 
-    public function cetakpendaftar(){
-        $tahun = date('Y');
-        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan ORDER BY tgl_ajuan DESC")->result();
+    public function cetakpendaftar($tahun){
+        $data['tahun'] = $tahun;
+
+        $data['pengajuan'] = $this->db->query("SELECT * FROM hasil_ajuan 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah
+        WHERE hasil_ajuan.tahun = '$tahun' AND hasil_ajuan.status_ajuan = 3   
+        ORDER BY tgl_ajuan DESC")->result();
         $data['tenagaahli'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 1")->result();
 
         $this->load->view('tenaga_ahli/cetak_pendaftar', $data);
        
     }
 
+
     public function juaralomba()
     {
-
-        $tahun = date('Y');
+        // $tahun = date('Y');
         // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba ORDER BY tahun DESC")->result();
+        $data['pertahun'] = $this->db->query("SELECT * FROM juara_lomba GROUP BY tahun ORDER BY tahun DESC")->result();
+
+        $this->load->view('templates_admin/header');
+        $this->load->view('templates_admin/sidebar');
+        $this->load->view('tenaga_ahli/list_laporan_juara', $data);
+        $this->load->view('templates_admin/footer');
+    }
+    public function juaralomba_pertahun($tahun)
+    {
+
+        // $tahun = date('Y');
+        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
+        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah 
+        WHERE juara_lomba.tahun = '$tahun'
+        ORDER BY juara_lomba.juara ASC")->result();
+        $data['tahun'] = $tahun;
 
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
         $this->load->view('tenaga_ahli/laporan_juara', $data);
         $this->load->view('templates_admin/footer');
-    }
-
-    public function cetakjuara()
-    {
-        $tahun = date('Y');
-        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
-        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba ORDER BY tahun DESC")->result();
-        $data['tenagaahli'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 1")->result();
         
+    }    
+   
+
+    public function cetakjuara($tahun)
+    {
+        // $tahun = date('Y');
+        // $data['penjadwalan'] = $this->db->get('jadwal_lomba')->result();
+        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah
+        WHERE juara_lomba.tahun = '$tahun'
+        ORDER BY juara_lomba.juara ASC")->result();
+        $data['tenagaahli'] = $this->db->query("SELECT * FROM pengguna WHERE hakakses = 1")->result();
+        $data['tahun']= $tahun;
         $this->load->view('tenaga_ahli/cetak_juara', $data);
     }
 

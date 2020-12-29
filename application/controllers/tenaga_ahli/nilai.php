@@ -22,8 +22,11 @@ class Nilai extends CI_Controller
     public function index()
     {
 
-        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
-        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria ")->result();
+        $data['nilai'] = $this->db->query("SELECT  wilayah.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun, nilai.nama, kriteria_penilaian.judul 
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
+        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
+        JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria ")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');
@@ -34,8 +37,12 @@ class Nilai extends CI_Controller
 
     public function edit($id)
     {
-        $data['nilai'] = $this->db->query("SELECT  hasil_ajuan.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul,kriteria_penilaian.nilai_maks FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
-        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria WHERE nilai.id_nilai = '$id' ")->result();
+        $data['nilai'] = $this->db->query("SELECT  wilayah.desa, nilai.nilai1, nilai.nilai2, nilai.dadu1, nilai.dadu2, nilai.id_nilai, nilai.tahun,nilai.nama, kriteria_penilaian.judul,kriteria_penilaian.nilai_maks 
+        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan
+        JOIN nilai ON jadwal_lomba.no_jadwal = nilai.no_jadwal 
+        JOIN kriteria_penilaian ON kriteria_penilaian.id_kriteria = nilai.id_kriteria 
+        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE nilai.id_nilai = '$id' ")->result();
 
         $this->load->view('templates_admin/header');
         $this->load->view('templates_admin/sidebar');

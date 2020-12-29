@@ -1,6 +1,6 @@
 <?php
 
-class Jadwal_lomba extends CI_Controller
+class Juara extends CI_Controller
 {
 
     public function __construct()
@@ -23,20 +23,18 @@ class Jadwal_lomba extends CI_Controller
 
     public function index_pertahun($tahun)
     {
-        $data['penjadwalan'] = $this->db->query("SELECT jadwal_lomba.no_jadwal,jadwal_lomba.status_jadwal, jadwal_lomba.tgl_jadwal,hasil_ajuan.no_hasilajuan, wilayah.desa,hasil_ajuan.tahun, wilayah.kecamatan 
-        FROM jadwal_lomba JOIN hasil_ajuan ON jadwal_lomba.no_hasilajuan = hasil_ajuan.no_hasilajuan 
-        JOIN wilayah ON hasil_ajuan.kode_wilayah = wilayah.kode_wilayah                        
-        WHERE hasil_ajuan.tahun = '$tahun' AND jadwal_lomba.status_jadwal > 0")->result();
+        $data['juara'] = $this->db->query("SELECT * FROM juara_lomba 
+        JOIN wilayah ON juara_lomba.kode_wilayah = wilayah.kode_wilayah                        
+        WHERE juara_lomba.tahun = '$tahun' ORDER BY juara_lomba.juara ASC ")->result();
         // $data['penjadwalan'] = $this->db->query($queryjadwal)->result();
 
         // $data['penjadwalan'] = $this->Model_penjadwalan->tampil_data();
-        $data['sekda'] = $this->db->query(" SELECT * FROM pengguna WHERE hakakses = 4")->row();
+        $data['sekda'] = $this->db->query(" SELECT * FROM pengguna WHERE hakakses = 1")->row();
         $data['tahun'] = $tahun;
 
-        $this->load->view('templates_admin/header');
-        $this->load->view('templates_admin/sidebar');
-        $this->load->view('kecamatan/jadwal_lomba', $data);
-        $this->load->view('templates_admin/footer');
+       
+        $this->load->view('kecamatan/cetak_juara', $data);
+        
     }
 
     public function cetak($tahun)

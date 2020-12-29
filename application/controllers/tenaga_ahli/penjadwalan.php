@@ -34,6 +34,7 @@ class Penjadwalan extends CI_Controller{
         $this->load->view('tenaga_ahli/penjadwalan', $data);
         $this->load->view('templates_admin/footer.php');
     }
+    
     public function edit($id)
     {
         // $where = array('no_jadwal' => $id);
